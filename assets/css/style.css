@@ -450,7 +450,7 @@ body.nav-active { overflow: hidden; }
 .btn-text:is(:hover, :focus-visible) { color: var(--white); }
 
 .shape {
-  display: none;
+  /* display: none; */
   position: absolute;
   max-width: max-content;
   z-index: -1;
