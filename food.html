@@ -39,7 +39,63 @@
   <link rel="preload" as="image" href="assets/images/hero-slider-3.jpg">
 
 </head>
-
+<style>
+/* body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+} */
+.container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.menu-column {
+  width: 30%;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.menu-column h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+.menu-column ul {
+  list-style-type: none;
+  padding: 0;
+}
+.menu-column li {
+  padding: 5px 0;
+  font-size: 14px;
+  color: #555;
+}
+.menu-column li span {
+  font-weight: bold;
+  color: #333;
+}
+.menu-column .price {
+  color: #007BFF;
+  font-weight: bold;
+}
+.menu-column .section-title {
+  font-weight: bold;
+  margin-top: 20px;
+}
+</style>
 <body id="top">
 
   <!-- 
@@ -328,154 +384,111 @@
 
       <section class="section menu" aria-label="menu-label" id="menu">
         <div class="container">
-
-          <p class="section-subtitle text-center label-2">Special Selection</p>
-
-          <h2 class="headline-1 section-title text-center">GOLDEN SERVICE: (3 course meal) <br> Price: £50.00 per head</h2>
-
-            <li>
-              <div class="menu-card hover:card">
-
-                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
-                  <img src="assets/images/menu-1.png" width="100" height="100" loading="lazy" alt="Greek Salad"
-                    class="img-cover">
-                </figure>
-
-                <div>
-
-                  <div class="title-wrapper">
-                    <h3 class="title-3">
-                      <a href="#" class="card-title">Menu Includes</a>
-                    </h3>
-                  </div>
-
-                  <p class="card-text label-1">
-                    Any Choice Of 8 Food Items From The List Below Or From Customer's Choices (Additional charges may apply) plus Starter and desert
-Fried Rice, Jollof Rice, Moi-Moi, Boiled Rice, Pounded Yam, Eba, Amala, Beans, Porridge & Stew, lyan, Spinach Stew, Garnished Chicken, Garnished beef, Garnished Fish, Puff-Puff, Chin-Chin, Meat pie, Spring rolls, Noodles, Lasagna, Paste bake, Pepper Soup, Assorted Soups, Ayamase, Ofada Stew, Gbegiri & Ewadu, Fried plantain, Dodo& Gizzard, Meat on skewers (Beef, Chicken or Gizzard)
-Staffing: x4 with Chafing Dishes & Fuels, Serving spoons, Set up and serve. Excluding Transport charges.
-                  </p>
-
-                </div>
-
+          <h1 class="section-subtitle label-2">Full Menu Options</h1>
+          <div class="menu">
+              <!-- Gold Service -->
+              <div class="menu-column">
+                  <h2>Gold Service</h2>
+                  <ul>
+                      <li><span>Price:</span> £55.00 per head</li>
+                      <li><span>Minimum Order:</span> 50 People</li>
+                      <li><span>Menu:</span> Fried Rice, Jollof Rice, Moi-Moi, Boiled Rice, Pounded Yam, Eba, Amala, Beans, Porridge & Stew, Iyan, Vegetable Stew, Egusi Stew, Garnished Chicken, Garnished Beef, Garnished Fish, Puff-Puff, Chin-Chin, Meat Pie, Spring Rolls, Noodles, Lasagna, Pepper Soup, Assorted Soups, Ayamase, Ofada Stew, Gbegiri & Ewadu, Fried Plantain, Dodo & Gizzard, Meat on Skewers (Beef, Chicken or Gizzard)</li>
+                      <li><span>Starters:</span> Puff-puff, Spring roll, Chicken wings, Prawns</li>
+                      <li><span>Staffing:</span> x4 with Chafing Dishes & Fuels, Serving Spoons, Set Up & Serve (Excluding Transport charges)</li>
+                  </ul>
               </div>
-            </li>
-
-          </ul>
-
-        </div>
-        <br><br>
-        <div class="container">
-
-
-          <h2 class="headline-1 section-title text-center">SILVER SERVICE: <br> Price: £40.00 per head</h2>
-
-            <li>
-              <div class="menu-card hover:card">
-
-                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
-                  <img src="assets/images/menu-1.png" width="100" height="100" loading="lazy" alt="Greek Salad"
-                    class="img-cover">
-                </figure>
-
-                <div>
-
-                  <div class="title-wrapper">
-                    <h3 class="title-3">
-                      <a href="#" class="card-title">Menu Includes</a>
-                    </h3>
-                  </div>
-
-                  <p class="card-text label-1">
-                    Jollof rice, Fried rice, Stir Fry Noodles, Pottage, lyan and Vegetable Stew, Beef in pepper garnishing, chicken in pepper garnishing, Fried Chicken, fried fish, Beans and stew, salad, moin moin, and plantain
-                    Starters.: Puff-puff, Spring roll, Samosa, Chicken wings
-                    Staffing: x2 with Chafing dishes, fuels, serving spoons, set up and serve Excluding Transport charges.
-                  </p>
-
-                </div>
-
+  
+              <!-- Silver Service -->
+              <div class="menu-column">
+                  <h2>Silver Service</h2>
+                  <ul>
+                      <li><span>Price:</span> £42.50 per head</li>
+                      <li><span>Minimum Order:</span> 50 People</li>
+                      <li><span>Menu:</span> Jollof Rice, Fried Rice, Stir Fry Noodles, Pottage, Iyan & Vegetable Stew, Beef in Pepper Garnishing, Chicken in Pepper Garnishing, Fried Chicken, Fried Fish, Beans and Stew, Salad, Moi-Moi, Plantain</li>
+                      <li><span>Starters:</span> Puff-puff, Spring roll, Chicken wings</li>
+                      <li><span>Staffing:</span> x2 with Chafing Dishes, Fuels, Serving Spoons, Set Up & Serve (Excluding Transport charges)</li>
+                  </ul>
               </div>
-            </li>
-            
-          </ul>
-
-        </div>
-        <br><br>
-        <div class="container">
-
-
-          <h2 class="headline-1 section-title text-center">BRONZE SERVICE: <br> Price: £35.00 per head </h2>
-
-            <li>
-              <div class="menu-card hover:card">
-
-                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
-                  <img src="assets/images/menu-1.png" width="100" height="100" loading="lazy" alt="Greek Salad"
-                    class="img-cover">
-                </figure>
-
-                <div>
-
-                  <div class="title-wrapper">
-                    <h3 class="title-3">
-                      <a href="#" class="card-title">Menu Includes</a>
-                    </h3>
-                  </div>
-
-                  <p class="card-text label-1">
-                    Jollof Rice, Fried Rice, Stir Fry Noodles, Garnished Beef in stew, Garnished Chicken in stew, Iyan and Vegetable Stew, Fried Chicken, Salad, Plantain.
-
-                    Starters: Puff-puff, Spring roll, and Samosa
-                    
-                    Staffing: x2 with Chafing Dishes and fuels, Serving Spoons supplied, set up and serve. Excluding delivery charges.
-                  </p>
-
-                </div>
-
+  
+              <!-- Bronze Service -->
+              <div class="menu-column">
+                  <h2>Bronze Service</h2>
+                  <ul>
+                      <li><span>Price:</span> £37.50 per head</li>
+                      <li><span>Minimum Order:</span> 50 People</li>
+                      <li><span>Menu:</span> Jollof Rice, Fried Rice, Stir Fry Noodles, Garnished Beef in Stew, Garnished Chicken in Stew, Iyan & Vegetable Stew, Fried Chicken, Salad, Plantain</li>
+                      <li><span>Starters:</span> Puff-puff, Spring roll, Chicken wings</li>
+                      <li><span>Staffing:</span> x2 with Chafing Dishes, Fuels, Serving Spoons, Set Up & Serve (Excluding Delivery charges)</li>
+                  </ul>
               </div>
-            </li>
-            
-          </ul>
-
-        </div>
-        <br><br>
-        <div class="container">
-
-
-          <h2 class="headline-1 section-title text-center">CARIBBEAN GOAT CURRY <br> Price £40.00 per head </h2>
-
-            <li>
-              <div class="menu-card hover:card">
-
-                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
-                  <img src="assets/images/menu-1.png" width="100" height="100" loading="lazy" alt="Greek Salad"
-                    class="img-cover">
-                </figure>
-
-                <div>
-
-                  <div class="title-wrapper">
-                    <h3 class="title-3">
-                      <a href="#" class="card-title">Menu Includes</a>
-                    </h3>
-                  </div>
-
-                  <p class="card-text label-1">Goat/Chicken Curry
-                    Jollof Rice
-                    Fried Rice/Rice and Peas/Boiled Rice
-                    Plantain/Jerk Chicken
-                    Salad
-                    Dumplings
-                    
-                    Staffing x2 with Chafing Dishes and fuels, Serving Spoons supplied, Delivered, set up and serve. Excluding Transport charges.</p>
-
-                </div>
-
+          </div>
+  
+          <div class="menu">
+              <!-- Children Party -->
+              <div class="menu-column">
+                  <h2>Children Party</h2>
+                  <ul>
+                      <li><span class="section-title">Starters/Appetizers:</span> Fruit Skewers, Mini Cheese and Crackers, Veggie Cups with Dip, Mini Sausages Rolls, Puff Puff, Cheese Balls, Spring Rolls</li>
+                      <li><span class="section-title">Main Menu:</span> Mini burgers (beef, chicken, veggie), Hot dogs (chicken or pork), Fried Rice, Jollof Rice, Sandwich Selections, Pizza Selections, Stir Fry Noodles, Chicken Wings, Beefs or Chicken Drumsticks</li>
+                      <li><span class="section-title">Sides:</span> Mac 'n' Cheese Cups, French Fries, Sweet Potatoes Fries, Curly Fries, Plantain Fries</li>
+                      <li><span class="section-title">Sweet Treats:</span> Rice Krispie Treats, Chocolate Corn Flakes, Ice Cream, Chocolate Brownies, Waffles, Popcorn, Pancakes</li>
+                      <li><span class="price">£160 (4 Starters, 4 Mains, 2 Sides, 4 Sweets) for 20 Kids</span></li>
+                      <li><span class="price">£400 (All Starters, 10 Mains, 4 Sides, All Sweets) for 20 Kids</span></li>
+                  </ul>
               </div>
-            </li>
-            
-          </ul>
-
-        </div>
+  
+              <!-- Breakfast -->
+              <div class="menu-column">
+                  <h2>Breakfast</h2>
+                  <ul>
+                      <li><span class="section-title">Breakfast 1:</span> Toast (white, brown or seeded bread), eggs, hash brown, tomatoes, bacon, sausage, baked beans, mushrooms</li>
+                      <li><span class="section-title">Breakfast 2:</span> Muffins or Bacon Rolls, Hash Brown, Tomatoes, Baked Beans, Mushrooms</li>
+                      <li><span class="section-title">Breakfast 3:</span> Pancakes or Waffles with Eggs, Bacon/Sausages, Golden Syrup, Mixed Berries or Cream</li>
+                      <li><span class="section-title">Breakfast 4:</span> Bagels with Salmon/Cream Cheese or Smashed Avocado/Eggs, Mushrooms, Grilled Tomatoes</li>
+                      <li><span class="section-title">Breakfast 5:</span> Oats/Berries/Chia Seeds or Granola/Yogurt with Mixed Fruit, Pastries, Fruit Platter</li>
+                      <li><span class="price">£20 per person (Minimum Order 20)</span></li>
+                  </ul>
+              </div>
+  
+              <!-- Caribbean Food -->
+              <div class="menu-column">
+                  <h2>Caribbean Food</h2>
+                  <ul>
+                      <li><span class="price">£40 per head (Minimum Order 50)</span></li>
+                      <li><span class="section-title">Menu:</span> Jollof Rice, Fried Rice, Rice & Peas, Boiled Rice, Goat/Chicken Curry, Plantain, Jerk Chicken, White Rice, Coconut Rice, Salad, Coleslaw, Dumplings, Oxtail Stew</li>
+                      <li><span class="section-title">Starters:</span> Puff-puff, Spring Roll, Chicken Wings</li>
+                      <li><span class="section-title">Staffing:</span> x2 with Chafing Dishes & Fuels, Serving Spoons, Delivered, Set Up & Serve (Excluding Transport charges)</li>
+                  </ul>
+              </div>
+          </div>
+  
+          <div class="menu">
+              <!-- Finger Foods -->
+              <div class="menu-column">
+                  <h2>Finger Foods</h2>
+                  <ul>
+                      <li><span>Puff-puff (per cooler):</span> £75 (Full), £40 (Half)</li>
+                      <li><span>Meat or Chicken Pie:</span> £1.50 (Medium), £1.00 (Small)</li>
+                      <li><span>Spring Rolls (200 pieces):</span> £80 (Full), £40 (Small)</li>
+                      <li><span>Assorted Tray:</span> £150 (Spring Roll, Samosas, Puff Puff, Meat Pie, Jerk Chicken Wings/BBQ Chicken)</li>
+                      <li><span>Small Chop Platter:</span> £65 (Small), £110 (Medium), £200 (Large)</li>
+                  </ul>
+              </div>
+  
+              <!-- Cooler/Pot/Tray Service -->
+              <div class="menu-column">
+                  <h2>Cooler/Pot/Tray Service</h2>
+                  <ul>
+                      <li><span>Jollof Rice (per cooler):</span> £120</li>
+                      <li><span>Fried Rice (per cooler):</span> £150</li>
+                      <li><span>Special Fried Rice (per cooler):</span> £180</li>
+                      <li><span>Jerk Chicken (100 pieces):</span> £180</li>
+                      <li><span>Assorted Meat Pepper Soup Cooler:</span> £350</li>
+                      <li><span>Pounded Yam (per wrap):</span> £3 (Min. Order 20)</li>
+                  </ul>
+              </div>
+          </div>
+      </div>
       </section>
      
 
