@@ -202,10 +202,10 @@ window.addEventListener("mousemove", function (event) {
       })
       .then(
         function (response) {
-          alert("Your reservation request was sent successfully!");
+          alert("Your Order Is Booked!");
         },
         function (error) {
-          alert("Failed to send your reservation request. Please try again later.");
+          alert("Order Failed.");
           console.error("EmailJS Error:", error);
         }
       );
