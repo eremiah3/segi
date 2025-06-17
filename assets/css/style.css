@@ -1517,7 +1517,21 @@ textarea.input-field {
 
   .topbar .link:is(:hover, :focus-visible) { color: var(--gold-crayola); }
 
-
+  /**
+  *preload
+  */
+  .preload{
+     position: fixed;
+     place-content: center;
+      justify-items: center;
+  }
+  .preload .text{
+  font-size: calc(1rem + 2vw);
+  text-align: center;
+  justify-items: center;
+  place-content: center;
+  
+  }
 
   /**
    * HEADER
