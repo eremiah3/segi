@@ -107,4 +107,5 @@ const menuItems = [
     {
         name: "Extra Breakfast Menu",
         price: 25.00,
-        quantity: 0,
+        quantity: 0,}
+    ]
