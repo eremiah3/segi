@@ -573,6 +573,7 @@ body.nav-active { overflow: hidden; }
   -webkit-background-clip: text;
   -webkit-text-stroke: 0.5px var(--eerie-black-3);
   animation: loadingText linear 5s infinite;
+  text-align: center;
 }
 
 @keyframes loadingText {
