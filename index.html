@@ -28,8 +28,14 @@
             --border: #e5d9c8;
         }
 
+        html,
         body {
-            min-height: 100vh;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            height: 100vh;
             background-color: var(--cream);
             display: flex;
             flex-direction: column;
@@ -37,10 +43,9 @@
             justify-content: center;
             font-family: 'DM Sans', sans-serif;
             color: var(--brown);
-            padding: 60px 24px;
+            padding: 20px 24px;
             position: relative;
-            overflow-x: hidden;
-            overflow-y: auto;
+            overflow: hidden;
         }
 
         #particles {
@@ -127,7 +132,7 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            max-width: 580px;
+            max-width: 560px;
             width: 100%;
         }
 
@@ -135,7 +140,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            margin-bottom: 28px;
+            margin-bottom: 10px;
             opacity: 0;
             animation: riseIn 1s 0.1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
@@ -157,10 +162,9 @@
             transform: rotate(45deg);
         }
 
-        /* Brand */
         .brand {
             font-family: 'Cormorant Garamond', Georgia, serif;
-            font-size: clamp(50px, 10vw, 82px);
+            font-size: clamp(38px, 8vw, 64px);
             font-weight: 600;
             letter-spacing: 0.04em;
             line-height: 1;
@@ -174,15 +178,14 @@
             font-style: italic;
         }
 
-        /* Logo */
         .logo-wrap {
-            margin: 22px 0 18px;
+            margin: 10px 0 8px;
             opacity: 0;
             animation: riseIn 1s 0.38s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
 
         .logo-wrap img {
-            height: 90px;
+            height: 68px;
             width: auto;
             object-fit: contain;
             display: block;
@@ -196,27 +199,25 @@
             filter: drop-shadow(0 4px 22px rgba(196, 154, 60, 0.45));
         }
 
-
-        /* Tagline */
         .tagline {
-            font-size: 11px;
+            font-size: 8px;
             font-weight: 500;
             letter-spacing: 0.3em;
             text-transform: uppercase;
             color: var(--muted);
-            margin-bottom: 48px;
+            margin-top: 20px;
+            margin-bottom: 16px;
             opacity: 0;
             animation: riseIn 1s 0.54s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
 
-        /* Card */
         .card {
             width: 100%;
             background: var(--warm-white);
             border: 1px solid var(--border);
             border-radius: 22px;
-            padding: 52px 48px 52px;
-            margin-bottom: 36px;
+            padding: 28px 40px 28px;
+            margin-bottom: 14px;
             opacity: 0;
             animation: riseIn 1s 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
             position: relative;
@@ -247,9 +248,9 @@
         }
 
         .card-icon {
-            width: 58px;
-            height: 58px;
-            margin: 0 auto 24px;
+            width: 46px;
+            height: 46px;
+            margin: 0 auto 14px;
             background: var(--gold-pale);
             border-radius: 50%;
             display: flex;
@@ -269,8 +270,8 @@
         }
 
         .card-icon svg {
-            width: 26px;
-            height: 26px;
+            width: 22px;
+            height: 22px;
             stroke: var(--gold);
             fill: none;
             stroke-width: 1.6;
@@ -281,17 +282,17 @@
 
         .card h2 {
             font-family: 'Cormorant Garamond', Georgia, serif;
-            font-size: 30px;
+            font-size: 24px;
             font-weight: 600;
             color: var(--brown);
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             line-height: 1.25;
         }
 
         .card p {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 300;
-            line-height: 1.9;
+            line-height: 1.8;
             color: var(--muted);
             max-width: 390px;
             margin: 0 auto;
@@ -301,7 +302,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            margin: 32px auto;
+            margin: 18px auto;
             width: fit-content;
         }
 
@@ -331,11 +332,11 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 13.5px;
+            font-size: 13px;
             font-weight: 400;
             color: var(--brown);
             text-decoration: none;
-            padding: 10px 18px;
+            padding: 9px 16px;
             border: 1px solid var(--border);
             border-radius: 100px;
             background: var(--cream);
@@ -361,7 +362,7 @@
         }
 
         .footer {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 300;
             color: var(--muted);
             letter-spacing: 0.05em;
@@ -383,7 +384,7 @@
 
         @media (max-width: 500px) {
             .card {
-                padding: 36px 24px;
+                padding: 24px 20px;
             }
 
             .contact-row {
@@ -487,7 +488,6 @@
                 p.vy = rand(-0.65, -0.2);
                 p.col = COLORS[randInt(0, COLORS.length)];
                 p.type = Math.random() < 0.38 ? 'diamond' : 'circle';
-                /* twinkle: each particle oscillates between minA and maxA continuously — never fades to zero */
                 p.minA = rand(0.3, 0.55);
                 p.maxA = rand(0.7, 1.0);
                 p.twSpeed = rand(0.6, 2.2);
@@ -498,7 +498,7 @@
             function spawnAll(n) {
                 for (let i = 0; i < n; i++) {
                     const p = {};
-                    initParticle(p, true);   /* scatter across full screen on load */
+                    initParticle(p, true);
                     particles.push(p);
                 }
             }
@@ -536,11 +536,9 @@
                 t += 0.016;
 
                 particles.forEach(p => {
-                    /* Move */
                     p.x += p.vx;
                     p.y += p.vy;
 
-                    /* Twinkle — oscillates smoothly, always visible */
                     const phase = Math.sin(t * p.twSpeed + p.twOffset);
                     const a = p.minA + (p.maxA - p.minA) * (0.5 + 0.5 * phase);
 
@@ -558,7 +556,6 @@
                         ctx.fill();
                     }
 
-                    /* Reset from bottom once particle leaves screen — never stops */
                     if (p.y < -30 || p.x < -30 || p.x > W + 30) {
                         initParticle(p, false);
                     }
