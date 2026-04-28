@@ -1,1305 +1,580 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon | Segi's Kitchen</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <!-- 
-    - primary meta tags
-  -->
-  <title>Segi's Kitchen Aroma - Amazing & Delicious Food</title>
-  <meta name="title" content="Segi's Kitchen Aroma- Let indulge your appetite a little">
-  <meta name="description" content="Segi's Kitchen Aroma- Let indulge your appetite a little">
+        :root {
+            --cream: #faf7f2;
+            --warm-white: #fffcf7;
+            --gold: #c49a3c;
+            --gold-light: #e8c97a;
+            --gold-pale: rgba(196, 154, 60, 0.12);
+            --brown: #2e1f0e;
+            --muted: #9a8c7e;
+            --border: #e5d9c8;
+        }
 
-  <!-- 
-    - favicon
-  -->
-  <link rel="shortcut icon" href="favicon 1.svg" type="image/svg+xml">
+        body {
+            min-height: 100vh;
+            background-color: var(--cream);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'DM Sans', sans-serif;
+            color: var(--brown);
+            padding: 60px 24px;
+            position: relative;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
 
-  <!-- 
-    - google font link
-  -->
-  <link rel="preconnect" href="https://fonts.googleapis.com/">
-  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Forum&amp;display=swap" rel="stylesheet">
+        #particles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
 
-  <!-- 
-    - custom css link
-  -->
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
-  <link rel="stylesheet" href="assets/css/style.css">
+        .glow {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(80px);
+        }
 
-  <!-- 
-    - preload images
-  -->
-  <link rel="preload" as="image" href="assets/images/hero-slider-1.jpg">
-  <link rel="preload" as="image" href="assets/images/hero-slider-2.jpg">
-  <link rel="preload" as="image" href="assets/images/hero-slider-3.jpg">
+        .glow-1 {
+            width: 500px;
+            height: 500px;
+            top: -120px;
+            right: -80px;
+            background: radial-gradient(circle, rgba(196, 154, 60, 0.18) 0%, transparent 70%);
+            animation: driftA 14s ease-in-out infinite alternate;
+        }
 
+        .glow-2 {
+            width: 420px;
+            height: 420px;
+            bottom: -100px;
+            left: -60px;
+            background: radial-gradient(circle, rgba(196, 154, 60, 0.13) 0%, transparent 70%);
+            animation: driftB 18s ease-in-out infinite alternate;
+        }
+
+        .glow-3 {
+            width: 300px;
+            height: 300px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(232, 201, 122, 0.09) 0%, transparent 70%);
+            animation: pulse 6s ease-in-out infinite;
+        }
+
+        @keyframes driftA {
+            from {
+                transform: translate(0, 0) scale(1);
+            }
+
+            to {
+                transform: translate(-30px, 40px) scale(1.1);
+            }
+        }
+
+        @keyframes driftB {
+            from {
+                transform: translate(0, 0) scale(1);
+            }
+
+            to {
+                transform: translate(20px, -30px) scale(1.08);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.4;
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            50% {
+                opacity: 0.7;
+                transform: translate(-50%, -50%) scale(1.15);
+            }
+        }
+
+        .wrapper {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 580px;
+            width: 100%;
+        }
+
+        .ornament {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+            opacity: 0;
+            animation: riseIn 1s 0.1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .ornament-line {
+            height: 1px;
+            width: 52px;
+            background: linear-gradient(90deg, transparent, var(--gold));
+        }
+
+        .ornament-line.r {
+            background: linear-gradient(90deg, var(--gold), transparent);
+        }
+
+        .ornament-diamond {
+            width: 7px;
+            height: 7px;
+            background: var(--gold);
+            transform: rotate(45deg);
+        }
+
+        /* Brand */
+        .brand {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: clamp(50px, 10vw, 82px);
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            line-height: 1;
+            color: var(--brown);
+            opacity: 0;
+            animation: riseIn 1s 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .brand em {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        /* Logo */
+        .logo-wrap {
+            margin: 22px 0 18px;
+            opacity: 0;
+            animation: riseIn 1s 0.38s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .logo-wrap img {
+            height: 90px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+            filter: drop-shadow(0 2px 14px rgba(196, 154, 60, 0.3));
+            transition: transform 0.4s ease, filter 0.4s ease;
+        }
+
+        .logo-wrap img:hover {
+            transform: scale(1.06);
+            filter: drop-shadow(0 4px 22px rgba(196, 154, 60, 0.45));
+        }
+
+
+        /* Tagline */
+        .tagline {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 48px;
+            opacity: 0;
+            animation: riseIn 1s 0.54s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        /* Card */
+        .card {
+            width: 100%;
+            background: var(--warm-white);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 52px 48px 52px;
+            margin-bottom: 36px;
+            opacity: 0;
+            animation: riseIn 1s 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            position: relative;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 12%;
+            right: 12%;
+            height: 1.5px;
+            border-radius: 0 0 2px 2px;
+            background: linear-gradient(90deg, transparent, var(--gold-light), var(--gold), var(--gold-light), transparent);
+            animation: shimmer 3.5s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+
+            0%,
+            100% {
+                opacity: 0.45;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .card-icon {
+            width: 58px;
+            height: 58px;
+            margin: 0 auto 24px;
+            background: var(--gold-pale);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: spinSlow 12s linear infinite;
+        }
+
+        @keyframes spinSlow {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .card-icon svg {
+            width: 26px;
+            height: 26px;
+            stroke: var(--gold);
+            fill: none;
+            stroke-width: 1.6;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            animation: spinSlow 12s linear infinite reverse;
+        }
+
+        .card h2 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 30px;
+            font-weight: 600;
+            color: var(--brown);
+            margin-bottom: 16px;
+            line-height: 1.25;
+        }
+
+        .card p {
+            font-size: 15px;
+            font-weight: 300;
+            line-height: 1.9;
+            color: var(--muted);
+            max-width: 390px;
+            margin: 0 auto;
+        }
+
+        .card-divider {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 32px auto;
+            width: fit-content;
+        }
+
+        .card-divider span {
+            width: 36px;
+            height: 1px;
+            background: var(--border);
+            display: block;
+        }
+
+        .card-divider i {
+            width: 5px;
+            height: 5px;
+            background: var(--gold-light);
+            transform: rotate(45deg);
+            display: block;
+        }
+
+        .contact-row {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13.5px;
+            font-weight: 400;
+            color: var(--brown);
+            text-decoration: none;
+            padding: 10px 18px;
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            background: var(--cream);
+            transition: border-color 0.25s, color 0.25s, background 0.25s, transform 0.2s;
+        }
+
+        .contact-item:hover {
+            border-color: var(--gold-light);
+            color: var(--gold);
+            background: var(--gold-pale);
+            transform: translateY(-2px);
+        }
+
+        .contact-item svg {
+            width: 14px;
+            height: 14px;
+            stroke: var(--gold);
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+        }
+
+        .footer {
+            font-size: 12px;
+            font-weight: 300;
+            color: var(--muted);
+            letter-spacing: 0.05em;
+            opacity: 0;
+            animation: riseIn 1s 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes riseIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .card {
+                padding: 36px 24px;
+            }
+
+            .contact-row {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
 </head>
 
-<body id="top">
+<body>
 
-  <!-- 
-    - #PRELOADER
-  -->
+    <canvas id="particles"></canvas>
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    <div class="glow glow-3"></div>
 
-  <div class="preload" data-preaload>
-    <div class="circle"></div>
-    <p class="text">Segi's Kitchen</p>
-  </div>
+    <div class="wrapper">
 
-
-
-
-
-  <!-- 
-    - #TOP BAR
-  -->
-
-  <div class="topbar">
-    <div class="container">
-
-      <!-- <address class="topbar-item">
-        <div class="icon">
-          <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
+        <div class="ornament">
+            <div class="ornament-line"></div>
+            <div class="ornament-diamond"></div>
+            <div class="ornament-line r"></div>
         </div>
 
-        <span class="span">
-          Restaurant St, Delicious City, London 9578, UK
-        </span>
-      </address> -->
-
-      <div class="separator"></div>
-
-      <div class="topbar-item item-2">
-        <div class="icon">
-          <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+        <!-- LOGO -->
+        <div class="logo-wrap">
+            <img src="assets/images/logo 2.svg" alt="Segi's Kitchen logo" />
         </div>
 
-        <span class="span">Daily : 8.00 am to 10.00 pm</span>
-      </div>
+        <h1 class="brand">Segi's <em>Kitchen</em></h1>
 
-      <a href="tel:+447534644786" class="topbar-item link">
-        <div class="icon">
-          <ion-icon name="call-outline" aria-hidden="true"></ion-icon>
-        </div>
+        <p class="tagline">Fine flavours &nbsp;·&nbsp; Modern dining</p>
 
-        <span class="span">+447534644786</span>
-      </a> 
-      <div class="separator"></div>
-      
-      <a href="tel:+447508106775" class="topbar-item link">
-        <div class="icon">
-          <ion-icon name="call-outline" aria-hidden="true"></ion-icon>
-        </div>
-
-        <span class="span">+447508106775</span>
-      </a>
-
-
-     
-      <!-- <a href="https://chamodz.com/cdn-cgi/l/email-protection#adcfc2c2c6c4c3caeddfc8ded9ccd8dfccc3d983cec2c0" class="topbar-item link">
-        <div class="icon">
-          <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
-        </div>
-
-        <span class="span"><span class="__cf_email__" data-cfemail="2c4e43434745424b6c5e495f584d595e4d4258024f4341">[email&#160;protected]</span></span>
-      </a> -->
-
-    </div>
-  </div>
-
-
-
-
-
-  <!-- 
-    - #HEADER
-  -->
-
-  <header class="header" data-header>
-    <div class="container">
-
-      <a href="#" class="logo">
-        <img src="assets/images/logo 2.svg" width="80" height="50" alt="Segi's Kitchen Aroma - Home">
-      </a>
-
-      <nav class="navbar" data-navbar>
-
-        <button class="close-btn" aria-label="close menu" data-nav-toggler>
-          <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
-        </button>
-
-        <a href="#" class="logo">
-          <img src="assets/images/logo 2.svg" width="80" height="50" alt="Segi's Kitchen Aroma - Home">
-        </a>
-
-        <ul class="navbar-list">
-
-          <li class="navbar-item">
-            <a href="#home" class="navbar-link hover-underline active">
-              <div class="separator"></div>
-
-              <span class="span">Home</span>
-            </a>
-          </li>
-
-          <li class="navbar-item">
-            <a href="#about" class="navbar-link hover-underline">
-              <div class="separator"></div>
-
-              <span class="span">About Us</span>
-            </a>
-          </li>
-
-          <li class="navbar-item">
-            <a href="#special" class="navbar-link hover-underline">
-              <div class="separator"></div>
-
-              <span class="span">Cuisine</span>
-            </a>
-          </li>
-
-          <li class="navbar-item">
-            <a href="#TESTIMONIALS" class="navbar-link hover-underline">
-              <div class="separator"></div>
-
-              <span class="span">Reviews</span>
-            </a>
-          </li>
-
-          <li class="navbar-item">
-            <a href="#contact" class="navbar-link hover-underline">
-              <div class="separator"></div>
-
-              <span class="span">Contact</span>
-            </a>
-          </li>
-
-        </ul>
-
-        <div class="text-center">
-          <p class="headline-1 navbar-title">Visit Us</p>
-<!-- 
-          <address class="body-4">
-            Restaurant St, Delicious City, <br>
-            London 9578, UK
-          </address> -->
-
-          <p class="body-4 navbar-text">Open: 9.30 am - 2.30pm</p>
-
-          <!-- <a href="https://chamodz.com/cdn-cgi/l/email-protection#660409090d0f08012601140f0a0a0f4805090b" class="body-4 sidebar-link"><span class="__cf_email__" data-cfemail="a8cac7c7c3c1c6cfe8cfdac1c4c4c186cbc7c5">[email&#160;protected]</span></a> -->
-
-          <div class="separator"></div>
-
-          <p class="contact-label">Call to order</p>
-
-          <a href="tel:+447534644786" class="body-1 contact-number hover-underline">
-            +447534644786
-          </a>  <a href="tel:+447508106775" class="body-1 contact-number hover-underline">
-            +447508106775
-          </a>
-          
-        </div>
-
-      </nav>
-
-      <!-- <a href="#" class="btn btn-secondary">
-        <span class="text text-1">Find A Table</span>
-
-        <span class="text text-2" aria-hidden="true">Find A Table</span>
-      </a> -->
-
-      <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
-        <span class="line line-1"></span>
-        <span class="line line-2"></span>
-        <span class="line line-3"></span>
-      </button>
-
-      <div class="overlay" data-nav-toggler data-overlay></div>
-
-    </div>
-  </header>
-
-
-
-
-
-  <main>
-    <article>
-
-      <!-- 
-        - #HERO
-      -->
-
-      <section class="hero text-center" aria-label="home" id="home">
-
-        <ul class="hero-slider" data-hero-slider>
-
-          <li class="slider-item active" data-hero-slider-item>
-
-            <div class="slider-bg" style="opacity: 60%;">
-              <img src="assets/images/hero-slider-1.jpg" width="1880" height="950" alt="" class="img-cover">
+        <div class="card">
+            <div class="card-icon">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M12 7v5l3 3" />
+                </svg>
             </div>
 
-            <p class="label-2 section-subtitle slider-reveal" style="color: #fff;">Family & Occasions</p>
-
-            <h1 class="display-1 hero-title slider-reveal">
-              Eat well, live well, <br>
-              be well
-            </h1>
-
-            <p class="body-2 hero-text slider-reveal">
-              Your satisfaction, our priority
+            <h2>We're Updating Our Website</h2>
+            <p>
+                Segi's Kitchen is currently undergoing improvements to serve you better.
+                We'll be back shortly with a brand new experience crafted just for you.
             </p>
 
-            <a href="food.html" class="btn btn-primary slider-reveal">
-              <span class="text text-1">View Our Menu</span>
+            <div class="card-divider"><span></span><i></i><span></span></div>
 
-              <span class="text text-2" aria-hidden="true">View Our Menu</span>
-            </a>
-
-          </li>
-
-          <li class="slider-item" data-hero-slider-item>
-
-            <div class="slider-bg" style="opacity: 60%;">
-              <img src="assets/images/hero-slider-2.jpg" width="1880" height="950" alt="" class="img-cover">
-            </div>
-
-            <p class="label-2 section-subtitle slider-reveal" style="color: #fff;">delightful experience</p>
-
-            <h1 class="display-1 hero-title slider-reveal">
-              Delicious food is the <br>
-              joy of life
-            </h1>
-
-            <p class="body-2 hero-text slider-reveal">
-              Quality service, every time
-            </p>
-
-            <!-- <a href="#" class="btn btn-primary slider-reveal">
-              <span class="text text-1">View Our Menu</span>
-
-              <span class="text text-2" aria-hidden="true">View Our Menu</span>
-            </a> -->
-
-          </li>
-
-          <li class="slider-item" data-hero-slider-item>
-
-            <div class="slider-bg" style="opacity: 60%;">
-              <img src="assets/images/hero-slider-3.jpg" width="1880" height="950" alt="" class="img-cover">
-            </div>
-
-            <p class="label-2 section-subtitle slider-reveal">amazing & delicious</p>
-
-            <h1 class="display-1 hero-title slider-reveal">
-              A gathering without food <br>
-              is just a meeting
-            </h1>
-
-            <p class="body-2 hero-text slider-reveal">
-              Trusted. Proven. Exceptional
-            </p>
-
-            <!-- <a href="#" class="btn btn-primary slider-reveal">
-              <span class="text text-1">View Our Menu</span>
-
-              <span class="text text-2" aria-hidden="true">View Our Menu</span>
-            </a> -->
-
-          </li>
-          <li class="slider-item" data-hero-slider-item>
-
-            <div class="slider-bg" style="opacity: 60%;">
-              <img src="assets/images/hero-slider-4.jpg" width="1880" height="950" alt="" class="img-cover">
-            </div>
-
-            <p class="label-2 section-subtitle slider-reveal" style="color: #fff;">Flavour of Celebration</p>
-
-            <h1 class="display-1 hero-title slider-reveal">
-              Where every flavour <br>
-              tells a story
-            </h1>
-
-            <p class="body-2 hero-text slider-reveal">
-              Your Trust Our Commitment
-            </p>
-
-            <!-- <a href="#" class="btn btn-primary slider-reveal">
-              <span class="text text-1">View Our Menu</span>
-
-              <span class="text text-2" aria-hidden="true">View Our Menu</span>
-            </a> -->
-
-          </li>
-
-        </ul>
-
-        <button class="slider-btn prev" aria-label="slide to previous" data-prev-btn>
-          <ion-icon name="chevron-back"></ion-icon>
-        </button>
-
-        <button class="slider-btn next" aria-label="slide to next" data-next-btn>
-          <ion-icon name="chevron-forward"></ion-icon>
-        </button>
-
-        <a href="#" class="hero-btn has-after">
-          <img src="assets/images/hero-icon.png" width="48" height="48" alt="booking icon">
-
-          <span class="label-2 text-center span">Welcome</span>
-        </a>
-
-      </section>
-
-
-
-
-
-      <!-- 
-        - #SERVICE
-      -->
-
-      <section class="section service bg-black-10 text-center" aria-label="service">
-        <div class="container">
-
-          <p class="section-subtitle label-2">Flavors For Royalty</p>
-
-          <h2 class="headline-1 section-title">We Offer Top Notch</h2>
-
-          <!-- <p class="section-text">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry lorem Ipsum has been the industrys
-            standard dummy text ever.
-          </p> -->
-
-          <ul class="grid-list">
-
-            <li>
-              <div class="service-card">
-
-                <a href="#" class="has-before hover:shine">
-                  <figure class="card-banner img-holder" style="--width: 285; --height: 336;">
-                    <img src="assets/images/service-1.jpg" width="285" height="336" loading="lazy" alt="Breakfast"
-                      class="img-cover">
-                  </figure>
+            <div class="contact-row">
+                <a class="contact-item" href="tel:+447534644786">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.7 12.1 19.79 19.79 0 0 1 1.61 3.5 2 2 0 0 1 3.6 1.32h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.95-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                    +447534644786
                 </a>
-
-                <div class="card-content">
-
-                  <h3 class="title-4 card-title">
-                    <a href="#">Food Order</a>
-                  </h3>
-
-                    <p  class="btn-text hover-underline label-2" style="font-size: 0.9rem;">Price: £40 (any food or pastry on menu) <br> only Puff-puff is £25 Single order</p>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="service-card">
-
-                <a href="#" class="has-before hover:shine">
-                  <figure class="card-banner img-holder" style="--width: 285; --height: 336;">
-                    <img src="assets/images/service-2.jpg" width="285" height="336" loading="lazy" alt="Appetizers"
-                      class="img-cover">
-                  </figure>
+                <a class="contact-item" href="mailto:segiskitchenaroma@gmail.com">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="2" y="4" width="20" height="16" rx="2" />
+                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                    </svg>
+                    segiskitchenaroma@gmail.com
                 </a>
-
-                <div class="card-content">
-
-                  <h3 class="title-4 card-title">
-                    <a href="#">Parties </a>
-                  </h3>
-
-                  <p  class="btn-text hover-underline label-2"style="font-size: 0.9rem;">50 guests minimum catering order</p> 
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="service-card">
-
-                <a href="#" class="has-before hover:shine">
-                  <figure class="card-banner img-holder" style="--width: 285; --height: 336;">
-                    <img src="assets/images/service-3.jpg" width="285" height="336" loading="lazy" alt="Drinks"
-                      class="img-cover">
-                  </figure>
-                </a>
-
-                <div class="card-content">
-
-                  <h3 class="title-4 card-title">
-                    <a href="#">Weddings</a>
-                  </h3>
-
-                <p  class="btn-text hover-underline label-2" style="font-size: 0.9rem;">50 guests minimum catering order</p> 
-
-                </div>
-
-              </div>
-            </li>
-
-          </ul>
-
-          <img src="assets/images/shape-1.png" width="246" height="412" loading="lazy" alt="shape"
-            class="shape shape-1 move-anim">
-          <img src="assets/images/shape-2.png" width="343" height="345" loading="lazy" alt="shape"
-            class="shape shape-2 move-anim">
-
-        </div>
-      </section>
-
-
-
-
-
-      <!-- 
-        - #ABOUT
-      -->
-
-      <section class="section about text-center" aria-labelledby="about-label" id="about">
-        <div class="container">
-
-          <div class="about-content">
-
-            <p class="label-2 section-subtitle" id="about-label">Our Story</p>
-
-            <h2 class="headline-1 section-title">Every Flavour Tells a Story</h2>
-
-            <p class="section-text">
-              Welcome to Segi's Kitchen Aroma, where traditional culinary styles is 
-              fused with modern flair. Our kitchen brings together the vibrant flavors of African,
-               European, and Caribbean cuisines, crafting dishes that transport you to different corners of the globe.
-                Whether you are looking for a comforting bowl of jollof rice, a classic European pasta, or a flavourful 
-                Caribbean jerk chicken, we always have something to tantalize every palate. Our team of experienced 
-                chefs uses the freshest ingredients to ensure each meal is a delightful experience. We also specialize
-                 in catering for large events, from corporate gatherings to weddings and birthdays, making every
-                  occasion fondly unforgettable with our diverse menu and exceptional service.
-
-            </p>
-
-            <div class="contact-label">Book Through Call</div>
-
-            <a href="tel:+447534644786 " class="body-1 contact-number hover-underline"> +447534644786 </a>
-            <a href="tel:+447508106775"class="body-1 contact-number hover-underline" >+447508106775</a>
-
-            <!-- <a href="#" class="btn btn-primary">
-              <span class="text text-1">Read More</span>
-
-              <span class="text text-2" aria-hidden="true">Read More</span>
-            </a> -->
-
-          </div>
-
-          <figure class="about-banner">
-
-            <img src="assets/images/image.jpg" width="570" height="570" loading="lazy" alt="about banner"
-              class="w-100" data-parallax-item data-parallax-speed="1">
-
-            <div class="abs-img abs-img-1 has-before" data-parallax-item data-parallax-speed="1.75">
-              <img src="assets/images/about-ab-image.jpg" width="285" height="285" loading="lazy" alt=""
-                class="w-100">
             </div>
-
-            <!-- <div class="abs-img abs-img-2 has-before">
-              <img src="assets/images/badge-2.png" width="133" height="134" loading="lazy" alt="">
-            </div> -->
-
-          </figure>
-
-          <img src="assets/images/shape-3.png" width="197" height="194" loading="lazy" alt="" class="shape">
-
-        </div>
-      </section>
-
- <!-- 
- mission & vision 
-    -->
-    <section class="section service bg-black-10 text-center" aria-label="service">
-      <div class="container">
-        <section class="section features text-center" aria-label="features">
-          <div class="container">
-            <div class="swiper mySwiper">
-              <div class="swiper-wrapper">
-                <!-- who we are Statement Slide -->
-                <div class="swiper-slide">
-                  <p class="section-subtitle label-2">Who We are</p>
-                  <h2 class="headline-1 section-title">Who We Are Statement</h2>
-                  <p>
-                    Segi’s Kitchen Aroma was born out of a passion for preserving and innovating African cuisine while 
-                    seamlessly infusing European and Caribbean influences. In today’s fast-paced world, we understand the value of having a
-                     delicious, ready-to-eat meal, which is why we offer convenient food order services for your weekly or 
-                     bulk meal needs. For events, we go beyond just catering — we create a dining experience that indulges your guests with sumptuous, 
-                    mouthwatering dishes, leaving them longing for more. Excellence is at the heart of everything we do, ensuring 
-                    that every plate we serve is crafted with love, authenticity, and a touch of culinary artistry.
-
-
-                  </p>
-                </div>
-         <!-- Vision Statement Slide -->
-         <div class="swiper-slide">
-          <p class="section-subtitle label-2">Our Mission</p>
-          <h2 class="headline-1 section-title">Mission Statement</h2>
-          <p>
-            We are committed to delivering an unparalleled culinary experience that highlights the richness of
-            African, European, and Caribbean cuisines. Whether it’s a grand celebration or a cozy family dinner, 
-            our goal is to make every meal memorable with flavors that delight and inspire.
-
-          </p>
-        </div>
-                <!-- Mission Statement Slide -->
-                <div class="swiper-slide">
-                  <p class="section-subtitle label-2">Our Vision</p>
-                  <h2 class="headline-1 section-title">Vision Statement</h2>
-                  <p>
-                    To be a leading name in catering, renowned for our diverse, authentic cuisine and
-                    outstanding service—turning every client’s event into a cherished and unforgettable experience.
-
-
-                  </p>
-                </div>
-              </div>
-              <!-- Navigation Buttons -->
-              <!-- <div class="swiper-button-next"></div>
-              <div class="swiper-button-prev"></div> -->
-              <!-- Pagination -->
-              <!-- <div class="swiper-pagination"></div> -->
-            </div>
-          </div>
-        </section>
-        <img src="assets/images/shape-1.png" width="246" height="412" loading="lazy" alt="shape"
-          class="shape shape-1 move-anim">
-        <img src="assets/images/shape-2.png" width="343" height="345" loading="lazy" alt="shape"
-          class="shape shape-2 move-anim">
-      </div>
-    </section>
-
-   
-    
-
-
-
-
-      <!-- 
-        - #SPECIAL DISH
-      -->
-
-      <section class="special-dish text-center" aria-labelledby="dish-label" id="special">
-
-        <div class="special-dish-banner">
-          <img src="assets/images/special-dish-banner.jpg" width="940" height="900" loading="lazy" alt="special dish"
-            class="img-cover">
         </div>
 
-        <div class="special-dish-content bg-black-10">
-          <div class="container">
-
-            <img src="assets/images/badge-1.png" width="28" height="41" loading="lazy" alt="badge" class="abs-img">
-
-            <p class="section-subtitle label-2">GOLD SERVICE</p>
-
-            <h2 class="headline-1 section-title"> Minimum Order Is For 50 People</h2>
-
-            <p class="section-text">
-             
-
-              3 course meal 
-
-              Menu Includes Any Choice Of 8 Food Items From The List Below Or From Customer's Choices (Additional charges may apply) plus Starter and desert.
-              Fried Rice, Jollof Rice, Moi-Moi, Boiled Rice, Pounded Yam, Eba, Amala, Beans, Porridge & Stew, Iyan, vegetable Stew, Egusi stew, Garnished Chicken, Garnished beef, Garnished Fish, Puff-Puff, Chin-Chin, Meat pie, Spring rolls, Noodles, Lasagna, Paste bake, Pepper Soup, Assorted Soups, Ayamase, Ofada Stew, Gbegiri & Ewadu, Fried plantain, Dodo& Gizzard, Meat on skewers (Beef, Chicken or Gizzard)
-              Starters: Puff-puff, Spring roll, Chicken wings, prawns.
-              Staffing: x4 with Chafing Dishes & Fuels, Serving spoons, Set up and serve. Excluding Transport charges
-              
-            </p>
-
-            <div class="wrapper">
-              <del class="del body-3">£55.00 </del>
-
-              <span class="span body-1">per head</span>
-            </div>
-
-            <a href="food.html" class="btn btn-primary">
-              <span class="text text-1">View All Menu</span>
-
-              <span class="text text-2" aria-hidden="true">View All Menu</span>
-            </a>
-
-          </div>
-        </div>
-
-        <img src="assets/images/shape-4.png" width="179" height="359" loading="lazy" alt="" class="shape shape-1">
-
-        <img src="assets/images/shape-9.png" width="351" height="462" loading="lazy" alt="" class="shape shape-2">
-
-      </section>
-
-
-
-
-
-      <!-- 
-        - #MENU
-      -->
-
-      <!-- <section class="section menu" aria-label="menu-label" id="menu">
-        <div class="container">
-
-          <p class="section-subtitle text-center label-2">Special Selection</p>
-
-          <h2 class="headline-1 section-title text-center">GOLDEN SERVICE: (3 course meal) Price: £50.00 per head</h2>
-
-            <li>
-              <div class="menu-card hover:card">
-
-                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
-                  <img src="assets/images/menu-1.png" width="100" height="100" loading="lazy" alt="Greek Salad"
-                    class="img-cover">
-                </figure>
-
-                <div>
-
-                  <div class="title-wrapper">
-                    <h3 class="title-3">
-                      <a href="#" class="card-title">Menu Includes</a>
-                    </h3>
-                  </div>
-
-                  <p class="card-text label-1">
-                    Any Choice Of 8 Food Items From The List Below Or From Customer's Choices (Additional charges may apply) plus Starter and desert
-Fried Rice, Jollof Rice, Moi-Moi, Boiled Rice, Pounded Yam, Eba, Amala, Beans, Porridge & Stew, lyan, Spinach Stew, Garnished Chicken, Garnished beef, Garnished Fish, Puff-Puff, Chin-Chin, Meat pie, Spring rolls, Noodles, Lasagna, Paste bake, Pepper Soup, Assorted Soups, Ayamase, Ofada Stew, Gbegiri & Ewadu, Fried plantain, Dodo& Gizzard, Meat on skewers (Beef, Chicken or Gizzard)
-Staffing: x4 with Chafing Dishes & Fuels, Serving spoons, Set up and serve. Excluding Transport charges.
-                  </p>
-
-                </div>
-
-              </div>
-            </li>
-
-          </ul>
-
-        </div>
-        <br><br>
-        <div class="container">
-
-
-          <h2 class="headline-1 section-title text-center">SILVER SERVICE: Price: £40.00 per head</h2>
-
-            <li>
-              <div class="menu-card hover:card">
-
-                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
-                  <img src="assets/images/menu-1.png" width="100" height="100" loading="lazy" alt="Greek Salad"
-                    class="img-cover">
-                </figure>
-
-                <div>
-
-                  <div class="title-wrapper">
-                    <h3 class="title-3">
-                      <a href="#" class="card-title">Menu Includes</a>
-                    </h3>
-                  </div>
-
-                  <p class="card-text label-1">
-                    Jollof rice, Fried rice, Stir Fry Noodles, Pottage, lyan and Vegetable Stew, Beef in pepper garnishing, chicken in pepper garnishing, Fried Chicken, fried fish, Beans and stew, salad, moin moin, and plantain
-                    Starters.: Puff-puff, Spring roll, Samosa, Chicken wings
-                    Staffing: x2 with Chafing dishes, fuels, serving spoons, set up and serve Excluding Transport charges.
-                  </p>
-
-                </div>
-
-              </div>
-            </li>
-            
-          </ul>
-
-        </div>
-        <br><br>
-        <div class="container">
-
-
-          <h2 class="headline-1 section-title text-center">BRONZE SERVICE: Price: £35.00 per head </h2>
-
-            <li>
-              <div class="menu-card hover:card">
-
-                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
-                  <img src="assets/images/menu-1.png" width="100" height="100" loading="lazy" alt="Greek Salad"
-                    class="img-cover">
-                </figure>
-
-                <div>
-
-                  <div class="title-wrapper">
-                    <h3 class="title-3">
-                      <a href="#" class="card-title">Menu Includes</a>
-                    </h3>
-                  </div>
-
-                  <p class="card-text label-1">
-                    Jollof Rice, Fried Rice, Stir Fry Noodles, Garnished Beef in stew, Garnished Chicken in stew, Iyan and Vegetable Stew, Fried Chicken, Salad, Plantain.
-
-                    Starters: Puff-puff, Spring roll, and Samosa
-                    
-                    Staffing: x2 with Chafing Dishes and fuels, Serving Spoons supplied, set up and serve. Excluding delivery charges.
-                  </p>
-
-                </div>
-
-              </div>
-            </li>
-            
-          </ul>
-
-        </div>
-        <br><br>
-        <div class="container">
-
-
-          <h2 class="headline-1 section-title text-center">CARIBBEAN GOAT CURRY Price £40.00 per head </h2>
-
-            <li>
-              <div class="menu-card hover:card">
-
-                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
-                  <img src="assets/images/menu-1.png" width="100" height="100" loading="lazy" alt="Greek Salad"
-                    class="img-cover">
-                </figure>
-
-                <div>
-
-                  <div class="title-wrapper">
-                    <h3 class="title-3">
-                      <a href="#" class="card-title">Menu Includes</a>
-                    </h3>
-                  </div>
-
-                  <p class="card-text label-1">Goat/Chicken Curry
-                    Jollof Rice
-                    Fried Rice/Rice and Peas/Boiled Rice
-                    Plantain/Jerk Chicken
-                    Salad
-                    Dumplings
-                    
-                    Staffing x2 with Chafing Dishes and fuels, Serving Spoons supplied, Delivered, set up and serve. Excluding Transport charges.</p>
-
-                </div>
-
-              </div>
-            </li>
-            
-          </ul>
-
-        </div>
-      </section> -->
-
-
-
-
-
-      <!-- 
-        - #TESTIMONIALS
-      -->
-
-      <section class="section testi text-center has-bg-image i"
-        style= "background-image: url('assets/images/testimonial-bg.jpg')" aria-label="testimonials">
-        <div class="container" id="TESTIMONIALS">
-
-          <div class="quote">”</div>
-
-          <p class="headline-2 testi-text">
-            Just had the most incredible meal from Segi’s kitchen a new online food service, and
-             I have to say—her food is phenomenal! Every dish is packed with flavor, made with love, and 
-             crafted to perfection. Whether you’re craving something comforting, indulgent, 
-             or just downright delicious, this is the place to order from!
-
-             On top of that, the service is seamless—easy ordering, quick delivery, 
-             and food that arrives fresh and full of flavor. If you haven’t tried it yet, 
-             you’re seriously missing out! Do yourself a favor and place an order—you won’t regret it!
-
-
-          </p>
-
-          <div class="wrapper">
-            <div class="separator"></div>
-            <div class="separator"></div>
-            <div class="separator"></div>
-          </div>
-
-          <div class="profile">
-            <!-- <img src="assets/images/testi-avatar.jpg" width="100" height="100" loading="lazy" alt="Sam Jhonson"
-              class="img"> -->
-
-            <p class="label-2 profile-name">Jummy</p>
-          </div>
-
-        </div>
-      </section>
-
-
-
-
-
-      <!-- 
-        - #RESERVATION
-      -->
-
-  
-<section class="reservation" id="contact">
-  <div class="container">
-    <div class="form reservation-form bg-black-10">
-      <form id="reservationForm" class="form-left">
-        <h2 class="headline-1 text-center">Order & Enjoy</h2>
-        <p class="form-text text-center">
-          Call to order <a href="tel:+447534644786" class="link">+447534644786</a>
-          <a href="tel:+447508106775" class="link">+447508106775</a> or fill out the order form
-        </p>
-        <div class="input-wrapper">
-          <input type="text" id="name" name="name" placeholder="Your Name" autocomplete="off" class="input-field" required>
-          <input type="tel" id="phone" name="phone" placeholder="Phone Number" autocomplete="off" class="input-field" required>
-        </div>
-        <div class="input-wrapper">
-          <div class="icon-wrapper">
-            <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
-            <select id="person" name="person" class="input-field" required>
-              <option value="1-person">1 Person</option>
-              <option value="2-person">2 Persons</option>
-              <option value="3-person">3 Persons</option>
-              <option value="4-person">4 Persons</option>
-              <option value="5-person">5 Persons</option>
-              <option value="6-person">6 Persons</option>
-              <option value="7-person">7 Persons</option>
-              <option value="7-person">8 Persons</option>
-              <option value="7-person">9 Persons</option>
-              <option value="7-person">10 Persons</option>
-            </select>
-          </div>
-          <div class="icon-wrapper">
-            <ion-icon name="calendar-clear-outline" aria-hidden="true"></ion-icon>
-            <input type="date" id="reservation-date" name="reservation-date" class="input-field" required>
-          </div>
-          <div class="icon-wrapper">
-            <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
-            <select id="time" name="time" class="input-field" required>
-              <option value="08:00am">08 : 00 am</option>
-              <option value="09:00am">09 : 00 am</option>
-              <option value="10:00am">10 : 00 am</option>
-              <option value="11:00am">11 : 00 am</option>
-              <option value="12:00pm">12 : 00 pm</option>
-              <option value="01:00pm">01 : 00 pm</option>
-              <option value="02:00pm">02 : 00 pm</option>
-              <option value="03:00pm">03 : 00 pm</option>
-              <option value="04:00pm">04 : 00 pm</option>
-              <option value="05:00pm">05 : 00 pm</option>
-              <option value="06:00pm">06 : 00 pm</option>
-              <option value="07:00pm">07 : 00 pm</option>
-              <option value="08:00pm">08 : 00 pm</option>
-              <option value="09:00pm">09 : 00 pm</option>
-              <option value="10:00pm">10 : 00 pm</option>
-            </select>
-          </div>
-        </div>
-        <textarea id="message" name="message" placeholder="Message" autocomplete="off" class="input-field"></textarea>
-        <button type="submit" class="btn btn-secondary" id="sendEmailButton">
-          <span class="text text-1">Submit</span>
-          <span class="text text-2" aria-hidden="true">Submit</span>
-        </button>
-        <p style="font-size: 1.1rem; font-family: Arial; font-weight: 200; text-align: center; ">
-          Note: For catering of event, once payment has been made and later client want 
-          to cancel, 10% deduction will apply 15 days before the event, 7-14 days attract 20%, 
-          Less than 7 days no refund.
-          For single food order, once payment has been made, no cancellation.</p>
-      </form>
-      <div class="form-right text-center" style="background-image: url('assets/images/form-pattern.png')">
-
-        <h2 class="headline-1 text-center">Contact Us</h2>
-
-        <p class="contact-label">call to order</p>
-
-        <a href="tel:+447508106775" class="body-1 contact-number hover-underline">07508106775</a>
-        
-        <div class="separator"></div>
-
-        <p class="contact-label">call to order</p>
-
-        <a href="tel:+447534644786" class="body-1 contact-number hover-underline">07534644786</a>
-
-        <div class="separator"></div>
-
-        <p class="contact-label">Email</p>
-
-        <address class="body-4">
-         <a href="mailto:segiskitchenaroma@gmail.com"> segiskitchenaroma@gmail.com</a>
-        </address>
-
-        <!-- <p class="contact-label">Lunch Time</p>
-
-        <p class="body-4">
-          Monday to Sunday <br>
-          11.00 am - 2.30pm
-        </p>
-
-        <p class="contact-label">Dinner Time</p>
-
-        <p class="body-4">
-          Monday to Sunday <br>
-          05.00 pm - 10.00pm
-        </p> -->
-
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-
-
-      <!-- 
-        - #FEATURES
-      -->
-
-      <section class="section features text-center" aria-label="features">
-        <div class="container">
-
-          <p class="section-subtitle label-2">Why Choose Us</p>
-
-          <h2 class="headline-1 section-title">Our Strength</h2>
-
-          <ul class="grid-list">
-
-            <li class="feature-item">
-              <div class="feature-card">
-
-                <div class="card-icon">
-                  <img src="assets/images/features-icon-1.png" width="100" height="80" loading="lazy" alt="icon">
-                </div>
-
-                <h3 class="title-2 card-title">Quality & Freshness</h3>
-
-                <!-- <p class="label-1 card-text">Lorem Ipsum is simply dummy printing and typesetting.</p> -->
-
-              </div>
-            </li>
-
-            <li class="feature-item">
-              <div class="feature-card">
-
-                <div class="card-icon">
-                  <img src="assets/images/features-icon-2.png" width="100" height="80" loading="lazy" alt="icon">
-                </div>
-
-                <h3 class="title-2 card-title">Innovation & Creativity</h3>
-
-                <!-- <p class="label-1 card-text">Lorem Ipsum is simply dummy printing and typesetting.</p> -->
-
-              </div>
-            </li>
-
-            <li class="feature-item">
-              <div class="feature-card">
-
-                <div class="card-icon">
-                  <img src="assets/images/features-icon-3.png" width="100" height="80" loading="lazy" alt="icon">
-                </div>
-
-                <h3 class="title-2 card-title">Exceptional Customer Service </h3>
-
-                <!-- <p class="label-1 card-text">Lorem Ipsum is simply dummy printing and typesetting.</p> -->
-
-              </div>
-            </li>
-
-            <li class="feature-item">
-              <div class="feature-card">
-
-                <div class="card-icon">
-                  <img src="assets/images/features-icon-4.png" width="100" height="80" loading="lazy" alt="icon">
-                </div>
-
-                <h3 class="title-2 card-title">Event & Party</h3>
-
-                <!-- <p class="label-1 card-text">Lorem Ipsum is simply dummy printing and typesetting.</p> -->
-
-              </div>
-            </li>
-
-          </ul>
-
-          <img src="assets/images/shape-7.png" width="208" height="178" loading="lazy" alt="shape"
-            class="shape shape-1">
-
-          <img src="assets/images/shape-8.png" width="120" height="115" loading="lazy" alt="shape"
-            class="shape shape-2">
-
-        </div>
-      </section>
-
-
-   
-
-
-      <!-- 
-        - #EVENT
-      -->
-
-      <!-- <section class="section event bg-black-10" aria-label="event">
-        <div class="container">
-
-          <p class="section-subtitle label-2 text-center">Recent Updates</p>
-
-          <h2 class="section-title headline-1 text-center">Upcoming Event</h2>
-
-          <ul class="grid-list">
-
-            <li>
-              <div class="event-card has-before hover:shine">
-
-                <div class="card-banner img-holder" style="--width: 350; --height: 450;">
-                  <img src="assets/images/event-1.jpg" width="350" height="450" loading="lazy"
-                    alt="Flavour so good you’ll try to eat with your eyes." class="img-cover">
-
-                  <time class="publish-date label-2" datetime="2022-09-15">15/09/2022</time>
-                </div>
-
-                <div class="card-content">
-                  <p class="card-subtitle label-2 text-center">Food, Flavour</p>
-
-                  <h3 class="card-title title-2 text-center">
-                    Flavour so good you’ll try to eat with your eyes.
-                  </h3>
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="event-card has-before hover:shine">
-
-                <div class="card-banner img-holder" style="--width: 350; --height: 450;">
-                  <img src="assets/images/event-2.jpg" width="350" height="450" loading="lazy"
-                    alt="Flavour so good you’ll try to eat with your eyes." class="img-cover">
-
-                  <time class="publish-date label-2" datetime="2022-09-08">08/09/2022</time>
-                </div>
-
-                <div class="card-content">
-                  <p class="card-subtitle label-2 text-center">Healthy Food</p>
-
-                  <h3 class="card-title title-2 text-center">
-                    Flavour so good you’ll try to eat with your eyes.
-                  </h3>
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="event-card has-before hover:shine">
-
-                <div class="card-banner img-holder" style="--width: 350; --height: 450;">
-                  <img src="assets/images/event-3.jpg" width="350" height="450" loading="lazy"
-                    alt="Flavour so good you’ll try to eat with your eyes." class="img-cover">
-
-                  <time class="publish-date label-2" datetime="2022-09-03">03/09/2022</time>
-                </div>
-
-                <div class="card-content">
-                  <p class="card-subtitle label-2 text-center">Recipie</p>
-
-                  <h3 class="card-title title-2 text-center">
-                    Flavour so good you’ll try to eat with your eyes.
-                  </h3>
-                </div>
-
-              </div>
-            </li>
-
-          </ul>
-
-          <a href="#" class="btn btn-primary">
-            <span class="text text-1">View Our Blog</span>
-
-            <span class="text text-2" aria-hidden="true">View Our Blog</span>
-          </a>
-
-        </div>
-      </section> -->
-
-    </article>
-  </main>
-
-
-
-
-
-  <!-- 
-    - #FOOTER
-  -->
-
-  <footer class="footer section has-bg-image text-center"
-    style="background-image: url('assets/images/footer-bg.jpg')">
-    <div class="container">
-
-      <div class="footer-top grid-list">
-
-        <div class="footer-brand has-before has-after">
-
-          <a href="#" class="logo">
-            <img src="assets/images/logo 2.svg" width="160" height="50" loading="lazy" alt="Segi's-home">
-              
-          <p class="body-4">
-            "Savour the flavour, love the moment!"
-          </p>
-          </a>
-
-          <!-- <address class="body-4">
-            Restaurant St, Delicious City, London 9578, UK
-          </address> -->
-
-          <!-- <a href="https://chamodz.com/cdn-cgi/l/email-protection#462429292d2f28210621342f2a2a2f6825292b" class="body-4 contact-link"><span class="__cf_email__" data-cfemail="c9aba6a6a2a0a7ae89aebba0a5a5a0e7aaa6a4">[email&#160;protected]</span></a> -->
-
-          <a href="tel:+447534644786" class="body-4 contact-link">call to order : +447534644786</a>
-          <a href="tel:+447508106775" class="body-4 contact-link">call to order : +447508106775</a>
-          
-          <p class="body-4">
-            Open : 09:00 am - 01:00 pm
-          </p>
-
-          <div class="wrapper">
-            <div class="separator"></div>
-            <div class="separator"></div>
-            <div class="separator"></div>
-          </div>
-
-          <!-- <p class="title-1">Get News & Offers</p>
-
-          <p class="label-1">
-            Subscribe us & Get <span class="span">25% Off.</span>
-          </p>
-
-          <form action="#" class="input-wrapper">
-            <div class="icon-wrapper">
-              <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
-
-              <input type="email" name="email_address" placeholder="Your email" autocomplete="off" class="input-field">
-            </div>
-
-            <button type="submit" class="btn btn-secondary">
-              <span class="text text-1">Subscribe</span>
-
-              <span class="text text-2" aria-hidden="true">Subscribe</span> -->
-            </button>
-          </form>
-
-        </div>
-
-        <ul class="footer-list">
-
-          <li>
-            <a href="#" class="label-2 footer-link hover-underline">Home</a>
-          </li>
-
-          <li>
-            <a href="#about" class="label-2 footer-link hover-underline">About Us</a>
-          </li>
-
-          <li>
-            <a href="#special" class="label-2 footer-link hover-underline">Cuisine</a>
-          </li>
-
-          <li>
-            <a href="#TESTIMONIALS" class="label-2 footer-link hover-underline">Reviews</a>
-          </li>
-
-          <li>
-            <a href="#contact" class="label-2 footer-link hover-underline">Contact</a>
-          </li>
-
-        </ul>
-
-        <ul class="footer-list">
-
-          <li>
-            <a href="#" class="label-2 footer-link hover-underline">Facebook</a>
-          </li>
-
-          <li>
-            <a href="https://www.instagram.com/segiskitchen_aroma/" class="label-2 footer-link hover-underline">Instagram</a>
-          </li>
-
-          <!-- <li>
-            <a href="#" class="label-2 footer-link hover-underline">Twitter</a>
-          </li>
-
-          <li>
-            <a href="#" class="label-2 footer-link hover-underline">Youtube</a>
-          </li>
-
-          <li>
-            <a href="#" class="label-2 footer-link hover-underline">Google Map</a>
-          </li> -->
-
-        </ul>
-
-      </div>
-
-      <div class="footer-bottom">
-
-        <!-- <p class="copyright">
-          &copy; 2022 Grilli. All Rights Reserved | Crafted by <a href="#"
-            target="_blank" class="link">chamodz.</a>
-        </p> -->
-
-      </div>
+        <p class="footer">Thank you for your patience &nbsp;·&nbsp; © 2025 Segi's Kitchen</p>
 
     </div>
-  </footer>
 
+    <script>
+        (function () {
+            const canvas = document.getElementById('particles');
+            const ctx = canvas.getContext('2d');
+            let W, H, particles = [];
 
+            const COLORS = [
+                [196, 154, 60],
+                [232, 201, 122],
+                [180, 130, 40],
+                [245, 215, 140],
+                [210, 170, 80],
+                [220, 185, 100]
+            ];
 
+            function resize() {
+                W = canvas.width = window.innerWidth;
+                H = canvas.height = window.innerHeight;
+            }
 
+            function rand(a, b) { return Math.random() * (b - a) + a; }
+            function randInt(a, b) { return Math.floor(rand(a, b)); }
 
-  <!-- 
-    - #BACK TO TOP
-  -->
+            function initParticle(p, scatter) {
+                p.x = rand(0, W);
+                p.y = scatter ? rand(0, H) : H + rand(5, 30);
+                p.r = rand(1.2, 4);
+                p.vx = rand(-0.35, 0.35);
+                p.vy = rand(-0.65, -0.2);
+                p.col = COLORS[randInt(0, COLORS.length)];
+                p.type = Math.random() < 0.38 ? 'diamond' : 'circle';
+                /* twinkle: each particle oscillates between minA and maxA continuously — never fades to zero */
+                p.minA = rand(0.3, 0.55);
+                p.maxA = rand(0.7, 1.0);
+                p.twSpeed = rand(0.6, 2.2);
+                p.twOffset = rand(0, Math.PI * 2);
+                p.alive = true;
+            }
 
-  <a href="#top" class="back-top-btn active" aria-label="back to top" data-back-top-btn>
-    <ion-icon name="chevron-up" aria-hidden="true"></ion-icon>
-  </a>
+            function spawnAll(n) {
+                for (let i = 0; i < n; i++) {
+                    const p = {};
+                    initParticle(p, true);   /* scatter across full screen on load */
+                    particles.push(p);
+                }
+            }
 
+            function drawDiamond(x, y, r) {
+                ctx.beginPath();
+                ctx.moveTo(x, y - r);
+                ctx.lineTo(x + r, y);
+                ctx.lineTo(x, y + r);
+                ctx.lineTo(x - r, y);
+                ctx.closePath();
+            }
 
+            function drawSparkle(x, y, r, a) {
+                ctx.save();
+                ctx.translate(x, y);
+                const [cr, cg, cb] = [232, 201, 122];
+                ctx.strokeStyle = `rgba(${cr},${cg},${cb},${a * 0.8})`;
+                ctx.lineWidth = 0.7;
+                for (let i = 0; i < 4; i++) {
+                    ctx.save();
+                    ctx.rotate((Math.PI / 4) * i);
+                    ctx.beginPath();
+                    ctx.moveTo(0, -r * 2.4);
+                    ctx.lineTo(0, r * 2.4);
+                    ctx.stroke();
+                    ctx.restore();
+                }
+                ctx.restore();
+            }
 
+            let t = 0;
+            function frame() {
+                ctx.clearRect(0, 0, W, H);
+                t += 0.016;
 
-<!-- Include EmailJS Library -->
-<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-  <!-- 
-    - custom js link
-  -->
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/script.js"></script>
+                particles.forEach(p => {
+                    /* Move */
+                    p.x += p.vx;
+                    p.y += p.vy;
 
-  <!-- 
-    - ionicon link
-  -->
-  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-  <script type="module" src="../../unpkg.com/ionicons%405.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="../../unpkg.com/ionicons%405.5.2/dist/ionicons/ionicons.js"></script>
+                    /* Twinkle — oscillates smoothly, always visible */
+                    const phase = Math.sin(t * p.twSpeed + p.twOffset);
+                    const a = p.minA + (p.maxA - p.minA) * (0.5 + 0.5 * phase);
+
+                    const [r, g, b] = p.col;
+                    ctx.globalAlpha = a;
+                    ctx.fillStyle = `rgba(${r},${g},${b},${a})`;
+
+                    if (p.type === 'diamond') {
+                        drawDiamond(p.x, p.y, p.r);
+                        ctx.fill();
+                        if (p.r > 2.5) drawSparkle(p.x, p.y, p.r * 0.5, a);
+                    } else {
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+
+                    /* Reset from bottom once particle leaves screen — never stops */
+                    if (p.y < -30 || p.x < -30 || p.x > W + 30) {
+                        initParticle(p, false);
+                    }
+                });
+
+                ctx.globalAlpha = 1;
+                requestAnimationFrame(frame);
+            }
+
+            resize();
+            spawnAll(130);
+            frame();
+            window.addEventListener('resize', resize);
+        })();
+    </script>
 
 </body>
-
-
 
 </html>
