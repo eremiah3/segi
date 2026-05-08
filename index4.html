@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon | Segi's Kitchen</title>
+      <link rel="shortcut icon" href="assets/images/logo1.0.png" type="image/png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #faf7f2;
+            --warm-white: #fffcf7;
+            --gold: #c49a3c;
+            --gold-light: #e8c97a;
+            --gold-pale: rgba(196, 154, 60, 0.12);
+            --brown: #2e1f0e;
+            --muted: #9a8c7e;
+            --border: #e5d9c8;
+        }
+
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            height: 100vh;
+            background-color: var(--cream);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'DM Sans', sans-serif;
+            color: var(--brown);
+            padding: 20px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #particles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .glow {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(80px);
+        }
+
+        .glow-1 {
+            width: 500px;
+            height: 500px;
+            top: -120px;
+            right: -80px;
+            background: radial-gradient(circle, rgba(196, 154, 60, 0.18) 0%, transparent 70%);
+            animation: driftA 14s ease-in-out infinite alternate;
+        }
+
+        .glow-2 {
+            width: 420px;
+            height: 420px;
+            bottom: -100px;
+            left: -60px;
+            background: radial-gradient(circle, rgba(196, 154, 60, 0.13) 0%, transparent 70%);
+            animation: driftB 18s ease-in-out infinite alternate;
+        }
+
+        .glow-3 {
+            width: 300px;
+            height: 300px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(232, 201, 122, 0.09) 0%, transparent 70%);
+            animation: pulse 6s ease-in-out infinite;
+        }
+
+        @keyframes driftA {
+            from {
+                transform: translate(0, 0) scale(1);
+            }
+
+            to {
+                transform: translate(-30px, 40px) scale(1.1);
+            }
+        }
+
+        @keyframes driftB {
+            from {
+                transform: translate(0, 0) scale(1);
+            }
+
+            to {
+                transform: translate(20px, -30px) scale(1.08);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.4;
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            50% {
+                opacity: 0.7;
+                transform: translate(-50%, -50%) scale(1.15);
+            }
+        }
+
+        .wrapper {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 560px;
+            width: 100%;
+        }
+
+        .ornament {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+            opacity: 0;
+            animation: riseIn 1s 0.1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .ornament-line {
+            height: 1px;
+            width: 52px;
+            background: linear-gradient(90deg, transparent, var(--gold));
+        }
+
+        .ornament-line.r {
+            background: linear-gradient(90deg, var(--gold), transparent);
+        }
+
+        .ornament-diamond {
+            width: 7px;
+            height: 7px;
+            background: var(--gold);
+            transform: rotate(45deg);
+        }
+
+        .brand {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: clamp(38px, 8vw, 64px);
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            line-height: 1;
+            color: var(--brown);
+            opacity: 0;
+            animation: riseIn 1s 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .brand em {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        .logo-wrap {
+            margin: 10px 0 8px;
+            opacity: 0;
+            animation: riseIn 1s 0.38s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .logo-wrap img {
+            height: 100px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+            filter: drop-shadow(0 2px 14px rgba(196, 154, 60, 0.3));
+            transition: transform 0.4s ease, filter 0.4s ease;
+        }
+
+        .logo-wrap img:hover {
+            transform: scale(1.06);
+            filter: drop-shadow(0 4px 22px rgba(196, 154, 60, 0.45));
+        }
+
+        .tagline {
+            font-size: 8px;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 20px;
+            margin-bottom: 16px;
+            opacity: 0;
+            animation: riseIn 1s 0.54s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .card {
+            width: 100%;
+            background: var(--warm-white);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 28px 40px 28px;
+            margin-bottom: 14px;
+            opacity: 0;
+            animation: riseIn 1s 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            position: relative;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 12%;
+            right: 12%;
+            height: 1.5px;
+            border-radius: 0 0 2px 2px;
+            background: linear-gradient(90deg, transparent, var(--gold-light), var(--gold), var(--gold-light), transparent);
+            animation: shimmer 3.5s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+
+            0%,
+            100% {
+                opacity: 0.45;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .card-icon {
+            width: 46px;
+            height: 46px;
+            margin: 0 auto 14px;
+            background: var(--gold-pale);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: spinSlow 12s linear infinite;
+        }
+
+        @keyframes spinSlow {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .card-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--gold);
+            fill: none;
+            stroke-width: 1.6;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            animation: spinSlow 12s linear infinite reverse;
+        }
+
+        .card h2 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--brown);
+            margin-bottom: 10px;
+            line-height: 1.25;
+        }
+
+        .card p {
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--muted);
+            max-width: 390px;
+            margin: 0 auto;
+        }
+
+        .card-divider {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 18px auto;
+            width: fit-content;
+        }
+
+        .card-divider span {
+            width: 36px;
+            height: 1px;
+            background: var(--border);
+            display: block;
+        }
+
+        .card-divider i {
+            width: 5px;
+            height: 5px;
+            background: var(--gold-light);
+            transform: rotate(45deg);
+            display: block;
+        }
+
+        .contact-row {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 400;
+            color: var(--brown);
+            text-decoration: none;
+            padding: 9px 16px;
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            background: var(--cream);
+            transition: border-color 0.25s, color 0.25s, background 0.25s, transform 0.2s;
+        }
+
+        .contact-item:hover {
+            border-color: var(--gold-light);
+            color: var(--gold);
+            background: var(--gold-pale);
+            transform: translateY(-2px);
+        }
+
+        .contact-item svg {
+            width: 14px;
+            height: 14px;
+            stroke: var(--gold);
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+        }
+
+        .footer {
+            font-size: 11px;
+            font-weight: 300;
+            color: var(--muted);
+            letter-spacing: 0.05em;
+            opacity: 0;
+            animation: riseIn 1s 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes riseIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .card {
+                padding: 24px 20px;
+            }
+
+            .contact-row {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="particles"></canvas>
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    <div class="glow glow-3"></div>
+
+    <div class="wrapper">
+
+        <div class="ornament">
+            <div class="ornament-line"></div>
+            <div class="ornament-diamond"></div>
+            <div class="ornament-line r"></div>
+        </div>
+
+        <!-- LOGO -->
+        <div class="logo-wrap">
+            <img src="assets/images/logo1.0.png" alt="Segi's Kitchen logo" />
+        </div>
+
+        <h1 class="brand">Segi's <em>Kitchen</em></h1>
+
+        <p class="tagline">Fine flavours &nbsp;·&nbsp; Modern dining</p>
+
+        <div class="card">
+            <div class="card-icon">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M12 7v5l3 3" />
+                </svg>
+            </div>
+
+            <h2>We're Updating Our Website</h2>
+            <p>
+                Segi's Kitchen is currently undergoing improvements to serve you better.
+                We'll be back shortly with a brand new experience crafted just for you.
+            </p>
+
+            <div class="card-divider"><span></span><i></i><span></span></div>
+
+            <div class="contact-row">
+                <a class="contact-item" href="tel:+447534644786">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.7 12.1 19.79 19.79 0 0 1 1.61 3.5 2 2 0 0 1 3.6 1.32h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.95-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                    +447534644786
+                </a>
+                <a class="contact-item" href="mailto:segiskitchenaroma@gmail.com">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="2" y="4" width="20" height="16" rx="2" />
+                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                    </svg>
+                    segiskitchenaroma@gmail.com
+                </a>
+            </div>
+        </div>
+
+        <p class="footer">Thank you for your patience &nbsp;·&nbsp; © 2025 Segi's Kitchen</p>
+
+    </div>
+
+    <script>
+        (function () {
+            const canvas = document.getElementById('particles');
+            const ctx = canvas.getContext('2d');
+            let W, H, particles = [];
+
+            const COLORS = [
+                [196, 154, 60],
+                [232, 201, 122],
+                [180, 130, 40],
+                [245, 215, 140],
+                [210, 170, 80],
+                [220, 185, 100]
+            ];
+
+            function resize() {
+                W = canvas.width = window.innerWidth;
+                H = canvas.height = window.innerHeight;
+            }
+
+            function rand(a, b) { return Math.random() * (b - a) + a; }
+            function randInt(a, b) { return Math.floor(rand(a, b)); }
+
+            function initParticle(p, scatter) {
+                p.x = rand(0, W);
+                p.y = scatter ? rand(0, H) : H + rand(5, 30);
+                p.r = rand(1.2, 4);
+                p.vx = rand(-0.35, 0.35);
+                p.vy = rand(-0.65, -0.2);
+                p.col = COLORS[randInt(0, COLORS.length)];
+                p.type = Math.random() < 0.38 ? 'diamond' : 'circle';
+                p.minA = rand(0.3, 0.55);
+                p.maxA = rand(0.7, 1.0);
+                p.twSpeed = rand(0.6, 2.2);
+                p.twOffset = rand(0, Math.PI * 2);
+                p.alive = true;
+            }
+
+            function spawnAll(n) {
+                for (let i = 0; i < n; i++) {
+                    const p = {};
+                    initParticle(p, true);
+                    particles.push(p);
+                }
+            }
+
+            function drawDiamond(x, y, r) {
+                ctx.beginPath();
+                ctx.moveTo(x, y - r);
+                ctx.lineTo(x + r, y);
+                ctx.lineTo(x, y + r);
+                ctx.lineTo(x - r, y);
+                ctx.closePath();
+            }
+
+            function drawSparkle(x, y, r, a) {
+                ctx.save();
+                ctx.translate(x, y);
+                const [cr, cg, cb] = [232, 201, 122];
+                ctx.strokeStyle = `rgba(${cr},${cg},${cb},${a * 0.8})`;
+                ctx.lineWidth = 0.7;
+                for (let i = 0; i < 4; i++) {
+                    ctx.save();
+                    ctx.rotate((Math.PI / 4) * i);
+                    ctx.beginPath();
+                    ctx.moveTo(0, -r * 2.4);
+                    ctx.lineTo(0, r * 2.4);
+                    ctx.stroke();
+                    ctx.restore();
+                }
+                ctx.restore();
+            }
+
+            let t = 0;
+            function frame() {
+                ctx.clearRect(0, 0, W, H);
+                t += 0.016;
+
+                particles.forEach(p => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+
+                    const phase = Math.sin(t * p.twSpeed + p.twOffset);
+                    const a = p.minA + (p.maxA - p.minA) * (0.5 + 0.5 * phase);
+
+                    const [r, g, b] = p.col;
+                    ctx.globalAlpha = a;
+                    ctx.fillStyle = `rgba(${r},${g},${b},${a})`;
+
+                    if (p.type === 'diamond') {
+                        drawDiamond(p.x, p.y, p.r);
+                        ctx.fill();
+                        if (p.r > 2.5) drawSparkle(p.x, p.y, p.r * 0.5, a);
+                    } else {
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+
+                    if (p.y < -30 || p.x < -30 || p.x > W + 30) {
+                        initParticle(p, false);
+                    }
+                });
+
+                ctx.globalAlpha = 1;
+                requestAnimationFrame(frame);
+            }
+
+            resize();
+            spawnAll(130);
+            frame();
+            window.addEventListener('resize', resize);
+        })();
+    </script>
+
+</body>
+
+</html>
