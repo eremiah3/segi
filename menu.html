@@ -9,8 +9,6 @@
   <meta name="title" content="Segi's Kitchen Aroma - Let indulge your appetite a little">
   <meta name="description" content="Segi's Kitchen Aroma - Premium African & Caribbean Catering for Luxury Events">
 
-
-
   <style>
     :root {
       --eerie-black-1: hsla(210, 4%, 9%, 1);
@@ -39,1443 +37,181 @@
       --loading-text-gradient: linear-gradient(90deg, transparent 0% 16.66%, var(--smoky-black-3) 33.33% 50%, transparent 66.66% 75%);
     }
 
-    *,
-    *::before,
-    *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: var(--font-body);
-      background-color: var(--eerie-black-1);
-      color: var(--warm-white);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-
-    /*-----------------------------------*\
-  #PRELOAD
-\*-----------------------------------*/
-
-    .preload {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: var(--gold-crayola);
-      z-index: 10;
-      display: grid;
-      place-content: center;
-      justify-items: center;
-      transition: var(--transition-2);
-    }
-
-    .preload>* {
-      transition: var(--transition-1);
-    }
-
-    .preload.loaded>* {
-      opacity: 0;
-    }
-
-    .preload.loaded {
-      transition-delay: 250ms;
-      transform: translateY(100%);
-    }
-
-    .circle {
-      width: 112px;
-      height: 112px;
-      border-radius: var(--radius-circle);
-      border: 3px solid var(--white);
-      border-block-start-color: var(--smoky-black-3);
-      margin-block-end: 45px;
-      animation: rotate360 1s linear infinite;
-    }
-
-    @keyframes rotate360 {
-      0% {
-        transform: rotate(0);
-      }
-
-      100% {
-        transform: rotate(1turn);
-      }
-    }
-
-    .preload .text {
-      background-image: var(--loading-text-gradient);
-      background-size: 500%;
-      font-size: calc(2rem + 3vw);
-      font-weight: var(--weight-bold);
-      line-height: 1em;
-      text-transform: uppercase;
-      letter-spacing: 16px;
-      padding-inline-start: 16px;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-stroke: 0.5px var(--eerie-black-3);
-      animation: loadingText linear 5s infinite;
-      text-align: center;
-    }
-
-    @keyframes loadingText {
-      0% {
-        background-position: 100%;
-      }
-
-      100% {
-        background-position: 0%;
-      }
-    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background-color: var(--eerie-black-1); color: var(--warm-white); line-height: 1.6; overflow-x: hidden; }
 
     /* Floating Background Images */
-    .floating-bg {
-      position: fixed;
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      background-size: cover;
-      background-position: center;
-      opacity: 0.12;
-      filter: blur(1px);
-      pointer-events: none;
-      z-index: 0;
-    }
+    .floating-bg { position: fixed; width: 200px; height: 200px; border-radius: 50%; background-size: cover; background-position: center; opacity: 0.12; filter: blur(1px); pointer-events: none; z-index: 0; }
+    .floating-bg-1 { top: 5%; left: 3%; width: 180px; height: 180px; background-image: url('assets/images/hero-slider-1.jpg'); animation: float1 20s ease-in-out infinite; }
+    .floating-bg-2 { top: 8%; right: 5%; width: 160px; height: 160px; background-image: url('assets/images/hero-slider-2.jpg'); animation: float2 22s ease-in-out infinite; }
+    .floating-bg-3 { top: 35%; left: 2%; width: 140px; height: 140px; background-image: url('assets/images/hero-slider-3.jpg'); animation: float3 18s ease-in-out infinite; }
+    .floating-bg-4 { top: 40%; right: 3%; width: 170px; height: 170px; background-image: url('assets/images/hero-slider-4.jpg'); animation: float4 24s ease-in-out infinite; }
+    .floating-bg-5 { bottom: 30%; left: 4%; width: 150px; height: 150px; background-image: url('assets/images/service-1.jpg'); animation: float1 21s ease-in-out infinite reverse; }
+    .floating-bg-6 { bottom: 25%; right: 4%; width: 130px; height: 130px; background-image: url('assets/images/service-2.jpg'); animation: float2 19s ease-in-out infinite reverse; }
+    .floating-bg-7 { top: 20%; right: 20%; width: 120px; height: 120px; background-image: url('assets/images/service-3.jpg'); animation: float3 23s ease-in-out infinite; }
+    .floating-bg-8 { bottom: 15%; left: 15%; width: 140px; height: 140px; background-image: url('assets/images/special-dish-banner.jpg'); animation: float4 20s ease-in-out infinite reverse; }
 
-    .floating-bg-1 {
-      top: 5%;
-      left: 3%;
-      width: 180px;
-      height: 180px;
-      background-image: url('assets/images/hero-slider-1.jpg');
-      animation: float1 20s ease-in-out infinite;
-    }
-
-    .floating-bg-2 {
-      top: 8%;
-      right: 5%;
-      width: 160px;
-      height: 160px;
-      background-image: url('assets/images/hero-slider-2.jpg');
-      animation: float2 22s ease-in-out infinite;
-    }
-
-    .floating-bg-3 {
-      top: 35%;
-      left: 2%;
-      width: 140px;
-      height: 140px;
-      background-image: url('assets/images/hero-slider-3.jpg');
-      animation: float3 18s ease-in-out infinite;
-    }
-
-    .floating-bg-4 {
-      top: 40%;
-      right: 3%;
-      width: 170px;
-      height: 170px;
-      background-image: url('assets/images/hero-slider-4.jpg');
-      animation: float4 24s ease-in-out infinite;
-    }
-
-    .floating-bg-5 {
-      bottom: 30%;
-      left: 4%;
-      width: 150px;
-      height: 150px;
-      background-image: url('assets/images/service-1.jpg');
-      animation: float1 21s ease-in-out infinite reverse;
-    }
-
-    .floating-bg-6 {
-      bottom: 25%;
-      right: 4%;
-      width: 130px;
-      height: 130px;
-      background-image: url('assets/images/service-2.jpg');
-      animation: float2 19s ease-in-out infinite reverse;
-    }
-
-    .floating-bg-7 {
-      top: 20%;
-      right: 20%;
-      width: 120px;
-      height: 120px;
-      background-image: url('assets/images/service-3.jpg');
-      animation: float3 23s ease-in-out infinite;
-    }
-
-    .floating-bg-8 {
-      bottom: 15%;
-      left: 15%;
-      width: 140px;
-      height: 140px;
-      background-image: url('assets/images/special-dish-banner.jpg');
-      animation: float4 20s ease-in-out infinite reverse;
-    }
-
-    @keyframes float1 {
-
-      0%,
-      100% {
-        transform: translate(0, 0) rotate(0deg);
-      }
-
-      25% {
-        transform: translate(15px, -20px) rotate(5deg);
-      }
-
-      50% {
-        transform: translate(-10px, 15px) rotate(-3deg);
-      }
-
-      75% {
-        transform: translate(20px, 10px) rotate(4deg);
-      }
-    }
-
-    @keyframes float2 {
-
-      0%,
-      100% {
-        transform: translate(0, 0) rotate(0deg);
-      }
-
-      25% {
-        transform: translate(-20px, 15px) rotate(-4deg);
-      }
-
-      50% {
-        transform: translate(15px, -10px) rotate(6deg);
-      }
-
-      75% {
-        transform: translate(-15px, -20px) rotate(-5deg);
-      }
-    }
-
-    @keyframes float3 {
-
-      0%,
-      100% {
-        transform: translate(0, 0) scale(1);
-      }
-
-      50% {
-        transform: translate(10px, -15px) scale(1.05);
-      }
-    }
-
-    @keyframes float4 {
-
-      0%,
-      100% {
-        transform: translate(0, 0) scale(1);
-      }
-
-      33% {
-        transform: translate(-12px, 18px) scale(0.98);
-      }
-
-      66% {
-        transform: translate(18px, -12px) scale(1.02);
-      }
-    }
+    @keyframes float1 { 0%,100%{transform:translate(0,0) rotate(0deg)} 25%{transform:translate(15px,-20px) rotate(5deg)} 50%{transform:translate(-10px,15px) rotate(-3deg)} 75%{transform:translate(20px,10px) rotate(4deg)} }
+    @keyframes float2 { 0%,100%{transform:translate(0,0) rotate(0deg)} 25%{transform:translate(-20px,15px) rotate(-4deg)} 50%{transform:translate(15px,-10px) rotate(6deg)} 75%{transform:translate(-15px,-20px) rotate(-5deg)} }
+    @keyframes float3 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(10px,-15px) scale(1.05)} }
+    @keyframes float4 { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(-12px,18px) scale(0.98)} 66%{transform:translate(18px,-12px) scale(1.02)} }
 
     /* Header */
-    .header {
-      background-color: var(--eerie-black-1);
-      padding: 16px 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      border-bottom: 1px solid var(--border-subtle);
-      backdrop-filter: blur(10px);
-    }
+    .header { background-color: var(--eerie-black-1); padding: 16px 0; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border-subtle); backdrop-filter: blur(10px); }
+    .header .container { max-width: 1400px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    .logo { font-family: var(--font-heading); font-size: 2rem; font-weight: 600; color: var(--gold); text-decoration: none; letter-spacing: 2px; display: inline-flex; align-items: center; flex-shrink: 0; }
+    .logo img { max-width: 80px; height: auto; display: block; }
+    .navbar { display: flex; align-items: center; }
+    .navbar-list { display: flex; list-style: none; gap: 40px; }
+    .navbar .navbar-logo, .navbar .navbar-bottom { display: none; }
+    .navbar-link { font-family: var(--font-body); font-size: 0.9rem; font-weight: 500; color: var(--warm-white); text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; position: relative; transition: color 0.3s ease; }
+    .navbar-link .sep-line { display: none; }
+    .navbar-link::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s ease; }
+    .navbar-link:hover, .navbar-link.active { color: var(--gold); }
+    .navbar-link:hover::after, .navbar-link.active::after { width: 100%; }
+    .nav-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; padding: 10px; background: none; border: none; z-index: 1001; }
+    .nav-toggle span { width: 26px; height: 2px; background: var(--gold); display: block; transition: all 0.3s ease; border-radius: 2px; }
+    .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.75); opacity: 0; visibility: hidden; transition: opacity 0.35s ease, visibility 0.35s ease; z-index: 999; backdrop-filter: blur(2px); }
+    .overlay.active { opacity: 1; visibility: visible; }
 
-    .header .container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .logo {
-      font-family: var(--font-heading);
-      font-size: 2rem;
-      font-weight: 600;
-      color: var(--gold);
-      text-decoration: none;
-      letter-spacing: 2px;
-      display: inline-flex;
-      align-items: center;
-      flex-shrink: 0;
-    }
-
-    .logo img {
-      max-width: 80px;
-      height: auto;
-      display: block;
-    }
-
-    .navbar-list {
-      display: flex;
-      list-style: none;
-      gap: 40px;
-    }
-
-    .navbar-link {
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--warm-white);
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      position: relative;
-      transition: color 0.3s ease;
-    }
-
-    /* Hide sep-line on desktop */
-    .navbar-link .sep-line {
-      display: none;
-    }
-
-    .navbar-link::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background: var(--gold);
-      transition: width 0.3s ease;
-    }
-
-    .navbar-link:hover,
-    .navbar-link.active {
-      color: var(--gold);
-    }
-
-    .navbar-link:hover::after,
-    .navbar-link.active::after {
-      width: 100%;
-    }
-
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 6px;
-      cursor: pointer;
-      padding: 10px;
-      background: none;
-      border: none;
-      z-index: 1001;
-    }
-
-    .nav-toggle span {
-      width: 26px;
-      height: 2px;
-      background: var(--gold);
-      display: block;
-      transition: all 0.3s ease;
-      border-radius: 2px;
-    }
-
-    /* Hero Section */
-    .hero {
-      position: relative;
-      height: 70vh;
-      min-height: 500px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      overflow: hidden;
-    }
-
-    .hero-slider {
-      position: absolute;
-      inset: 0;
-      list-style: none;
-    }
-
-    .slider-item {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      transition: opacity 1s ease;
-    }
-
-    .slider-item.active {
-      opacity: 1;
-    }
-
-    .slider-bg {
-      position: absolute;
-      inset: 0;
-    }
-
-    .slider-bg::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(16, 17, 18, 0.4), rgba(16, 17, 18, 0.6));
-    }
-
-    .slider-bg img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 10;
-      max-width: 800px;
-      padding: 0 20px;
-    }
-
-    .section-subtitle {
-      font-family: var(--font-accent);
-      font-size: 1rem;
-      color: var(--gold);
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      margin-bottom: 15px;
-    }
-
-    .hero-title {
-      font-family: var(--font-heading);
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 600;
-      color: var(--warm-white);
-      line-height: 1.2;
-      margin-bottom: 20px;
-      letter-spacing: 2px;
-    }
-
-    .hero-text {
-      font-size: 1.1rem;
-      color: var(--soft-white);
-      margin-bottom: 35px;
-      font-weight: 300;
-      letter-spacing: 1px;
-    }
-
-    .btn-primary {
-      display: inline-block;
-      padding: 16px 45px;
-      background: transparent;
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      font-family: var(--font-body);
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      text-decoration: none;
-      transition: all 0.4s ease;
-    }
-
-    .btn-primary:hover {
-      background: var(--gold);
-      color: var(--eerie-black-1);
-    }
-
-    .slider-controls {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 15px;
-      z-index: 10;
-    }
-
-    .slider-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: transparent;
-      border: 1px solid var(--gold);
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .slider-dot.active {
-      background: var(--gold);
-    }
+    /* Hero */
+    .hero { position: relative; height: 70vh; min-height: 500px; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
+    .hero-slider { position: absolute; inset: 0; list-style: none; }
+    .slider-item { position: absolute; inset: 0; opacity: 0; transition: opacity 1s ease; }
+    .slider-item.active { opacity: 1; }
+    .slider-bg { position: absolute; inset: 0; }
+    .slider-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(16,17,18,0.4), rgba(16,17,18,0.6)); }
+    .slider-bg img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-content { position: relative; z-index: 10; max-width: 800px; padding: 0 20px; }
+    .section-subtitle { font-family: var(--font-accent); font-size: 1rem; color: var(--gold); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 15px; }
+    .hero-title { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 600; color: var(--warm-white); line-height: 1.2; margin-bottom: 20px; letter-spacing: 2px; }
+    .hero-text { font-size: 1.1rem; color: var(--soft-white); margin-bottom: 35px; font-weight: 300; letter-spacing: 1px; }
+    .btn-primary { display: inline-block; padding: 16px 45px; background: transparent; border: 1px solid var(--gold); color: var(--gold); font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; transition: all 0.4s ease; }
+    .btn-primary:hover { background: var(--gold); color: var(--eerie-black-1); }
+    .slider-controls { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; gap: 15px; z-index: 10; }
+    .slider-dot { width: 12px; height: 12px; border-radius: 50%; background: transparent; border: 1px solid var(--gold); cursor: pointer; transition: all 0.3s ease; }
+    .slider-dot.active { background: var(--gold); }
 
     /* Main Content */
-    main {
-      position: relative;
-      z-index: 1;
-    }
+    main { position: relative; z-index: 1; }
+    img { max-width: 100%; height: auto; }
 
     /* Menu Section */
-    .menu-section {
-      padding: 100px 24px;
-      max-width: 1500px;
-      margin: 0 auto;
-    }
+    .menu-section { padding: 100px 24px; max-width: 1500px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 80px; }
+    .section-header .subtitle { font-family: var(--font-accent); font-size: 1rem; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; }
+    .section-header h2 { font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 600; color: var(--warm-white); letter-spacing: 1px; margin-bottom: 20px; }
+    .section-header .divider { width: 80px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 0 auto; }
 
-    img {
-      max-width: 100%;
-      height: auto;
-    }
+    /* Menu Grid & Cards */
+    .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; align-items: start; }
+    .menu-card { background: linear-gradient(145deg, hsla(210,4%,14%,0.95), hsla(210,4%,10%,0.98)); border: 1px solid var(--border-subtle); border-radius: 4px; padding: 40px 35px; transition: all 0.5s ease; position: relative; overflow: hidden; align-self: start; opacity: 0; transform: translateY(30px); animation: fadeInUp 0.6s ease forwards; }
+    .menu-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0; transition: opacity 0.4s ease; }
+    .menu-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); border-color: var(--gold-dark); }
+    .menu-card:hover::before { opacity: 1; }
+    .menu-card:nth-child(1){animation-delay:0.1s} .menu-card:nth-child(2){animation-delay:0.2s} .menu-card:nth-child(3){animation-delay:0.3s} .menu-card:nth-child(4){animation-delay:0.4s} .menu-card:nth-child(5){animation-delay:0.5s} .menu-card:nth-child(6){animation-delay:0.6s}
+    @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
-    .section-header {
-      text-align: center;
-      margin-bottom: 80px;
-    }
+    .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid var(--border-subtle); }
+    .card-title { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 600; color: var(--gold); letter-spacing: 1px; }
+    .card-price { font-family: var(--font-body); font-size: 1.4rem; font-weight: 600; color: var(--champagne); }
+    .card-subtitle { font-size: 0.85rem; color: var(--muted-gray); margin-top: 5px; font-style: italic; }
+    .card-content h4 { font-family: var(--font-body); font-size: 0.8rem; font-weight: 600; color: var(--gold-light); text-transform: uppercase; letter-spacing: 2px; margin: 20px 0 12px; }
+    .card-content ul { list-style: none; }
+    .card-content li { font-size: 0.9rem; color: var(--soft-white); padding: 6px 0; padding-left: 18px; position: relative; line-height: 1.5; }
+    .card-content li::before { content: '◇'; position: absolute; left: 0; color: var(--gold); font-size: 0.6rem; }
+    .card-note { margin-top: 20px; padding: 15px; background: hsla(38,72%,56%,0.08); border-left: 2px solid var(--gold); font-size: 0.85rem; color: var(--champagne); font-style: italic; }
+    .price-grid { display: grid; grid-template-columns: 1fr auto; gap: 8px 15px; margin-top: 15px; }
+    .price-grid .item-name { font-size: 0.9rem; color: var(--soft-white); }
+    .price-grid .item-price { font-size: 0.9rem; color: var(--champagne); font-weight: 500; text-align: right; }
+    .package-badge { display: inline-block; padding: 4px 12px; background: var(--gold); color: var(--eerie-black-1); font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; border-radius: 2px; margin-bottom: 15px; }
 
-    .section-header .subtitle {
-      font-family: var(--font-accent);
-      font-size: 1rem;
-      color: var(--gold);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 15px;
-    }
-
-    .section-header h2 {
-      font-family: var(--font-heading);
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
-      font-weight: 600;
-      color: var(--warm-white);
-      letter-spacing: 1px;
-      margin-bottom: 20px;
-    }
-
-    .section-header .divider {
-      width: 80px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      margin: 0 auto;
-    }
-
-    /* Menu Grid */
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 30px;
-      align-items: start;
-    }
-
-    /* Menu Card */
-    .menu-card {
-      background: linear-gradient(145deg, hsla(210, 4%, 14%, 0.95), hsla(210, 4%, 10%, 0.98));
-      border: 1px solid var(--border-subtle);
-      border-radius: 4px;
-      padding: 40px 35px;
-      transition: all 0.5s ease;
-      position: relative;
-      overflow: hidden;
-      align-self: start;
-    }
-
-    .menu-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-
-    .menu-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-hover);
-      border-color: var(--gold-dark);
-    }
-
-    .menu-card:hover::before {
-      opacity: 1;
-    }
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 25px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--border-subtle);
-    }
-
-    .card-title {
-      font-family: var(--font-heading);
-      font-size: 1.8rem;
-      font-weight: 600;
-      color: var(--gold);
-      letter-spacing: 1px;
-    }
-
-    .card-price {
-      font-family: var(--font-body);
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: var(--champagne);
-    }
-
-    .card-subtitle {
-      font-size: 0.85rem;
-      color: var(--muted-gray);
-      margin-top: 5px;
-      font-style: italic;
-    }
-
-    .card-content h4 {
-      font-family: var(--font-body);
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--gold-light);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin: 20px 0 12px;
-    }
-
-    .card-content ul {
-      list-style: none;
-    }
-
-    .card-content li {
-      font-size: 0.9rem;
-      color: var(--soft-white);
-      padding: 6px 0;
-      padding-left: 18px;
-      position: relative;
-      line-height: 1.5;
-    }
-
-    .card-content li::before {
-      content: '◇';
-      position: absolute;
-      left: 0;
-      color: var(--gold);
-      font-size: 0.6rem;
-    }
-
-    .card-note {
-      margin-top: 20px;
-      padding: 15px;
-      background: hsla(38, 72%, 56%, 0.08);
-      border-left: 2px solid var(--gold);
-      font-size: 0.85rem;
-      color: var(--champagne);
-      font-style: italic;
-    }
-
-    /* Price Grid for items */
-    .price-grid {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 8px 15px;
-      margin-top: 15px;
-    }
-
-    .price-grid .item-name {
-      font-size: 0.9rem;
-      color: var(--soft-white);
-    }
-
-    .price-grid .item-price {
-      font-size: 0.9rem;
-      color: var(--champagne);
-      font-weight: 500;
-      text-align: right;
-    }
-
-    /* Package Badge */
-    .package-badge {
-      display: inline-block;
-      padding: 4px 12px;
-      background: var(--gold);
-      color: var(--eerie-black-1);
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      border-radius: 2px;
-      margin-bottom: 15px;
-    }
+    /* Category Headers */
+    .menu-category { display: grid; margin-bottom: 80px; }
+    .category-section-header { margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid var(--border-subtle); grid-column: 1 / -1; }
+    .category-section-title { font-family: var(--font-heading); font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--gold); letter-spacing: 3px; margin-bottom: 10px; }
+    .category-section-desc { font-size: 0.9rem; color: var(--muted-gray); font-style: italic; margin-top: 5px; }
 
     /* Hire Section */
-    .hire-section {
-      padding: 80px 20px;
-      text-align: center;
-      background: linear-gradient(to bottom, var(--eerie-black-1), var(--eerie-black-2));
-    }
-
-    .hire-section h3 {
-      font-family: var(--font-heading);
-      font-size: 2rem;
-      color: var(--gold);
-      margin-bottom: 15px;
-      letter-spacing: 2px;
-    }
-
-    .hire-section p {
-      color: var(--soft-white);
-      margin-bottom: 35px;
-      font-size: 1rem;
-    }
-
-    .hire-grid {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      max-width: 700px;
-      margin: 0 auto 40px;
-    }
-
-    .hire-item {
-      padding: 15px 25px;
-      background: hsla(38, 72%, 56%, 0.1);
-      border: 1px solid var(--border-subtle);
-      color: var(--warm-white);
-      font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      border-radius: 3px;
-      transition: all 0.3s ease;
-    }
-
-    .hire-item:hover {
-      background: hsla(38, 72%, 56%, 0.2);
-      border-color: var(--gold);
-      transform: translateY(-3px);
-    }
-
-    .btn-gold {
-      display: inline-block;
-      padding: 16px 45px;
-      background: var(--gold);
-      color: var(--eerie-black-1);
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      text-decoration: none;
-      transition: all 0.4s ease;
-      border: 1px solid var(--gold);
-    }
-
-    .btn-gold:hover {
-      background: transparent;
-      color: var(--gold);
-    }
+    .hire-section { padding: 80px 20px; text-align: center; background: linear-gradient(to bottom, var(--eerie-black-1), var(--eerie-black-2)); }
+    .hire-section h3 { font-family: var(--font-heading); font-size: 2rem; color: var(--gold); margin-bottom: 15px; letter-spacing: 2px; }
+    .hire-section p { color: var(--soft-white); margin-bottom: 35px; font-size: 1rem; }
+    .hire-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; max-width: 700px; margin: 0 auto 40px; }
+    .hire-item { padding: 15px 25px; background: hsla(38,72%,56%,0.1); border: 1px solid var(--border-subtle); color: var(--warm-white); font-size: 0.9rem; font-weight: 500; letter-spacing: 0.5px; border-radius: 3px; transition: all 0.3s ease; }
+    .hire-item:hover { background: hsla(38,72%,56%,0.2); border-color: var(--gold); transform: translateY(-3px); }
+    .btn-gold { display: inline-block; padding: 16px 45px; background: var(--gold); color: var(--eerie-black-1); font-family: var(--font-body); font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; transition: all 0.4s ease; border: 1px solid var(--gold); }
+    .btn-gold:hover { background: transparent; color: var(--gold); }
 
     /* Footer */
-    .footer {
-      background: var(--eerie-black-2);
-      padding: 60px 20px 30px;
-      text-align: center;
-      border-top: 1px solid var(--border-subtle);
-    }
-
-    .footer-logo {
-      font-family: var(--font-heading);
-      font-size: 2rem;
-      color: var(--gold);
-      margin-bottom: 20px;
-      letter-spacing: 3px;
-    }
-
-    .footer-tagline {
-      font-family: var(--font-accent);
-      font-size: 1rem;
-      color: var(--soft-white);
-      font-style: italic;
-      margin-bottom: 25px;
-    }
-
-    .footer-contact {
-      color: var(--champagne);
-      font-size: 0.95rem;
-      margin-bottom: 10px;
-    }
-
-    .footer-contact a {
-      color: var(--champagne);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    .footer-contact a:hover {
-      color: var(--gold);
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin: 30px 0;
-      list-style: none;
-    }
-
-    .footer-links a {
-      color: var(--soft-white);
-      text-decoration: none;
-      font-size: 0.85rem;
-      letter-spacing: 1px;
-      transition: color 0.3s ease;
-    }
-
-    .footer-links a:hover {
-      color: var(--gold);
-    }
-
-    .footer-divider {
-      width: 100%;
-      max-width: 400px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border-subtle), transparent);
-      margin: 30px auto;
-    }
-
-    .footer-copy {
-      font-size: 0.8rem;
-      color: var(--muted-gray);
-    }
+    .footer { background: var(--eerie-black-2); padding: 60px 20px 30px; text-align: center; border-top: 1px solid var(--border-subtle); }
+    .footer-logo { font-family: var(--font-heading); font-size: 2rem; color: var(--gold); margin-bottom: 20px; letter-spacing: 3px; }
+    .footer-tagline { font-family: var(--font-accent); font-size: 1rem; color: var(--soft-white); font-style: italic; margin-bottom: 25px; }
+    .footer-contact { color: var(--champagne); font-size: 0.95rem; margin-bottom: 10px; }
+    .footer-contact a { color: var(--champagne); text-decoration: none; transition: color 0.3s ease; }
+    .footer-contact a:hover { color: var(--gold); }
+    .footer-links { display: flex; justify-content: center; gap: 30px; margin: 30px 0; list-style: none; }
+    .footer-links a { color: var(--soft-white); text-decoration: none; font-size: 0.85rem; letter-spacing: 1px; transition: color 0.3s ease; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-divider { width: 100%; max-width: 400px; height: 1px; background: linear-gradient(90deg, transparent, var(--border-subtle), transparent); margin: 30px auto; }
+    .footer-copy { font-size: 0.8rem; color: var(--muted-gray); }
 
     /* Back to Top */
-    .back-top-btn {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 50px;
-      height: 50px;
-      background: var(--gold);
-      color: var(--eerie-black-1);
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.4s ease;
-      z-index: 100;
-    }
+    .back-top-btn { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: var(--gold); color: var(--eerie-black-1); border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; opacity: 0; visibility: hidden; transition: all 0.4s ease; z-index: 100; }
+    .back-top-btn.visible { opacity: 1; visibility: visible; }
+    .back-top-btn:hover { background: var(--gold-dark); transform: translateY(-5px); }
 
-    .back-top-btn.visible {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .back-top-btn:hover {
-      background: var(--gold-dark);
-      transform: translateY(-5px);
-    }
-
-    /* ============================================================
-       NAVBAR — index.html-style mobile sidebar
-    ============================================================ */
-
-    /* Desktop nav sits inline */
-    .navbar {
-      display: flex;
-      align-items: center;
-    }
-
-    .navbar-list {
-      display: flex;
-      list-style: none;
-      gap: 40px;
-    }
-
-    /* In-sidebar logo & bottom — hidden on desktop */
-    .navbar .navbar-logo,
-    .navbar .navbar-bottom {
-      display: none;
-    }
-
-    /* Overlay */
-    .overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.75);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.35s ease, visibility 0.35s ease;
-      z-index: 999;
-      backdrop-filter: blur(2px);
-    }
-
-    .overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    /* ---- Mobile sidebar (mirrors index.html .navbar) ---- */
+    /* Mobile */
     @media (max-width: 992px) {
-      .nav-toggle {
-        display: flex;
-      }
-
-      .navbar {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: min(340px, 88vw);
-        height: 100vh;
-        height: 100dvh;
-        background: linear-gradient(180deg, var(--eerie-black-2) 0%, var(--eerie-black-1) 100%);
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        padding: 0;
-        transition: right 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 1000;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
-      }
-
-      .navbar.active {
-        right: 0;
-      }
-
-      /* Logo inside sidebar */
-      .navbar .navbar-logo {
-        display: flex;
-        justify-content: center;
-        padding: 8px 22px 24px;
-        border-bottom: 1px solid var(--border-subtle);
-        width: 100%;
-      }
-
-      .navbar .navbar-logo img {
-        width: 90px;
-        height: auto;
-        display: block;
-      }
-
-      /* Nav list */
-      .navbar-list {
-        flex-direction: column;
-        gap: 0;
-        width: 100%;
-        padding: 8px 0;
-        margin: 0;
-      }
-
-      .navbar-list li {
-        border-bottom: 1px solid var(--border-subtle);
-        width: 100%;
-      }
-
-      .navbar-link {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        padding: 16px 24px;
-        font-family: var(--font-heading);
-        font-size: 1.35rem;
-        letter-spacing: 2px;
-        width: 100%;
-        text-transform: uppercase;
-        transition: background 0.3s ease, color 0.3s ease, padding-left 0.3s ease;
-      }
-
-      .navbar-link:hover,
-      .navbar-link.active {
-        color: var(--gold);
-        background: hsla(38, 72%, 56%, 0.06);
-        padding-left: 30px;
-      }
-
-      .navbar-link .sep-line {
-        display: inline-block;
-        width: 18px;
-        height: 1px;
-        background: var(--gold);
-        flex-shrink: 0;
-        transition: width 0.3s ease;
-      }
-
-      .navbar-link:hover .sep-line,
-      .navbar-link.active .sep-line {
-        width: 28px;
-      }
-
-      /* Bottom block — Visit / Call info */
-      .navbar .navbar-bottom {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        width: 100%;
-        padding: 28px 22px 36px;
-        margin-top: auto;
-        border-top: 1px solid var(--border-subtle);
-        gap: 4px;
-      }
-
-      .navbar .navbar-bottom .visit-title {
-        font-family: var(--font-heading);
-        font-size: 1.7rem;
-        color: var(--warm-white);
-        letter-spacing: 3px;
-        margin-bottom: 4px;
-        text-transform: uppercase;
-      }
-
-      .navbar .navbar-bottom .visit-hours {
-        font-size: 0.9rem;
-        color: hsl(210, 4%, 60%);
-        font-style: italic;
-        margin-bottom: 14px;
-        letter-spacing: 0.5px;
-      }
-
-      .sep-dots {
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-        margin: 6px 0 14px;
-      }
-
-      .sep-dots span {
-        width: 5px;
-        height: 5px;
-        border-radius: 50%;
-        background: var(--gold);
-        opacity: 0.85;
-      }
-
-      .navbar .navbar-bottom .call-label {
-        font-size: 0.75rem;
-        color: hsl(210, 4%, 50%);
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        margin-bottom: 8px;
-      }
-
-      .navbar .navbar-bottom .call-number {
-        display: block;
-        color: var(--gold);
-        font-size: 1.1rem;
-        font-family: var(--font-heading);
-        text-decoration: none;
-        margin-bottom: 4px;
-        letter-spacing: 1px;
-        transition: color 0.3s ease;
-      }
-
-      .navbar .navbar-bottom .call-number:hover {
-        color: var(--gold-light);
-      }
-
-      /* Hide underline pseudo on mobile */
-      .navbar-link::after {
-        display: none;
-      }
-
-      /* Hide floating blobs on mobile for performance */
-      .floating-bg {
-        width: 100px;
-        height: 100px;
-        opacity: 0.07;
-      }
-    }
-
-    /* ---- General responsive ---- */
-    @media (max-width: 1200px) {
-      .menu-section {
-        padding: 90px 24px;
-      }
-
-      .menu-grid {
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 26px;
-      }
-    }
-
-    @media (max-width: 992px) {
-      .menu-section {
-        padding: 80px 20px;
-      }
-
-      .section-header {
-        margin-bottom: 60px;
-      }
-
-      .menu-grid {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 22px;
-      }
-
-      .menu-card {
-        padding: 32px 26px;
-      }
-
-      .hero {
-        height: 60vh;
-      }
+      .nav-toggle { display: flex; }
+      .navbar { position: fixed; top: 0; right: -100%; width: min(340px, 88vw); height: 100vh; height: 100dvh; background: linear-gradient(180deg, var(--eerie-black-2) 0%, var(--eerie-black-1) 100%); display: flex; flex-direction: column; align-items: stretch; padding: 0; transition: right 0.45s cubic-bezier(0.4,0,0.2,1); z-index: 1000; overflow-y: auto; -webkit-overflow-scrolling: touch; box-shadow: -10px 0 40px rgba(0,0,0,0.5); }
+      .navbar.active { right: 0; }
+      .navbar .navbar-logo { display: flex; justify-content: center; padding: 8px 22px 24px; border-bottom: 1px solid var(--border-subtle); width: 100%; }
+      .navbar .navbar-logo img { width: 90px; height: auto; display: block; }
+      .navbar-list { flex-direction: column; gap: 0; width: 100%; padding: 8px 0; margin: 0; }
+      .navbar-list li { border-bottom: 1px solid var(--border-subtle); width: 100%; }
+      .navbar-link { display: flex; align-items: center; gap: 14px; padding: 16px 24px; font-family: var(--font-heading); font-size: 1.35rem; letter-spacing: 2px; width: 100%; text-transform: uppercase; transition: background 0.3s ease, color 0.3s ease, padding-left 0.3s ease; }
+      .navbar-link:hover, .navbar-link.active { color: var(--gold); background: hsla(38,72%,56%,0.06); padding-left: 30px; }
+      .navbar-link .sep-line { display: inline-block; width: 18px; height: 1px; background: var(--gold); flex-shrink: 0; transition: width 0.3s ease; }
+      .navbar-link:hover .sep-line, .navbar-link.active .sep-line { width: 28px; }
+      .navbar .navbar-bottom { display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; padding: 28px 22px 36px; margin-top: auto; border-top: 1px solid var(--border-subtle); gap: 4px; }
+      .navbar .navbar-bottom .visit-title { font-family: var(--font-heading); font-size: 1.7rem; color: var(--warm-white); letter-spacing: 3px; margin-bottom: 4px; text-transform: uppercase; }
+      .navbar .navbar-bottom .visit-hours { font-size: 0.9rem; color: hsl(210,4%,60%); font-style: italic; margin-bottom: 14px; letter-spacing: 0.5px; }
+      .sep-dots { display: flex; gap: 10px; justify-content: center; margin: 6px 0 14px; }
+      .sep-dots span { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); opacity: 0.85; }
+      .navbar .navbar-bottom .call-label { font-size: 0.75rem; color: hsl(210,4%,50%); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 8px; }
+      .navbar .navbar-bottom .call-number { display: block; color: var(--gold); font-size: 1.1rem; font-family: var(--font-heading); text-decoration: none; margin-bottom: 4px; letter-spacing: 1px; transition: color 0.3s ease; }
+      .navbar .navbar-bottom .call-number:hover { color: var(--gold-light); }
+      .navbar-link::after { display: none; }
+      .floating-bg { width: 100px; height: 100px; opacity: 0.07; }
     }
 
     @media (max-width: 768px) {
-      .hero {
-        height: 55vh;
-        min-height: 380px;
-      }
-
-      .hero-text {
-        font-size: 1rem;
-      }
-
-      .menu-section {
-        padding: 60px 16px;
-      }
-
-      .section-header {
-        margin-bottom: 48px;
-      }
-
-      .section-header h2 {
-        font-size: clamp(1.8rem, 6vw, 2.6rem);
-      }
-
-      .menu-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-
-      .menu-card {
-        padding: 28px 22px;
-      }
-
-      .menu-category {
-        margin-bottom: 56px;
-      }
-
-      .category-section-header {
-        margin-bottom: 32px;
-        padding-bottom: 18px;
-      }
-
-      .card-content h4 {
-        font-size: 0.78rem;
-        letter-spacing: 1.6px;
-      }
-
-      .hire-section {
-        padding: 60px 16px;
-      }
-
-      .hire-section h3 {
-        font-size: 1.6rem;
-        letter-spacing: 1px;
-      }
-
-      .hire-grid {
-        gap: 10px;
-      }
-
-      .hire-item {
-        padding: 12px 18px;
-        font-size: 0.85rem;
-      }
-
-      .footer {
-        padding: 50px 16px 24px;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .header {
-        padding: 12px 0;
-      }
-
-      .header .container {
-        padding: 0 16px;
-      }
-
-      .logo img {
-        max-width: 64px;
-      }
-
-      .menu-section {
-        padding: 50px 14px;
-      }
-
-      .menu-card {
-        padding: 24px 18px;
-        border-radius: 6px;
-      }
-
-      .card-title {
-        font-size: 1.5rem;
-      }
-
-      .card-subtitle {
-        font-size: 0.78rem;
-      }
-
-      .card-price {
-        font-size: 1.25rem;
-      }
-
-      .card-content li {
-        font-size: 0.88rem;
-      }
-
-      .footer-logo {
-        font-size: 1.6rem;
-        letter-spacing: 2px;
-      }
-
-      .footer-tagline {
-        font-size: 0.92rem;
-      }
+      .hero { height: 55vh; min-height: 380px; }
+      .menu-section { padding: 60px 16px; }
+      .section-header { margin-bottom: 48px; }
+      .section-header h2 { font-size: clamp(1.8rem, 6vw, 2.6rem); }
+      .menu-grid { grid-template-columns: 1fr; gap: 20px; }
+      .menu-card { padding: 28px 22px; }
+      .hire-section { padding: 60px 16px; }
+      .hire-section h3 { font-size: 1.6rem; letter-spacing: 1px; }
+      .footer { padding: 50px 16px 24px; }
     }
 
     @media (max-width: 480px) {
-      .hero {
-        height: 50vh;
-        min-height: 340px;
-      }
-
-      .hero-title {
-        font-size: clamp(1.7rem, 8vw, 2.6rem);
-        letter-spacing: 1px;
-      }
-
-      .hero-content {
-        padding: 0 16px;
-      }
-
-      .section-subtitle {
-        font-size: 0.85rem;
-        letter-spacing: 3px;
-      }
-
-      .btn-primary {
-        padding: 14px 36px;
-        font-size: 0.78rem;
-        letter-spacing: 1.5px;
-      }
-
-      .slider-controls {
-        bottom: 24px;
-      }
-
-      .slider-dot {
-        width: 10px;
-        height: 10px;
-      }
-
-      .card-header {
-        flex-direction: column;
-        gap: 10px;
-        align-items: flex-start;
-        margin-bottom: 18px;
-        padding-bottom: 16px;
-      }
-
-      .card-title {
-        font-size: 1.35rem;
-      }
-
-      .card-price {
-        font-size: 1.15rem;
-      }
-
-      .card-note {
-        font-size: 0.8rem;
-        padding: 12px;
-      }
-
-      .price-grid {
-        grid-template-columns: 1fr;
-        gap: 4px;
-      }
-
-      .price-grid .item-name {
-        font-weight: 500;
-        color: var(--warm-white);
-        margin-top: 4px;
-      }
-
-      .price-grid .item-price {
-        text-align: left;
-        color: var(--gold);
-        font-size: 0.82rem;
-        padding-bottom: 10px;
-        margin-bottom: 4px;
-        border-bottom: 1px solid var(--border-subtle);
-      }
-
-      .price-grid .item-price:last-child {
-        border-bottom: none;
-      }
-
-      .footer-links {
-        flex-wrap: wrap;
-        gap: 12px 18px;
-        justify-content: center;
-        padding: 0;
-      }
-
-      .back-top-btn {
-        width: 44px;
-        height: 44px;
-        bottom: 20px;
-        right: 16px;
-        font-size: 1rem;
-      }
-
-      .hire-grid {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .hire-item {
-        width: 100%;
-        max-width: 320px;
-        text-align: center;
-      }
-
-      .category-section-title {
-        font-size: clamp(1.4rem, 6vw, 2rem);
-        letter-spacing: 1.5px;
-      }
-
-      .category-section-desc {
-        font-size: 0.85rem;
-      }
-
-      .package-badge {
-        font-size: 0.65rem;
-        padding: 3px 10px;
-      }
+      .card-header { flex-direction: column; gap: 10px; align-items: flex-start; margin-bottom: 18px; padding-bottom: 16px; }
+      .price-grid { grid-template-columns: 1fr; gap: 4px; }
+      .price-grid .item-price { text-align: left; color: var(--gold); font-size: 0.82rem; padding-bottom: 10px; margin-bottom: 4px; border-bottom: 1px solid var(--border-subtle); }
+      .back-top-btn { width: 44px; height: 44px; bottom: 20px; right: 16px; font-size: 1rem; }
     }
 
-    @media (max-width: 360px) {
-      .menu-section {
-        padding: 40px 12px;
-      }
-
-      .menu-card {
-        padding: 20px 16px;
-      }
-
-      .navbar {
-        width: 92vw;
-      }
-    }
-
-    /* nav-toggle animation */
-    .nav-toggle.active span:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 6px);
-    }
-
-    .nav-toggle.active span:nth-child(2) {
-      opacity: 0;
-      transform: scaleX(0);
-    }
-
-    .nav-toggle.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(5px, -6px);
-    }
-
-    /* All categories visible */
-    .menu-category {
-      display: grid;
-      margin-bottom: 80px;
-    }
-
-    .category-section-title {
-      font-family: var(--font-heading);
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      color: var(--gold);
-      letter-spacing: 3px;
-      margin-bottom: 10px;
-    }
-
-    .category-section-header {
-      margin-bottom: 40px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--border-subtle);
-      grid-column: 1 / -1;
-    }
-
-    .category-section-desc {
-      font-size: 0.9rem;
-      color: var(--muted-gray);
-      font-style: italic;
-      margin-top: 5px;
-    }
-
-    /* Animation on scroll */
-    .menu-card {
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeInUp 0.6s ease forwards;
-    }
-
-    .menu-card:nth-child(1) {
-      animation-delay: 0.1s;
-    }
-
-    .menu-card:nth-child(2) {
-      animation-delay: 0.2s;
-    }
-
-    .menu-card:nth-child(3) {
-      animation-delay: 0.3s;
-    }
-
-    .menu-card:nth-child(4) {
-      animation-delay: 0.4s;
-    }
-
-    .menu-card:nth-child(5) {
-      animation-delay: 0.5s;
-    }
-
-    .menu-card:nth-child(6) {
-      animation-delay: 0.6s;
-    }
-
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+    .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+    .nav-toggle.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
   </style>
-
-
 </head>
 
-
 <body id="top">
-
-
-
   <!-- Floating Background Images -->
   <div class="floating-bg floating-bg-1"></div>
   <div class="floating-bg floating-bg-2"></div>
@@ -1487,28 +223,21 @@
   <div class="floating-bg floating-bg-8"></div>
 
   <!-- Header -->
-<header class="header" data-header>
-
+  <header class="header" data-header>
     <div class="container">
       <a href="index.html" class="logo">
         <img src="assets/images/logo1.0.png" width="80" height="50" alt="Segi's Kitchen Aroma - Home">
       </a>
-
       <nav class="navbar" id="navbar">
-
-        <!-- Logo inside sidebar (mobile only) -->
         <div class="navbar-logo">
-          <img src="assets/images/logo1.0.png width="80" height="50" alt="Segi's Kitchen Aroma">
+          <img src="assets/images/logo1.0.png" width="80" height="50" alt="Segi's Kitchen Aroma">
         </div>
-
         <ul class="navbar-list">
           <li><a href="index.html" class="navbar-link"><span class="sep-line"></span> Home</a></li>
           <li><a href="index.html#about" class="navbar-link"><span class="sep-line"></span> About Us</a></li>
           <li><a href="#menu" class="navbar-link active"><span class="sep-line"></span> Menus</a></li>
           <li><a href="index.html#contact" class="navbar-link"><span class="sep-line"></span> Contact</a></li>
         </ul>
-
-        <!-- Bottom info block (mobile only) -->
         <div class="navbar-bottom">
           <p class="visit-title">Visit Us</p>
           <p class="visit-hours">Open: 8.00 am – 10.00 pm</p>
@@ -1517,13 +246,9 @@
           <a href="tel:+447534644786" class="call-number">+447534644786</a>
           <a href="tel:+447508106775" class="call-number">+447508106775</a>
         </div>
-
       </nav>
-
       <button class="nav-toggle" id="navToggle" aria-label="Open menu">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
     </div>
     <div class="overlay" id="overlay"></div>
@@ -1549,14 +274,12 @@
           </div>
         </li>
       </ul>
-
       <div class="hero-content">
         <p class="section-subtitle">Premium Catering</p>
         <h1 class="hero-title">Exquisite Flavours for<br>Every Occasion</h1>
         <p class="hero-text">Your satisfaction, our priority</p>
         <a href="#menu" class="btn-primary">Explore Our Menu</a>
       </div>
-
       <div class="slider-controls">
         <button class="slider-dot active" data-slide="0"></button>
         <button class="slider-dot" data-slide="1"></button>
@@ -1572,16 +295,16 @@
         <div class="divider"></div>
       </div>
 
-
-
-      <!-- Event Packages -->
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- EVENT PACKAGES                              -->
+      <!-- ═══════════════════════════════════════════ -->
       <div class="menu-grid menu-category" id="packages">
         <div class="category-section-header">
           <h2 class="category-section-title">Event Packages</h2>
           <p class="category-section-desc">Full catering packages for celebrations & gatherings — minimum 50 guests</p>
         </div>
 
-        <!-- Aroma Royalty -->
+        <!-- Aroma Royalty – Mains / Soups / Proteins -->
         <div class="menu-card">
           <span class="package-badge">Premium</span>
           <div class="card-header">
@@ -1589,11 +312,11 @@
               <h3 class="card-title">AROMA ROYALTY</h3>
               <p class="card-subtitle">(Designed for premium and high-end experience)</p>
             </div>
-            <div class="card-price">£60<span style="font-size: 0.8rem; color: var(--muted-gray);">/head</span></div>
+            <div class="card-price">£60<span style="font-size:0.8rem;color:var(--muted-gray);">/head</span></div>
           </div>
           <div class="card-content">
-            <p class="card-note" style="margin-bottom: 15px;">Minimum: 50 guests</p>
-            <h4>MAINS (Choose 5)</h4>
+            <p class="card-note" style="margin-bottom:15px;">👥 Minimum: 50 guests</p>
+            <h4>🍚 MAINS (Choose 5)</h4>
             <ul>
               <li>Jollof Rice</li>
               <li>Coconut Fried Rice</li>
@@ -1602,14 +325,14 @@
               <li>Yam Porridge</li>
               <li>Pounded Yam / Amala / Eba</li>
             </ul>
-            <h4>SOUPS (Choose 2)</h4>
+            <h4>🍲 SOUPS (Choose 2)</h4>
             <ul>
               <li>Egusi Soup</li>
               <li>Ogbono Soup</li>
               <li>Vegetable Soup</li>
               <li>Gbegiri & Ewedu</li>
             </ul>
-            <h4>PROTEINS (Choose 3)</h4>
+            <h4>🍖 PROTEINS (Choose 3)</h4>
             <ul>
               <li>Garnished Chicken (Grilled/Fried)</li>
               <li>Peppered Beef (Suya Style)/Assorted meat</li>
@@ -1619,6 +342,7 @@
           </div>
         </div>
 
+        <!-- Aroma Royalty – Sides / Starters / Add-ons -->
         <div class="menu-card">
           <span class="package-badge">Premium</span>
           <div class="card-header">
@@ -1626,30 +350,30 @@
               <h3 class="card-title">AROMA ROYALTY</h3>
               <p class="card-subtitle">(Premium Sides, Starters & Add-ons)</p>
             </div>
-            <div class="card-price">£60<span style="font-size: 0.8rem; color: var(--muted-gray);">/head</span></div>
+            <div class="card-price">£60<span style="font-size:0.8rem;color:var(--muted-gray);">/head</span></div>
           </div>
           <div class="card-content">
-            <h4>PREMIUM SIDES (Choose 3)</h4>
+            <h4>🥗 PREMIUM SIDES (Choose 3)</h4>
             <ul>
               <li>Fried Plantain</li>
               <li>Moi-Moi</li>
               <li>Buttered Sweet Corn</li>
               <li>Signature Salad</li>
             </ul>
-            <h4>STARTERS (Choose 3)</h4>
+            <h4>🍤 STARTERS (Choose 3)</h4>
             <ul>
               <li>Chicken Wings</li>
               <li>Prawns / Crispy Fried Sardine Bites</li>
               <li>Spring Rolls</li>
               <li>Puff-Puff</li>
             </ul>
-            <h4>PREMIUM ADD-ON (Choose 1)</h4>
+            <h4>🍝 PREMIUM ADD-ON (Choose 1)</h4>
             <ul>
               <li>Stir Fry Noodles</li>
               <li>Creamy Mac & Cheese</li>
               <li>Small Chops Platter</li>
             </ul>
-            <h4>EXTRAS – VIP TOUCH</h4>
+            <h4>🌶️ EXTRAS – VIP TOUCH</h4>
             <ul>
               <li>Pepper Soup (Goat / Chicken / Assorted Meat / Fish)</li>
               <li>Meat Skewers</li>
@@ -1665,11 +389,11 @@
               <h3 class="card-title">AROMA SUPREME</h3>
               <p class="card-subtitle">(Our most popular choice for celebrations)</p>
             </div>
-            <div class="card-price">£45<span style="font-size: 0.8rem; color: var(--muted-gray);">/head</span></div>
+            <div class="card-price">£45<span style="font-size:0.8rem;color:var(--muted-gray);">/head</span></div>
           </div>
           <div class="card-content">
-            <p class="card-note" style="margin-bottom: 15px;">Minimum: 50 guests</p>
-            <h4>MENU</h4>
+            <p class="card-note" style="margin-bottom:15px;">👥 Minimum: 50 guests</p>
+            <h4>🍽️ MENU</h4>
             <ul>
               <li>Jollof Rice</li>
               <li>Fried Rice</li>
@@ -1680,7 +404,7 @@
               <li>Moi-Moi</li>
               <li>Fried Plantain</li>
             </ul>
-            <h4>STARTERS (Choose 2)</h4>
+            <h4>🥟 STARTERS (Choose 2)</h4>
             <ul>
               <li>Puff-Puff</li>
               <li>Spring Rolls</li>
@@ -1697,11 +421,11 @@
               <h3 class="card-title">AROMA CLASSIC</h3>
               <p class="card-subtitle">(Perfect for casual gatherings & budget-conscious events)</p>
             </div>
-            <div class="card-price">£40<span style="font-size: 0.8rem; color: var(--muted-gray);">/head</span></div>
+            <div class="card-price">£40<span style="font-size:0.8rem;color:var(--muted-gray);">/head</span></div>
           </div>
           <div class="card-content">
-            <p class="card-note" style="margin-bottom: 15px;">Minimum: 50 guests</p>
-            <h4>MENU</h4>
+            <p class="card-note" style="margin-bottom:15px;">👥 Minimum: 50 guests</p>
+            <h4>🍽️ MENU</h4>
             <ul>
               <li>Jollof Rice</li>
               <li>Fried Rice</li>
@@ -1711,7 +435,7 @@
               <li>Fried Plantain</li>
               <li>Salad</li>
             </ul>
-            <h4>STARTERS</h4>
+            <h4>🥟 STARTERS</h4>
             <ul>
               <li>Puff-Puff</li>
               <li>Spring Rolls</li>
@@ -1719,20 +443,19 @@
           </div>
         </div>
 
-        <!-- Island Flavours Experience -->
+        <!-- Island Flavours – Mains & Sides -->
         <div class="menu-card">
           <span class="package-badge">Caribbean</span>
           <div class="card-header">
             <div>
               <h3 class="card-title">ISLAND FLAVOURS EXPERIENCE</h3>
-              <p class="card-subtitle">Aroma Island (Bringing the taste of the Caribbean to your events)</p>
+              <p class="card-subtitle">Aroma Island – (Bringing the taste of the Caribbean to your events)</p>
             </div>
           </div>
           <div class="card-content">
-            <h4>HOW IT WORKS</h4>
-            <p style="margin-bottom: 15px;">Choose your mains, sides & starters<br>Pricing depends on selection
-              size<br>Ideal for custom events & flexible catering</p>
-            <h4>MAINS (Choose 2–3)</h4>
+            <h4>🍽️ HOW IT WORKS</h4>
+            <p style="margin-bottom:15px;font-size:0.9rem;color:var(--soft-white);">Choose your mains, sides & starters<br>Pricing depends on selection size<br>Ideal for custom events & flexible catering</p>
+            <h4>🍗 MAINS (Choose 2–3)</h4>
             <ul>
               <li>Jerk Chicken</li>
               <li>Curry Goat</li>
@@ -1740,9 +463,9 @@
               <li>Brown Stew Chicken</li>
               <li>Curry Chicken</li>
             </ul>
-            <h4>SIDES (Choose 2–3)</h4>
+            <h4>🍚 SIDES (Choose 2–3)</h4>
             <ul>
-              <li>Rice & Peas</li>
+              <li>Rice & Peas ⭐</li>
               <li>Coconut Rice</li>
               <li>Fried Plantain</li>
               <li>Caribbean Mac & Cheese</li>
@@ -1751,6 +474,7 @@
           </div>
         </div>
 
+        <!-- Island Flavours – Starters / Sauces / Live -->
         <div class="menu-card">
           <span class="package-badge">Caribbean</span>
           <div class="card-header">
@@ -1760,7 +484,7 @@
             </div>
           </div>
           <div class="card-content">
-            <h4>STARTERS (Choose 1–3)</h4>
+            <h4>🥟 STARTERS (Choose 1–3)</h4>
             <ul>
               <li>Saltfish Fritters</li>
               <li>Mini Patties (beef/chicken/veg)</li>
@@ -1768,39 +492,55 @@
               <li>Prawn Skewers (+£4pp)</li>
               <li>Fried Sardine Bites</li>
             </ul>
-            <h4>SAUCES</h4>
+            <h4>🌶️ SAUCES</h4>
             <ul>
               <li>Jerk Sauce</li>
               <li>Scotch Bonnet Pepper Sauce</li>
               <li>Rich Gravy</li>
             </ul>
-            <h4>LIVE EXPERIENCE ADD-ON</h4>
+            <h4>🔥 LIVE EXPERIENCE ADD-ON</h4>
             <ul>
-              <li>Live Jerk Grill Station</li>
+              <li>🍢 Live Jerk Grill Station</li>
               <li>Fresh grilled jerk chicken on-site</li>
             </ul>
           </div>
         </div>
 
-        <!-- Island Fixed Packages -->
+        <!-- Fixed Island Packages -->
         <div class="menu-card">
           <span class="package-badge">Fixed Packages</span>
           <div class="card-header">
             <div>
-              <h3 class="card-title">FIXED ISLAND PACKAGES</h3>
+              <h3 class="card-title">🏝️ FIXED ISLAND PACKAGES</h3>
             </div>
           </div>
           <div class="card-content">
-            <div class="price-grid">
-              <span class="item-name">Island Essential – £45pp</span>
-              <span class="item-price">Jerk Chicken, Fried Chicken, Rice & Peas, Fried Plantain</span>
-              <span class="item-name">Island Signature – £52pp</span>
-              <span class="item-price">Jerk Chicken, Curry Goat, Rice & Peas, Mac & Cheese, Plantain</span>
-              <span class="item-name">Island Luxe – £62pp</span>
-              <span class="item-price">Jerk Chicken, Curry Goat, Oxtail, Rice & Peas</span>
-              <span class="item-name">Festival</span>
-              <span class="item-price">Plantain, 4 Starters</span>
-            </div>
+            <h4>Island Essential – £45pp</h4>
+            <ul>
+              <li>Jerk Chicken</li>
+              <li>Fried Chicken</li>
+              <li>Rice & Peas</li>
+              <li>Fried Plantain</li>
+            </ul>
+            <h4>🥈 Island Signature – £52pp</h4>
+            <ul>
+              <li>Jerk Chicken</li>
+              <li>Curry Goat</li>
+              <li>Rice & Peas</li>
+              <li>Mac & Cheese</li>
+              <li>Plantain</li>
+              <li>2 Starters</li>
+            </ul>
+            <h4>🥇 Island Luxe – £62pp</h4>
+            <ul>
+              <li>Jerk Chicken</li>
+              <li>Curry Goat</li>
+              <li>Oxtail (premium)</li>
+              <li>Rice & Peas</li>
+              <li>Festival</li>
+              <li>Plantain</li>
+              <li>4 Starters</li>
+            </ul>
           </div>
         </div>
 
@@ -1812,7 +552,7 @@
               <h3 class="card-title">AFRO-CARIBBEAN FUSION</h3>
               <p class="card-subtitle">(A bold celebration of African & Caribbean flavours)</p>
             </div>
-            <div class="card-price">£65<span style="font-size: 0.8rem; color: var(--muted-gray);">/person</span></div>
+            <div class="card-price">£65<span style="font-size:0.8rem;color:var(--muted-gray);">/person</span></div>
           </div>
           <div class="card-content">
             <ul>
@@ -1828,21 +568,23 @@
         </div>
       </div>
 
-      <!-- Breakfast & Brunch -->
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- BRUNCH & BREAKFAST                          -->
+      <!-- ═══════════════════════════════════════════ -->
       <div class="menu-grid menu-category" id="breakfast">
         <div class="category-section-header">
           <h2 class="category-section-title">AROMA BRUNCH & BREAKFAST</h2>
-          <p class="category-section-desc">£25 - £32 per person • Minimum: 20 guests • Each booking includes one
-            selected brunch style for all guests</p>
+          <p class="category-section-desc">£25 – £32 per person • Minimum: 20 guests • Each booking includes one selected brunch style for all guests</p>
         </div>
 
+        <!-- Classic English Breakfast -->
         <div class="menu-card">
           <div class="card-header">
             <div>
-              <h3 class="card-title">Classic English Breakfast</h3>
+              <h3 class="card-title">🥞 Classic English Breakfast</h3>
               <p class="card-subtitle">(Heavy, Traditional filling brunch)</p>
             </div>
-            <div class="card-price">£25<span style="font-size: 0.8rem; color: var(--muted-gray);">/pp</span></div>
+            <div class="card-price">£25<span style="font-size:0.8rem;color:var(--muted-gray);">/pp</span></div>
           </div>
           <div class="card-content">
             <ul>
@@ -1853,16 +595,16 @@
               <li>Beans, mushrooms & grilled tomatoes</li>
             </ul>
           </div>
-          <p class="card-note">Minimum 20 guests</p>
         </div>
 
+        <!-- Breakfast Bites Platter -->
         <div class="menu-card">
           <div class="card-header">
             <div>
-              <h3 class="card-title">Breakfast Bites Platter</h3>
+              <h3 class="card-title">🥐 Breakfast Bites Platter</h3>
               <p class="card-subtitle">(Casual, Social, finger food brunch)</p>
             </div>
-            <div class="card-price">£25<span style="font-size: 0.8rem; color: var(--muted-gray);">/pp</span></div>
+            <div class="card-price">£25<span style="font-size:0.8rem;color:var(--muted-gray);">/pp</span></div>
           </div>
           <div class="card-content">
             <ul>
@@ -1873,16 +615,16 @@
               <li>Scrambled eggs tray</li>
             </ul>
           </div>
-          <p class="card-note">Minimum 20 guests</p>
         </div>
 
+        <!-- Sweet Brunch Selection -->
         <div class="menu-card">
           <div class="card-header">
             <div>
-              <h3 class="card-title">Sweet Brunch Selection</h3>
+              <h3 class="card-title">🧇 Sweet Brunch Selection</h3>
               <p class="card-subtitle">(Balanced sweet + savoury brunch experience)</p>
             </div>
-            <div class="card-price">£25<span style="font-size: 0.8rem; color: var(--muted-gray);">/pp</span></div>
+            <div class="card-price">£25<span style="font-size:0.8rem;color:var(--muted-gray);">/pp</span></div>
           </div>
           <div class="card-content">
             <ul>
@@ -1893,16 +635,16 @@
               <li>Fresh fruit platter or yoghurt parfait</li>
             </ul>
           </div>
-          <p class="card-note">Minimum 20 guests</p>
         </div>
 
+        <!-- Healthy / Premium Brunch -->
         <div class="menu-card">
           <div class="card-header">
             <div>
-              <h3 class="card-title">Healthy / Premium Brunch</h3>
-              <p class="card-subtitle">(Luxury wellness brunch (full not light))</p>
+              <h3 class="card-title">🥯 Healthy / Premium Brunch</h3>
+              <p class="card-subtitle">(Luxury wellness brunch – full not light)</p>
             </div>
-            <div class="card-price">£30<span style="font-size: 0.8rem; color: var(--muted-gray);">/pp</span></div>
+            <div class="card-price">£30<span style="font-size:0.8rem;color:var(--muted-gray);">/pp</span></div>
           </div>
           <div class="card-content">
             <ul>
@@ -1915,9 +657,9 @@
               <li>Assorted Pastries</li>
             </ul>
           </div>
-          <p class="card-note">Minimum 20 guests</p>
         </div>
 
+        <!-- Aroma Naija Breakfast -->
         <div class="menu-card">
           <span class="package-badge">Signature</span>
           <div class="card-header">
@@ -1925,10 +667,10 @@
               <h3 class="card-title">Aroma Naija Breakfast</h3>
               <p class="card-subtitle">(A rich premium, comforting, and culturally authentic breakfast experience)</p>
             </div>
-            <div class="card-price">£32<span style="font-size: 0.8rem; color: var(--muted-gray);">/pp</span></div>
+            <div class="card-price">£32<span style="font-size:0.8rem;color:var(--muted-gray);">/pp</span></div>
           </div>
           <div class="card-content">
-            <h4>Includes:</h4>
+            <h4>🍽️ Includes:</h4>
             <ul>
               <li>Akara (bean cakes) & Pap (Ogi) or Custard</li>
               <li>Moi Moi (steamed bean pudding)</li>
@@ -1936,39 +678,26 @@
               <li>Egg Sauce (peppered eggs)</li>
               <li>Agege bread & butter</li>
             </ul>
-          </div>
-          <p class="card-note">Minimum 20 guests</p>
-        </div>
-
-        <div class="menu-card">
-          <span class="package-badge">Signature</span>
-          <div class="card-header">
-            <div>
-              <h3 class="card-title">Upgrade Options:</h3>
-            </div>
-            <div class="card-price">£32<span style="font-size: 0.8rem; color: var(--muted-gray);">/pp</span></div>
-          </div>
-          <div class="card-content">
+            <h4>💡 Upgrade Options:</h4>
             <ul>
-              <li>Add Peppered Turkey or Beef – £4pp</li>
+              <li>Add Peppered Turkey or Beef → +£4pp</li>
               <li>Premium Naija Add-on (+£3pp) Ofada Sauce or pepper gizzard</li>
             </ul>
           </div>
-          <p class="card-note">Minimum 20 guests</p>
         </div>
 
+        <!-- Brunch Add-ons & Bundle -->
         <div class="menu-card">
           <span class="package-badge">Popular</span>
           <div class="card-header">
             <div>
-              <h3 class="card-title">Bundle Offer: All drinks</h3>
+              <h3 class="card-title">Mixed Brunch Experience</h3>
+              <p class="card-subtitle">Combines English + Nigerian elements (very popular for diverse guests)</p>
             </div>
-            <div class="card-price">+£7<span style="font-size: 0.8rem; color: var(--muted-gray);">/pp</span></div>
+            <div class="card-price">£32<span style="font-size:0.8rem;color:var(--muted-gray);">/pp</span></div>
           </div>
           <div class="card-content">
-            <p>Mixed Brunch Experience – £32pp</p>
-            <p>Combines English + Nigerian elements (very popular for diverse guests)</p>
-            <h4>BRUNCH ADD-ONS</h4>
+            <h4>➕ BRUNCH ADD-ONS</h4>
             <div class="price-grid">
               <span class="item-name">Fresh juice station</span>
               <span class="item-price">+£3pp</span>
@@ -1976,27 +705,27 @@
               <span class="item-price">+£2pp</span>
               <span class="item-name">Smoothie bar</span>
               <span class="item-price">+£4pp</span>
-              <span class="item-name">All drinks bundle</span>
+              <span class="item-name">🔥 Bundle Offer: All drinks</span>
               <span class="item-price">+£7pp</span>
             </div>
           </div>
-          <p class="card-note">Minimum 20 guests</p>
         </div>
       </div>
 
-      <!-- Little Aroma Party Package -->
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- LITTLE AROMA PARTY PACKAGE                  -->
+      <!-- ═══════════════════════════════════════════ -->
       <div class="menu-grid menu-category" id="kids">
         <div class="category-section-header">
           <h2 class="category-section-title">LITTLE AROMA PARTY PACKAGE</h2>
-          <p class="category-section-desc">Perfect for small gatherings, home events & weekend orders — all portions are
-            party trays</p>
+          <p class="category-section-desc">Feeds: 10–25 guests • Perfect for small gatherings, home events & weekend orders • All portions are party trays (not individual plates)</p>
         </div>
 
         <div class="menu-card">
           <div class="card-header">
             <div>
               <h3 class="card-title">£180 Package</h3>
-              <p class="card-subtitle">Feeds: 10–15 guests</p>
+              <p class="card-subtitle">👉 Feeds: 10–15 guests</p>
             </div>
             <div class="card-price">£180</div>
           </div>
@@ -2015,7 +744,7 @@
           <div class="card-header">
             <div>
               <h3 class="card-title">£220 Package</h3>
-              <p class="card-subtitle">Feeds: 15–20 guests</p>
+              <p class="card-subtitle">👉 Feeds: 15–20 guests</p>
             </div>
             <div class="card-price">£220</div>
           </div>
@@ -2034,7 +763,7 @@
           <div class="card-header">
             <div>
               <h3 class="card-title">£250 Package</h3>
-              <p class="card-subtitle">Feeds: 20–25 guests</p>
+              <p class="card-subtitle">👉 Feeds: 20–25 guests</p>
             </div>
             <div class="card-price">£250</div>
           </div>
@@ -2043,150 +772,71 @@
               <li>8L Jollof Rice</li>
               <li>4L Fried/Coconut Rice</li>
               <li>50 pcs Chicken</li>
-              <li>3–4 L Plantain</li>
+              <li>3–4L Plantain</li>
               <li>Gizzard Dodo (3L)</li>
               <li>Moi-Moi (15 cups)</li>
             </ul>
           </div>
-          <p class="card-note">IMPORTANT NOTES: All portions are party trays (not individual plates). Chicken is mixed
-            portions (drumsticks & wings depending on availability).</p>
+          <p class="card-note">⭐ IMPORTANT NOTES: All portions are party trays (not individual plates). Chicken is mixed portions (drumsticks & wings depending on availability).</p>
         </div>
       </div>
 
-      <!-- Cooler Service -->
-      <div class="menu-grid menu-category" id="cooler">
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- CHEF'S PREMIUM PROTEIN                      -->
+      <!-- ═══════════════════════════════════════════ -->
+      <div class="menu-grid menu-category" id="proteins">
         <div class="category-section-header">
-          <h2 class="category-section-title">COOLER/POT/TRAY SERVICE</h2>
-          <p class="category-section-desc">COOLER SIZES: 30 Litres Cooler (Premium / Signature Events) • 24 Litres
-            Cooler (Standard / Small Events) • Note: All prices exclude delivery charges</p>
-        </div>
-        <div class="menu-card">
-          <div class="card-header">
-            <div>
-              <h3 class="card-title">SERVING GUIDE</h3>
-            </div>
-          </div>
-          <div class="card-content">
-            <ul>
-              <li>30L Cooler: 35–50 guests (depending on portion size)</li>
-              <li>24L Cooler: 20–35 guests (depending on portion size)</li>
-            </ul>
-          </div>
+          <h2 class="category-section-title">CHEF'S PREMIUM PROTEIN</h2>
+          <p class="category-section-desc">Signature cuts & premium quality meats</p>
         </div>
 
         <div class="menu-card">
-          <span class="package-badge">Signature</span>
           <div class="card-header">
             <div>
-              <h3 class="card-title">24L COOLER PACKAGES (SIGNATURE RANGE)</h3>
-            </div>
-          </div>
-          <div class="card-content">
-            <h4>Rice Selection</h4>
-            <div class="price-grid">
-              <span class="item-name">Jollof Rice</span>
-              <span class="item-price">£130 | Half: £75</span>
-              <span class="item-name">Jollof Rice 30L</span>
-              <span class="item-price">£160 | Half: £90</span>
-              <span class="item-name">Fried Rice without Prawns</span>
-              <span class="item-price">£140 | Half: £80</span>
-              <span class="item-name">Fried Rice with Prawns</span>
-              <span class="item-price">£160 | Half: £90</span>
-              <span class="item-name">White Rice</span>
-              <span class="item-price">£75</span>
-              <span class="item-name">Special Fried Rice (prawns, chicken, and bacon/smoked turkey)</span>
-              <span class="item-price">£205 | Half: £120</span>
-              <span class="item-name">Coconut Rice</span>
-              <span class="item-price">£175 | Half: £95</span>
-              <span class="item-name">Ofada Rice</span>
-              <span class="item-price">£180 | Half: £100</span>
-              <span class="item-name">Rice & Peas</span>
-              <span class="item-price">£160</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="menu-card">
-          <span class="package-badge">Premium</span>
-          <div class="card-header">
-            <div>
-              <h3 class="card-title">30L COOLER PACKAGES (PREMIUM RANGE)</h3>
-              <p class="card-subtitle">Essential & Signature Packages</p>
+              <h3 class="card-title">PREMIUM PROTEINS</h3>
             </div>
           </div>
           <div class="card-content">
             <div class="price-grid">
-              <span class="item-name">Essential 30L Package</span>
-              <span class="item-price">£550</span>
-              <span class="item-name" style="font-size: 0.8rem; color: var(--muted-gray);">1 Rice (Jollof / Fried /
-                White), 1 Protein (Chicken or Beef) 30 - 45 pcs, 1 Stew (Tomato or Ayamase), Plantain</span>
-              <span class="item-price"></span>
-
-              <span class="item-name">Signature 30L Package</span>
-              <span class="item-price">£750</span>
-              <span class="item-name" style="font-size: 0.8rem; color: var(--muted-gray);">1 Rice or Half & half, 2
-                Proteins (50 – 60 pcs), 1 Signature Stew, Plantain</span>
-              <span class="item-price"></span>
+              <span class="item-name">Lamb Chops</span>
+              <span class="item-price">£6 per piece</span>
+              <span class="item-name">Quarter Chicken</span>
+              <span class="item-price">£5</span>
+              <span class="item-name">Peppered Snails</span>
+              <span class="item-price">£15–£18 each</span>
+              <span class="item-name">Fried Chicken (100 pcs)</span>
+              <span class="item-price">£220 | 50 pcs: £120</span>
+              <span class="item-name">Fried Turkey (100 pcs)</span>
+              <span class="item-price">£280 | 50 pcs: £150</span>
+              <span class="item-name">Smoked Turkey (100 pcs)</span>
+              <span class="item-price">£320 | 50 pcs: £175</span>
+              <span class="item-name">Jerk Chicken (100 pcs)</span>
+              <span class="item-price">£220 | 50 pcs: £120</span>
+              <span class="item-name">Signature Peppered Fried Fish (100 pcs)</span>
+              <span class="item-price">£380 | 50 pcs: £200</span>
+              <span class="item-name">Suya Beef Skewers</span>
+              <span class="item-price">£380</span>
+              <span class="item-name">Asun (Goat Meat Cooler)</span>
+              <span class="item-price">£420</span>
+              <span class="item-name">Turkey in Pepper Sauce</span>
+              <span class="item-price">£350</span>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="menu-card">
-          <span class="package-badge">Premium</span>
-          <div class="card-header">
-            <div>
-              <h3 class="card-title">30L COOLER PREMIUM & LUXURY PACKAGES</h3>
-              <p class="card-subtitle">Premium & Luxury Packages</p>
-            </div>
-          </div>
-          <div class="card-content">
-            <div class="price-grid">
-              <span class="item-name">Premium 30L Package</span>
-              <span class="item-price">£1400</span>
-              <span class="item-name" style="font-size: 0.8rem; color: var(--muted-gray);">2 Rice Options, 2 Proteins
-                (80 – 100 pcs), 1 Signature Stew, 3L Plantain + Side</span>
-              <span class="item-price"></span>
-
-              <span class="item-name">Luxury 30L Experience</span>
-              <span class="item-price">£1800</span>
-              <span class="item-name" style="font-size: 0.8rem; color: var(--muted-gray);">Classic Duo (Special Fried
-                Rice served with two half portions of Jollof Rice, White Rice, Plain Fried Rice or Coconut Fried Rice)
-                OR Signature Rice Selection (A curated tasting of Special Fried Rice, Jollof Rice, Ofada/White Rice &
-                Coconut /Vegetable Fried Rice), 5L Asun or Suya Beef, Jerk Chicken (100 – 120 pcs), 6L Ayamase or Ofada
-                Stew, 6L Plantain + Sides</span>
-              <span class="item-price"></span>
-            </div>
-          </div>
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- SIGNATURE STEWS & SAUCES                    -->
+      <!-- ═══════════════════════════════════════════ -->
+      <div class="menu-grid menu-category" id="stews">
+        <div class="category-section-header">
+          <h2 class="category-section-title">SIGNATURE STEWS & SAUCES</h2>
+          <p class="category-section-desc">Authentic Nigerian flavours, slow-cooked to perfection</p>
         </div>
 
         <div class="menu-card">
           <div class="card-header">
-            <div>
-              <h3 class="card-title">SIGNATURE RICE TRAYS</h3>
-            </div>
-          </div>
-          <div class="card-content">
-            <div class="price-grid">
-              <span class="item-name">Segis Signature Asun Rice (Spicy smoky jollof rice with grilled peppered goat
-                meat)</span>
-              <span class="item-price">Half/Full – £100/£180</span>
-              <span class="item-name">Suya Fried Rice (Fried rice tossed with grilled suya beef & spices)</span>
-              <span class="item-price">Half/Full £100/£180</span>
-              <span class="item-name">Seafood Jollof (Rich jollof rice cooked with prawns, fish & seafood mix)</span>
-              <span class="item-price">Half/Full – £120/£200</span>
-              <span class="item-name">Coconut Jollof Rice (Light, aromatic jollof cooked in coconut milk)</span>
-              <span class="item-price">Half/Full – £80/£135</span>
-              <span class="item-name">Pepper Turkey Jollof (Jollof rice mix with spicy peppered turkey)</span>
-              <span class="item-price">Half/Full – £100/£180</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="menu-card">
-          <div class="card-header">
-            <div>
-              <h3 class="card-title">SIGNATURE STEWS & SAUCES</h3>
-            </div>
+            <div><h3 class="card-title">SIGNATURE STEWS & SAUCES</h3></div>
           </div>
           <div class="card-content">
             <div class="price-grid">
@@ -2206,9 +856,7 @@
 
         <div class="menu-card">
           <div class="card-header">
-            <div>
-              <h3 class="card-title">TRADITIONAL SOUPS</h3>
-            </div>
+            <div><h3 class="card-title">🍲 TRADITIONAL SOUPS</h3></div>
           </div>
           <div class="card-content">
             <div class="price-grid">
@@ -2225,12 +873,131 @@
             </div>
           </div>
         </div>
+      </div>
 
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- COOLER / POT / TRAY SERVICE                 -->
+      <!-- ═══════════════════════════════════════════ -->
+      <div class="menu-grid menu-category" id="cooler">
+        <div class="category-section-header">
+          <h2 class="category-section-title">COOLER / POT / TRAY SERVICE</h2>
+          <p class="category-section-desc">📦 30 Litres (Premium/Signature Events) • 24 Litres (Standard/Small Events) • All prices exclude delivery charges</p>
+        </div>
+
+        <!-- Serving Guide -->
+        <div class="menu-card">
+          <div class="card-header">
+            <div><h3 class="card-title">👥 SERVING GUIDE</h3></div>
+          </div>
+          <div class="card-content">
+            <ul>
+              <li>30L Cooler: 35–50 guests (depending on portion size)</li>
+              <li>24L Cooler: 20–35 guests (depending on portion size)</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 30L Packages -->
+        <div class="menu-card">
+          <span class="package-badge">Premium</span>
+          <div class="card-header">
+            <div>
+              <h3 class="card-title">🍚 30L COOLER PACKAGES</h3>
+              <p class="card-subtitle">Premium Range</p>
+            </div>
+          </div>
+          <div class="card-content">
+            <h4>🥇 Essential 30L Package — £550</h4>
+            <ul>
+              <li>1 Rice (Jollof / Fried / White)</li>
+              <li>1 Protein (Chicken or Beef) 30–45 pcs</li>
+              <li>1 Stew (Tomato or Ayamase)</li>
+              <li>Plantain</li>
+            </ul>
+            <h4>🥈 Signature 30L Package — £750</h4>
+            <ul>
+              <li>1 Rice or Half & half</li>
+              <li>2 Proteins (50–60 pcs)</li>
+              <li>1 Signature Stew</li>
+              <li>Plantain</li>
+            </ul>
+            <h4>🥉 Premium 30L Package — £1,400</h4>
+            <ul>
+              <li>2 Rice Options</li>
+              <li>2 Proteins (80–100 pcs)</li>
+              <li>1 Signature Stew</li>
+              <li>3L Plantain + Side</li>
+            </ul>
+            <h4>👑 Luxury 30L Experience — £1,800</h4>
+            <ul>
+              <li>Classic Duo (Special Fried Rice + two half portions: Jollof, White, Plain Fried or Coconut Fried Rice) OR Signature Rice Selection (Special Fried, Jollof, Ofada/White & Coconut/Vegetable Fried Rice in equal portions)</li>
+              <li>5L Asun or Suya Beef</li>
+              <li>Jerk Chicken (100–120 pcs)</li>
+              <li>6L Ayamase or Ofada Stew</li>
+              <li>6L Plantain + Sides</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 24L Rice Selection -->
+        <div class="menu-card">
+          <span class="package-badge">Signature</span>
+          <div class="card-header">
+            <div>
+              <h3 class="card-title">🍚 24L COOLER – RICE SELECTION</h3>
+              <p class="card-subtitle">Signature Range</p>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="price-grid">
+              <span class="item-name">Jollof Rice</span>
+              <span class="item-price">£130 | Half: £75</span>
+              <span class="item-name">Jollof Rice 30L</span>
+              <span class="item-price">£160 | Half: £90</span>
+              <span class="item-name">Fried Rice without Prawns</span>
+              <span class="item-price">£140 | Half: £80</span>
+              <span class="item-name">Fried Rice with Prawns</span>
+              <span class="item-price">£160 | Half: £90</span>
+              <span class="item-name">White Rice</span>
+              <span class="item-price">£75</span>
+              <span class="item-name">Special Fried Rice (prawns, chicken, bacon/smoked turkey)</span>
+              <span class="item-price">£205 | Half: £120</span>
+              <span class="item-name">Coconut Rice</span>
+              <span class="item-price">£175 | Half: £95</span>
+              <span class="item-name">Ofada Rice</span>
+              <span class="item-price">£180 | Half: £100</span>
+              <span class="item-name">Rice & Peas</span>
+              <span class="item-price">£160</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Swallow -->
         <div class="menu-card">
           <div class="card-header">
             <div>
-              <h3 class="card-title">SOUPS & LIGHT MEALS</h3>
+              <h3 class="card-title">🍽️ SWALLOW</h3>
+              <p class="card-subtitle">Minimum 20 wraps</p>
             </div>
+          </div>
+          <div class="card-content">
+            <div class="price-grid">
+              <span class="item-name">Pounded Yam</span>
+              <span class="item-price">£3.50 / wrap</span>
+              <span class="item-name">Amala</span>
+              <span class="item-price">£3.50 / wrap</span>
+              <span class="item-name">Eba</span>
+              <span class="item-price">£2.50 / wrap</span>
+              <span class="item-name">Semolina</span>
+              <span class="item-price">£3 / wrap</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Soups & Light Meals -->
+        <div class="menu-card">
+          <div class="card-header">
+            <div><h3 class="card-title">🍲 SOUPS & LIGHT MEALS</h3></div>
           </div>
           <div class="card-content">
             <div class="price-grid">
@@ -2246,11 +1013,12 @@
           </div>
         </div>
 
+        <!-- Salads -->
         <div class="menu-card">
           <div class="card-header">
             <div>
-              <h3 class="card-title">SALADS & FRESH SIDES</h3>
-              <p class="card-subtitle">Sizes: S/M/L</p>
+              <h3 class="card-title">🥗 SALADS & FRESH SIDES</h3>
+              <p class="card-subtitle">Sizes: S / M / L</p>
             </div>
           </div>
           <div class="card-content">
@@ -2265,11 +1033,10 @@
           </div>
         </div>
 
+        <!-- Special Party Dishes -->
         <div class="menu-card">
           <div class="card-header">
-            <div>
-              <h3 class="card-title">SPECIAL PARTY DISHES</h3>
-            </div>
+            <div><h3 class="card-title">🍖 SPECIAL PARTY DISHES</h3></div>
           </div>
           <div class="card-content">
             <div class="price-grid">
@@ -2277,19 +1044,18 @@
               <span class="item-price">£420</span>
               <span class="item-name">Spicy Gizzard & Dodo</span>
               <span class="item-price">£300 (Cooler) | £160 (Tray)</span>
-              <span class="item-name">Yam Pottage (Asaro)</span>
-              <span class="item-price">£200/£280 (with or without Assorted Meat Stew and plantain)</span>
+              <span class="item-name">Yam Pottage (Asaro) – with or without Assorted Meat Stew and plantain</span>
+              <span class="item-price">£200 / £280</span>
               <span class="item-name">Curry Goat</span>
               <span class="item-price">£370</span>
             </div>
           </div>
         </div>
 
+        <!-- Sides & Add-Ons -->
         <div class="menu-card">
           <div class="card-header">
-            <div>
-              <h3 class="card-title">SIDES & ADD-ONS</h3>
-            </div>
+            <div><h3 class="card-title">🍌 SIDES & ADD-ONS</h3></div>
           </div>
           <div class="card-content">
             <div class="price-grid">
@@ -2299,64 +1065,100 @@
               <span class="item-price">£140</span>
               <span class="item-name">Loaded Fried Yam</span>
               <span class="item-price">£160–£180</span>
-              <span class="item-name">Moi Moi Leaf /foil (50 pcs)</span>
+              <span class="item-name">Moi Moi Leaf / Foil (50 pcs)</span>
               <span class="item-price">£140 / £110</span>
             </div>
-            <h4>Add-On Experience: Small Chops On The Spot</h4>
-            <p>Bring your event to life with our live small chops station, where everything is freshly prepared and
-              served hot to your guests.</p>
-            <p><strong>What's Included:</strong> Live frying & serving station, Freshly made small chops such as:
-              Puff-puff, Samosas, Spring rolls, Fried yam, Plantain, Chicken wings, Fried crispy sardine bites</p>
-            <p><em>Perfect for creating an interactive, vibrant food experience your guests will remember. Minimum
-                booking applies.</em></p>
+            <h4>🔥 Add-On Experience: Small Chops On The Spot</h4>
+            <p style="font-size:0.85rem;color:var(--soft-white);margin-bottom:10px;">Bring your event to life with our live small chops station, where everything is freshly prepared and served hot to your guests.</p>
+            <p style="font-size:0.85rem;color:var(--champagne);font-weight:600;margin-bottom:6px;">What's Included:</p>
+            <ul>
+              <li>Live frying & serving station</li>
+              <li>Puff-puff</li>
+              <li>Samosas</li>
+              <li>Spring rolls</li>
+              <li>Fried yam</li>
+              <li>Plantain</li>
+              <li>Chicken wings</li>
+              <li>Fried crispy sardine bites</li>
+            </ul>
+            <p class="card-note">Perfect for creating an interactive, vibrant food experience your guests will remember. Minimum booking applies.</p>
+          </div>
+        </div>
+
+        <!-- Signature Rice Trays -->
+        <div class="menu-card">
+          <div class="card-header">
+            <div><h3 class="card-title">SIGNATURE RICE TRAYS</h3></div>
+          </div>
+          <div class="card-content">
+            <div class="price-grid">
+              <span class="item-name">Segi's Signature Asun Rice – Spicy smoky jollof rice with grilled peppered goat meat</span>
+              <span class="item-price">Half/Full – £100/£180</span>
+              <span class="item-name">Suya Fried Rice – Fried rice tossed with grilled suya beef & spices</span>
+              <span class="item-price">Half/Full – £100/£180</span>
+              <span class="item-name">🍤 Seafood Jollof – Rich jollof rice cooked with prawns, fish & seafood mix</span>
+              <span class="item-price">Half/Full – £120/£200</span>
+              <span class="item-name">🥥 Coconut Jollof Rice – Light, aromatic jollof cooked in coconut milk</span>
+              <span class="item-price">Half/Full – £80/£135</span>
+              <span class="item-name">🌶️ Pepper Turkey Jollof – Jollof rice mixed with spicy peppered turkey</span>
+              <span class="item-price">Half/Full – £100/£180</span>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Aroma Bites & Small Chops Collection -->
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- AROMA BITES & SMALL CHOPS                   -->
+      <!-- ═══════════════════════════════════════════ -->
       <div class="menu-grid menu-category" id="smallchops">
         <div class="category-section-header">
           <h2 class="category-section-title">Aroma Bites & Small Chops Collection</h2>
           <p class="category-section-desc">(Luxury Small Chops & Finger Foods for Every Occasion)</p>
         </div>
+
+        <!-- Puff-Puff -->
         <div class="menu-card">
           <div class="card-header">
-            <div>
-              <h3 class="card-title">SMALL CHOPS (CORE ITEMS)</h3>
-            </div>
+            <div><h3 class="card-title">🥟 SMALL CHOPS – CORE ITEMS</h3></div>
           </div>
           <div class="card-content">
             <h4>PUFF-PUFF (Per Cooler)</h4>
+            <p style="font-size:0.85rem;color:var(--champagne);margin:8px 0 4px;">Plain Puff-Puff</p>
             <div class="price-grid">
-              <span class="item-name">Plain Puff-Puff</span>
-              <span class="item-price">Full Cooler – £75 | Half Cooler – £40</span>
-              <span class="item-name">Oreo / Cinnamon Sugar</span>
-              <span class="item-price">Full Cooler – £90 / £80 | Half Cooler – £50 / £45</span>
+              <span class="item-name">Full Cooler</span><span class="item-price">£75</span>
+              <span class="item-name">Half Cooler</span><span class="item-price">£40</span>
+            </div>
+            <p style="font-size:0.85rem;color:var(--champagne);margin:12px 0 4px;">Oreo / Cinnamon Sugar</p>
+            <div class="price-grid">
+              <span class="item-name">Full Cooler</span><span class="item-price">£90 / £80</span>
+              <span class="item-name">Half Cooler</span><span class="item-price">£50 / £45</span>
             </div>
           </div>
         </div>
 
+        <!-- Pies & Rolls -->
         <div class="menu-card">
           <div class="card-header">
-            <div>
-              <h3 class="card-title">PIES & ROLLS</h3>
-            </div>
+            <div><h3 class="card-title">🥧 PIES & ROLLS</h3></div>
           </div>
           <div class="card-content">
             <div class="price-grid">
-              <span class="item-name">Meat / Chicken / Veggie Pie</span>
-              <span class="item-price">Large – £2.50 each | Medium – £1.50 each</span>
-              <span class="item-name">Sausage Rolls / Fish Rolls</span>
-              <span class="item-price">£2.50 each / £1.50 each (medium)</span>
+              <span class="item-name">Meat / Chicken / Veggie Pie – Large</span>
+              <span class="item-price">£2.50 each</span>
+              <span class="item-name">Meat / Chicken / Veggie Pie – Medium</span>
+              <span class="item-price">£1.50 each</span>
+              <span class="item-name">Sausage Rolls</span>
+              <span class="item-price">£2.50 each</span>
+              <span class="item-name">Fish Rolls (medium)</span>
+              <span class="item-price">£1.50 each</span>
             </div>
           </div>
         </div>
 
+        <!-- Spring Rolls -->
         <div class="menu-card">
           <div class="card-header">
-            <div>
-              <h3 class="card-title">SPRING ROLLS</h3>
-            </div>
+            <div><h3 class="card-title">🥢 SPRING ROLLS</h3></div>
           </div>
           <div class="card-content">
             <div class="price-grid">
@@ -2368,360 +1170,198 @@
           </div>
         </div>
 
+        <!-- Samosas -->
         <div class="menu-card">
           <div class="card-header">
-            <div>
-              <h3 class="card-title">SAMOSAS</h3>
-            </div>
+            <div><h3 class="card-title">🥟 SAMOSAS</h3></div>
           </div>
           <div class="card-content">
+            <h4>Chicken Samosa</h4>
             <div class="price-grid">
-              <span class="item-name">Chicken Samosa</span>
-              <span class="item-price">Full Tray (min. 140 pcs) – £120 | Half Tray (min. 60 pcs) – £55</span>
-              <span class="item-name">Vegetable Samosa</span>
-              <span class="item-price">Full Tray (min. 160 pcs) – £120 | Half Tray (min. 80 pcs) – £70</span>
+              <span class="item-name">Full Tray (min. 140 pcs)</span><span class="item-price">£120</span>
+              <span class="item-name">Half Tray (min. 60 pcs)</span><span class="item-price">£55</span>
+            </div>
+            <h4>Vegetable Samosa</h4>
+            <div class="price-grid">
+              <span class="item-name">Full Tray (min. 160 pcs)</span><span class="item-price">£120</span>
+              <span class="item-name">Half Tray (min. 80 pcs)</span><span class="item-price">£70</span>
             </div>
           </div>
         </div>
 
+        <!-- Grilled & Protein Bites -->
         <div class="menu-card">
           <div class="card-header">
-            <div>
-              <h3 class="card-title">FRIED PROTEIN BITES</h3>
-            </div>
+            <div><h3 class="card-title">🍗 GRILLED & PROTEIN BITES</h3></div>
           </div>
           <div class="card-content">
+            <h4>Suya Stick Meat</h4>
             <div class="price-grid">
-              <span class="item-name">Fried Chicken Wings</span>
-              <span class="item-price">Full Tray (min. 100 pcs) – £200 | Half Tray (min. 50 pcs) – £100</span>
-              <span class="item-name">Fried Prawns</span>
-              <span class="item-price">Full Tray (min. 100 pcs) – £300 | Half Tray (min. 50 pcs) – £150</span>
-              <span class="item-name">Fried Fish</span>
-              <span class="item-price">Full Tray (min. 100 pcs) – £250 | Half Tray (min. 50 pcs) – £125</span>
-              <span class="item-name">Fried Beef</span>
-              <span class="item-price">Full Tray (min. 100 pcs) – £250 | Half Tray (min. 50 pcs) – £125</span>
-              <span class="item-name">Sardine Bites</span>
-              <span class="item-price">Full Tray (min. 100 pcs) – £200 | Half Tray (min. 50 pcs) – £100</span>
+              <span class="item-name">100 pcs</span><span class="item-price">£280 / £450</span>
+              <span class="item-name">45 pcs</span><span class="item-price">£160 / £230</span>
+            </div>
+            <h4>Stick Chicken / Gizzard</h4>
+            <div class="price-grid">
+              <span class="item-name">100 pcs</span><span class="item-price">£250</span>
+              <span class="item-name">45 pcs</span><span class="item-price">£130</span>
+            </div>
+            <h4>Jerk Chicken Wings</h4>
+            <div class="price-grid">
+              <span class="item-name">45 pcs</span><span class="item-price">£60</span>
+              <span class="item-name">100 pcs</span><span class="item-price">£120</span>
+            </div>
+            <div class="price-grid" style="margin-top:12px;">
+              <span class="item-name">Fried Sardine Bites</span><span class="item-price">£80 (tray)</span>
+              <span class="item-name">Saltfish Fritters</span><span class="item-price">£60 (45 pcs)</span>
+              <span class="item-name">Peppered Snails</span><span class="item-price">£15 per portion</span>
             </div>
           </div>
         </div>
 
+        <!-- Assorted Party Trays -->
         <div class="menu-card">
           <div class="card-header">
-            <div>
-              <h3 class="card-title">FRIES & PLANTAIN</h3>
-            </div>
+            <div><h3 class="card-title">🎉 ASSORTED PARTY TRAYS</h3></div>
           </div>
           <div class="card-content">
-            <div class="price-grid">
-              <span class="item-name">Sweet Potato Fries</span>
-              <span class="item-price">Full Tray – £140 | Half Tray – £70</span>
-              <span class="item-name">Fried Plantain</span>
-              <span class="item-price">Full Tray – £160 | Half Tray – £85</span>
-            </div>
+            <h4>🥡 Classic Assorted Tray – £150</h4>
+            <p style="font-size:0.85rem;color:var(--soft-white);margin-bottom:8px;">Choose any 3 items:</p>
+            <ul>
+              <li>Spring Rolls</li>
+              <li>Samosas</li>
+              <li>Puff-Puff</li>
+              <li>Meat Pie</li>
+              <li>Chicken Wings</li>
+            </ul>
+            <h4>🥡 Premium Assorted Tray – £250</h4>
+            <p style="font-size:0.85rem;color:var(--soft-white);margin-bottom:8px;">Choose any 3 items:</p>
+            <ul>
+              <li>Fried Prawns</li>
+              <li>Fried Fish</li>
+              <li>Fried Beef / Smoked Turkey</li>
+              <li>Jerk Chicken / Salt & Pepper Wings</li>
+              <li>Caramelised Plantain & Stir-Fry</li>
+              <li>Fried Yam / Sweet Potato Fries</li>
+              <li>Fried Sardine Bites</li>
+            </ul>
           </div>
         </div>
 
+        <!-- Small Chops Platters -->
         <div class="menu-card">
           <div class="card-header">
-            <div>
-              <h3 class="card-title">🎉 ASSORTED PARTY TRAYS</h3>
-            </div>
-          </div>
-          <div class="card-content">
-            <h4>Classic Tray – £150</h4>
-            <p>Choose 3: Spring Rolls, Samosas, Puff-Puff, Meat Pie, Chicken Wings</p>
-            <h4>Premium Tray – £250</h4>
-            <p>Choose 3: Fried Prawns, Fried Fish, Fried Beef, Jerk Chicken, Plantain, Sweet Potato Fries, Sardine
-              Bites, Smoked Turkey, Salt & Pepper Wings, Caramelised Plantain & Stir-Fry, Fried Yam</p>
-          </div>
-        </div>
-
-        <div class="menu-card">
-          <div class="card-header">
-            <div>
-              <h3 class="card-title">SMALL CHOPS PLATTERS</h3>
-            </div>
+            <div><h3 class="card-title">🍱 SMALL CHOPS PLATTERS</h3></div>
           </div>
           <div class="card-content">
             <div class="price-grid">
-              <span class="item-name">Small (10-12 people)</span>
-              <span class="item-price">£75</span>
-              <span class="item-name">Medium (20-25 people)</span>
-              <span class="item-price">£150</span>
-              <span class="item-name">Large (25-30 people)</span>
-              <span class="item-price">£200</span>
+              <span class="item-name">Small (10–12 people)</span><span class="item-price">£75</span>
+              <span class="item-name">Medium (20–25 people)</span><span class="item-price">£150</span>
+              <span class="item-name">Large (25–30 people)</span><span class="item-price">£200</span>
             </div>
+            <h4>Includes:</h4>
+            <ul>
+              <li>Spring Rolls</li>
+              <li>Samosas</li>
+              <li>Puff-Puff</li>
+              <li>Chicken Wings</li>
+            </ul>
           </div>
         </div>
 
+        <!-- Premium Add-Ons -->
         <div class="menu-card">
           <div class="card-header">
-            <div>
-              <h3 class="card-title">GRILLED & SKEWER BITES</h3>
-            </div>
+            <div><h3 class="card-title">➕ PREMIUM ADD-ONS</h3></div>
           </div>
           <div class="card-content">
+            <h4>🍤 Prawn Skewers</h4>
             <div class="price-grid">
-              <span class="item-name">Suya Stick Meat</span>
-              <span class="item-price">Full Tray (min. 100 pcs) – £280–£450 | Half Tray (min. 45 pcs) – £160–£230</span>
-              <span class="item-name">Stick Chicken/Gizzard</span>
-              <span class="item-price">Full Tray (min. 100 pcs) – £250 | Half Tray (min. 45 pcs) – £130</span>
-              <span class="item-name">Jerk Chicken Wings</span>
-              <span class="item-price">Full Tray (min. 100 pcs) – £120 | Half Tray (min. 45 pcs) – £60</span>
-              <span class="item-name">Saltfish Fritters</span>
-              <span class="item-price">Full Tray (min. 100 pcs) – £120 | Half Tray (min. 45 pcs) – £60</span>
-              <span class="item-name">Peppered Snails</span>
-              <span class="item-price">£15 per portion</span>
+              <span class="item-name">50 pcs</span><span class="item-price">£70</span>
+              <span class="item-name">100 pcs</span><span class="item-price">£130</span>
+              <span class="item-name">Per head add-on</span><span class="item-price">£4pp</span>
             </div>
-          </div>
-        </div>
-
-        <div class="menu-card">
-          <div class="card-header">
-            <div>
-              <h3 class="card-title">PREMIUM ADD-ONS</h3>
-            </div>
-          </div>
-          <div class="card-content">
+            <h4>🍔 Mini Burgers (Small Chops Style)</h4>
             <div class="price-grid">
-              <span class="item-name">Prawn Skewers</span>
-              <span class="item-price">Full Tray (min. 100 pcs) – £130 | Half Tray (min. 50 pcs) – £70</span>
-              <span class="item-name">Mini Burgers</span>
-              <span class="item-price">Full Tray (min. 100 pcs) – £160 | Half Tray (min. 50 pcs) – £85 | Quarter Tray
-                (min. 20 pcs) – £40</span>
-              <span class="item-name">Chicken Lollipops</span>
-              <span class="item-price">Full Tray (min. 100 pcs) – £110 | Half Tray (min. 50 pcs) – £60</span>
-              <span class="item-name">Loaded Fries – Suya or Jerk</span>
-              <span class="item-price">Full Tray – £75 | Half Tray – £40</span>
+              <span class="item-name">20 pcs</span><span class="item-price">£40</span>
+              <span class="item-name">50 pcs</span><span class="item-price">£85</span>
+              <span class="item-name">100 pcs</span><span class="item-price">£160</span>
             </div>
-            <p class="card-note">Prawn Skewers +£4pp • Chicken Lollipops +£3pp • Loaded Fries +£4–£5pp</p>
+            <h4>🍗 Chicken Lollipops</h4>
+            <div class="price-grid">
+              <span class="item-name">50 pcs</span><span class="item-price">£60</span>
+              <span class="item-name">100 pcs</span><span class="item-price">£110</span>
+              <span class="item-name">Per head add-on</span><span class="item-price">£3pp</span>
+            </div>
+            <h4>🍟 Loaded Fries (Suya or Jerk)</h4>
+            <div class="price-grid">
+              <span class="item-name">Small Tray</span><span class="item-price">£40</span>
+              <span class="item-name">Large Tray</span><span class="item-price">£75</span>
+              <span class="item-name">Per head add-on</span><span class="item-price">£4–£5pp</span>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Premium Proteins -->
-      <div class="menu-grid menu-category" id="proteins">
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- COOKING EQUIPMENT HIRE                      -->
+      <!-- ═══════════════════════════════════════════ -->
+      <div class="menu-grid menu-category" id="equipment">
         <div class="category-section-header">
-          <h2 class="category-section-title">Chef's Premium Proteins</h2>
-          <p class="category-section-desc">(Signature Cuts & Premium Quality Meats)</p>
+          <h2 class="category-section-title">COOKING EQUIPMENT HIRE</h2>
+          <p class="category-section-desc">Everything you need for smooth service at your event</p>
         </div>
         <div class="menu-card">
           <div class="card-header">
-            <div>
-              <h3 class="card-title">CHEF'S PREMIUM PROTEINS</h3>
-            </div>
-          </div>
-          <div class="card-content">
-            <div class="price-grid">
-              <span class="item-name">Lamb Chops</span>
-              <span class="item-price">£6 per piece</span>
-              <span class="item-name">Quarter Chicken</span>
-              <span class="item-price">£5 per piece</span>
-              <span class="item-name">Peppered Snails</span>
-              <span class="item-price">£15–£18 each</span>
-              <span class="item-name">Fried Chicken</span>
-              <span class="item-price">Full Tray (min. 100 pcs) – £220 | Half Tray (min. 50 pcs) – £120</span>
-              <span class="item-name">Fried Turkey</span>
-              <span class="item-price">Full Tray (min. 100 pcs) – £280 | Half Tray (min. 50 pcs) – £150</span>
-              <span class="item-name">Smoked Turkey</span>
-              <span class="item-price">Full Tray (min. 100 pcs) – £320 | Half Tray (min. 50 pcs) – £175</span>
-              <span class="item-name">Jerk Chicken</span>
-              <span class="item-price">Full Tray (min. 100 pcs) – £220 | Half Tray (min. 50 pcs) – £120</span>
-              <span class="item-name">Signature Peppered Fish</span>
-              <span class="item-price">Full Tray (min. 100 pcs) – £380 | Half Tray (min. 50 pcs) – £200</span>
-              <span class="item-name">Suya Beef Skewers</span>
-              <span class="item-price">Full Tray (min. 100 pcs) – £380 | Half Tray (min. 45 pcs) – £190</span>
-              <span class="item-name">Asun (Goat Meat)</span>
-              <span class="item-price">Full Cooler – £420 | Half Cooler – £210</span>
-              <span class="item-name">Turkey in Pepper Sauce</span>
-              <span class="item-price">Full Tray – £350 | Half Tray – £175</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="menu-card">
-          <div class="card-header">
-            <div>
-              <h3 class="card-title">Swallow & Sides</h3>
-              <p class="card-subtitle">Traditional accompaniments</p>
-            </div>
-          </div>
-          <div class="card-content">
-            <h4>Swallow (Min 20 wraps)</h4>
-            <div class="price-grid">
-              <span class="item-name">Pounded Yam</span>
-              <span class="item-price">£3.50 / wrap</span>
-              <span class="item-name">Amala</span>
-              <span class="item-price">£3.50 / wrap</span>
-              <span class="item-name">Eba</span>
-              <span class="item-price">£2.50 / wrap</span>
-              <span class="item-name">Semolina</span>
-              <span class="item-price">£3 / wrap</span>
-            </div>
-            <h4>Sides & Extras</h4>
-            <div class="price-grid">
-              <span class="item-name">Fried Plantain</span>
-              <span class="item-price">£160 / Half £85</span>
-              <span class="item-name">Sweet Potato Fries</span>
-              <span class="item-price">£140</span>
-              <span class="item-name">Loaded Fried Yam</span>
-              <span class="item-price">£160-£180</span>
-              <span class="item-name">Moi Moi Leaf (50 pcs)</span>
-              <span class="item-price">£140</span>
-              <span class="item-name">Moi Moi Foil (50 pcs)</span>
-              <span class="item-price">£110</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="menu-card">
-          <div class="card-header">
-            <div>
-              <h3 class="card-title">Salads & Fresh Sides</h3>
-              <p class="card-subtitle">Light & refreshing</p>
-            </div>
-          </div>
-          <div class="card-content">
-            <div class="price-grid">
-              <span class="item-name">Coleslaw (S / M / L)</span>
-              <span class="item-price">£55 / £75 / £100</span>
-              <span class="item-name">Pasta Salad (M / L)</span>
-              <span class="item-price">£80 / £120</span>
-              <span class="item-name">Vegetable Salad (S / M)</span>
-              <span class="item-price">£50 / £90</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="menu-card">
-          <div class="card-header">
-            <div>
-              <h3 class="card-title">COOKING EQUIPMENT HIRE</h3>
-            </div>
+            <div><h3 class="card-title">EQUIPMENT HIRE</h3></div>
           </div>
           <div class="card-content">
             <div class="price-grid">
               <span class="item-name">Chafing Dishes</span>
-              <span class="item-price">£5 each | £8 for 2</span>
-              <span class="item-name">Chafing Dish Gel</span>
-              <span class="item-price">£6 for 2</span>
-              <span class="item-name">Serving Utensils</span>
-              <span class="item-price">£2 per set</span>
-              <span class="item-name">Tablecloths</span>
-              <span class="item-price">£3 each</span>
-              <span class="item-name">Popcorn Machine</span>
-              <span class="item-price">£50</span>
-              <span class="item-name">Candyfloss Machine</span>
-              <span class="item-price">£50</span>
-              <span class="item-name">Hot Dog Machine</span>
-              <span class="item-price">£50</span>
-              <span class="item-name">Waffle Machine</span>
-              <span class="item-price">£50</span>
-              <span class="item-name">Chocolate Fountain</span>
-              <span class="item-price">£50</span>
+              <span class="item-price">2 for £8 | £5 each</span>
+              <span class="item-name">Chafing Gel</span>
+              <span class="item-price">2 for £6</span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Kids Party -->
-      <div class="menu-grid menu-category" id="kids">
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- QUANTITY & ORDERING GUIDE                   -->
+      <!-- ═══════════════════════════════════════════ -->
+      <div class="menu-grid menu-category" id="ordering">
         <div class="category-section-header">
-          <h2 class="category-section-title">Little Aroma Party Package</h2>
-          <p class="category-section-desc">Perfect for small gatherings, home events & weekend orders — all portions are
-            party trays</p>
+          <h2 class="category-section-title">QUANTITY & ORDERING GUIDE</h2>
+          <p class="category-section-desc">24L Cooler – how much to order for your guest count</p>
         </div>
         <div class="menu-card">
           <div class="card-header">
-            <div>
-              <h3 class="card-title">Little Aroma £180</h3>
-              <p class="card-subtitle">Feeds 10-15 guests</p>
-            </div>
-            <div class="card-price">£180</div>
+            <div><h3 class="card-title">👥 For 25–35 Guests</h3></div>
           </div>
           <div class="card-content">
-            <ul>
-              <li>4L Jollof Rice</li>
-              <li>4L Fried Rice</li>
-              <li>30 pcs Chicken</li>
-              <li>2L Plantain</li>
-            </ul>
-          </div>
-          <p class="card-note">Perfect for small gatherings & weekend orders</p>
-        </div>
-
-        <div class="menu-card">
-          <span class="package-badge">Popular</span>
-          <div class="card-header">
-            <div>
-              <h3 class="card-title">Little Aroma £220</h3>
-              <p class="card-subtitle">Feeds 15-20 guests</p>
-            </div>
-            <div class="card-price">£220</div>
-          </div>
-          <div class="card-content">
-            <ul>
-              <li>4L Jollof Rice</li>
-              <li>4L Coconut or Fried Rice</li>
-              <li>40 pcs Chicken</li>
-              <li>3L Plantain</li>
-              <li>Gizzard Dodo (2L)</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="menu-card">
-          <div class="card-header">
-            <div>
-              <h3 class="card-title">Little Aroma £250</h3>
-              <p class="card-subtitle">Feeds 20-25 guests</p>
-            </div>
-            <div class="card-price">£250</div>
-          </div>
-          <div class="card-content">
-            <ul>
-              <li>8L Jollof Rice</li>
-              <li>4L Fried/Coconut Rice</li>
-              <li>50 pcs Chicken</li>
-              <li>3-4L Plantain</li>
-              <li>Gizzard Dodo (3L)</li>
-              <li>Moi-Moi (15 cups)</li>
-            </ul>
-          </div>
-          <p class="card-note">All portions are party trays (not individual plates)</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Ordering Guide Section -->
-    <section class="menu-section" style="padding-top: 0;">
-      <div class="section-header">
-        <p class="subtitle">Planning Your Order</p>
-        <h2>Quantity & Ordering Guide</h2>
-        <div class="divider"></div>
-      </div>
-      <div class="menu-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-        <div class="menu-card">
-          <div class="card-header">
-            <div>
-              <h3 class="card-title">SERVING GUIDES</h3>
-            </div>
-          </div>
-          <div class="card-content">
-            <h4>24L Cooler (25–35 Guests)</h4>
             <ul>
               <li>1 Cooler Rice</li>
               <li>1 Protein (50 pcs)</li>
               <li>1 Side + 1 Soup</li>
             </ul>
-            <h4>30L Cooler (50–70 Guests)</h4>
+          </div>
+        </div>
+        <div class="menu-card">
+          <div class="card-header">
+            <div><h3 class="card-title">👥 For 50–70 Guests</h3></div>
+          </div>
+          <div class="card-content">
             <ul>
-              <li>2 Coolers Rice</li>
+              <li>2 Coolers (Rice)</li>
               <li>100 pcs Chicken/Protein</li>
               <li>2 Sides + 2 Soups</li>
             </ul>
-            <h4>Large Events (100–120 Guests)</h4>
+          </div>
+        </div>
+        <div class="menu-card">
+          <div class="card-header">
+            <div><h3 class="card-title">👥 For 100–120 Guests</h3></div>
+          </div>
+          <div class="card-content">
             <ul>
               <li>3–4 Coolers</li>
               <li>150–200 pcs Protein</li>
@@ -2729,42 +1369,8 @@
             </ul>
           </div>
         </div>
-
-        <div class="menu-card">
-          <div class="card-header">
-            <div>
-              <h3 class="card-title">📋 ORDERING TIPS</h3>
-            </div>
-          </div>
-          <div class="card-content">
-            <ul>
-              <li><strong>Advance Booking:</strong> Minimum 48 hours notice required</li>
-              <li><strong>Minimum Order:</strong> £150 for delivery</li>
-              <li><strong>Delivery Fee:</strong> £10–£20 (based on location)</li>
-              <li><strong>Setup Time:</strong> 30–45 minutes for full service</li>
-              <li><strong>Payment:</strong> 50% deposit required</li>
-              <li><strong>Cancellations:</strong> 24 hours notice for refund</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="menu-card">
-          <div class="card-header">
-            <div>
-              <h3 class="card-title">🎯 CUSTOMIZATION</h3>
-            </div>
-          </div>
-          <div class="card-content">
-            <ul>
-              <li><strong>Dietary Requirements:</strong> Vegetarian, Halal, Gluten-free options available</li>
-              <li><strong>Spice Levels:</strong> Mild, Medium, Hot, Extra Hot</li>
-              <li><strong>Portion Adjustments:</strong> Can be customized for your guest count</li>
-              <li><strong>Add-ons:</strong> Small chops, desserts, beverages</li>
-              <li><strong>Branding:</strong> Custom packaging and labels available</li>
-            </ul>
-          </div>
-        </div>
       </div>
+
     </section>
 
     <!-- Machine Hire Section -->
@@ -2778,8 +1384,7 @@
         <div class="hire-item">Waffle Machine</div>
         <div class="hire-item">Chocolate Fountain</div>
       </div>
-      <a href="https://wa.me/+447534644786?text=Hello!%20I%20want%20to%20hire%20a%20machine%20for%20my%20event"
-        class="btn-gold">Book Now</a>
+      <a href="https://wa.me/+447534644786?text=Hello!%20I%20want%20to%20hire%20a%20machine%20for%20my%20event" class="btn-gold">Book Now</a>
     </section>
   </main>
 
@@ -2791,60 +1396,30 @@
       <a href="tel:+447534644786">Ordering Request: +44 7534 644786</a>
     </p>
     <p class="footer-contact">Open: 09:00 AM - 10:00 PM</p>
-
     <ul class="footer-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="index.html#about">About Us</a></li>
       <li><a href="#menu">Menus</a></li>
       <li><a href="index.html#contact">Contact</a></li>
     </ul>
-
     <div class="footer-divider"></div>
     <p class="footer-copy">&copy; 2024 Segi's Kitchen Aroma. All Rights Reserved.</p>
   </footer>
 
-  <!-- Back to Top Button -->
   <button class="back-top-btn" id="backTopBtn" aria-label="Back to top">↑</button>
 
   <script>
-    /**
-   * PRELOAD
-   * 
-   * loading will be end after document is loaded
-   */
-
-
     // Mobile Navigation
     const navToggle = document.getElementById('navToggle');
     const navbar = document.getElementById('navbar');
     const overlay = document.getElementById('overlay');
 
-    function openNav() {
-      navToggle.classList.add('active');
-      navbar.classList.add('active');
-      overlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
+    function openNav() { navToggle.classList.add('active'); navbar.classList.add('active'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function closeNav() { navToggle.classList.remove('active'); navbar.classList.remove('active'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
 
-    function closeNav() {
-      navToggle.classList.remove('active');
-      navbar.classList.remove('active');
-      overlay.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-
-    navToggle.addEventListener('click', function () {
-      navbar.classList.contains('active') ? closeNav() : openNav();
-    });
-
+    navToggle.addEventListener('click', function () { navbar.classList.contains('active') ? closeNav() : openNav(); });
     overlay.addEventListener('click', closeNav);
-
-    // Close nav when a menu link is clicked (for same-page links)
-    navbar.querySelectorAll('.navbar-link').forEach(link => {
-      link.addEventListener('click', () => {
-        if (window.innerWidth <= 992) closeNav();
-      });
-    });
+    navbar.querySelectorAll('.navbar-link').forEach(link => { link.addEventListener('click', () => { if (window.innerWidth <= 992) closeNav(); }); });
 
     // Hero Slider
     const slides = document.querySelectorAll('.slider-item');
@@ -2852,66 +1427,26 @@
     let currentSlide = 0;
     let slideInterval;
 
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-      });
-      dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === index);
-      });
-      currentSlide = index;
-    }
+    function showSlide(index) { slides.forEach((s, i) => s.classList.toggle('active', i === index)); dots.forEach((d, i) => d.classList.toggle('active', i === index)); currentSlide = index; }
+    function nextSlide() { showSlide((currentSlide + 1) % slides.length); }
+    function startSlider() { slideInterval = setInterval(nextSlide, 5000); }
 
-    function nextSlide() {
-      showSlide((currentSlide + 1) % slides.length);
-    }
-
-    function startSlider() {
-      slideInterval = setInterval(nextSlide, 5000);
-    }
-
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', () => {
-        clearInterval(slideInterval);
-        showSlide(index);
-        startSlider();
-      });
-    });
-
+    dots.forEach((dot, index) => { dot.addEventListener('click', () => { clearInterval(slideInterval); showSlide(index); startSlider(); }); });
     startSlider();
 
-    // Back to Top Button
+    // Back to Top
     const backTopBtn = document.getElementById('backTopBtn');
+    window.addEventListener('scroll', function () { backTopBtn.classList.toggle('visible', window.scrollY > 400); });
+    backTopBtn.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
-    window.addEventListener('scroll', function () {
-      if (window.scrollY > 400) {
-        backTopBtn.classList.add('visible');
-      } else {
-        backTopBtn.classList.remove('visible');
-      }
-    });
-
-    backTopBtn.addEventListener('click', function () {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-
-    // Smooth scroll for anchor links
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
   </script>
 </body>
-
 </html>
