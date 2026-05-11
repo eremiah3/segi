@@ -115,26 +115,214 @@
       }
     }
 
-    /* ---------- About section — responsive image ---------- */
-    @media (max-width: 767px) {
-      .about .container {
-        display: flex;
-        flex-direction: column-reverse;
-        align-items: center;
-        gap: 40px;
-      }
+    /* ---------- About / Our Story section ---------- */
 
-      .about-banner {
-        width: 100%;
-        max-width: 400px;
-      }
+    /* --- Base (mobile-first) --- */
+    .about {
+      padding-block: 80px 60px;
+      overflow: hidden;
+    }
 
-      .abs-img {
-        display: none;
+    .about .container {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 0 !important;
+    }
+
+    .about-story-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      margin-block-end: 40px;
+    }
+
+    .about-banner {
+      width: 100%;
+      max-width: 420px;
+      margin-block-end: 0;
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      flex-shrink: 0;
+    }
+
+    .about-banner>.w-100 {
+      padding-inline-start: 0 !important;
+      display: block;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+      transition: transform 0.6s ease;
+    }
+
+    .about-banner:hover>.w-100 {
+      transform: scale(1.04);
+    }
+
+    .about .abs-img {
+      display: none;
+    }
+
+    .about .shape {
+      display: none;
+    }
+
+    .about-content {
+      text-align: center;
+      padding-inline: 0;
+    }
+
+    .about-content .section-subtitle {
+      display: inline-block;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 1.2rem;
+      color: var(--gold-crayola, #d4a54a);
+      margin-block-end: 8px;
+    }
+
+    .about-content .section-title {
+      font-size: clamp(2.8rem, 6vw, 4.8rem);
+      line-height: 1.2;
+      margin-block-end: 20px;
+    }
+
+    .story-paragraphs {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-block: 20px 28px;
+      text-align: left;
+    }
+
+    .story-paragraphs p {
+      font-size: clamp(1.35rem, 3.4vw, 1.6rem);
+      line-height: 1.9;
+      color: var(--quick-silver, #999);
+      margin: 0;
+    }
+
+    .story-paragraphs p:first-child {
+      font-size: clamp(1.5rem, 3.8vw, 1.75rem);
+      color: var(--white-alpha-60, rgba(255, 255, 255, 0.85));
+      font-weight: 500;
+    }
+
+    .about-stats {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-block: 24px 28px;
+    }
+
+    .about-stat {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 14px 18px;
+      text-align: center;
+      min-width: 88px;
+      backdrop-filter: blur(8px);
+    }
+
+    .about-stat strong {
+      display: block;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--gold-crayola, #d4a54a);
+      line-height: 1;
+    }
+
+    .about-stat span {
+      display: block;
+      font-size: 1.05rem;
+      color: var(--quick-silver, #999);
+      margin-block-start: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .contact-label {
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold-crayola, #d4a54a);
+      margin-block-end: 8px;
+    }
+
+    .contact-number {
+      display: block;
+      font-size: clamp(1.6rem, 4vw, 2rem);
+      font-weight: 600;
+      margin-block-end: 4px;
+    }
+
+    @media (min-width: 600px) {
+      .about-stats {
+        justify-content: flex-start;
       }
 
       .about-content {
-        text-align: center;
+        text-align: left;
+      }
+    }
+
+    @media (min-width: 900px) {
+      .about {
+        padding-block: 120px 80px;
+      }
+
+      .about-story-wrap {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 64px;
+      }
+
+      .about-banner {
+        max-width: 460px;
+        width: 46%;
+        border-radius: 24px;
+      }
+
+      .about .abs-img {
+        display: block;
+      }
+
+      .about .abs-img-1 {
+        bottom: -40px;
+        left: -20px;
+        width: 150px;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+      }
+
+      .about-content {
+        flex: 1;
+        text-align: left;
+        padding-inline-end: 0;
+      }
+
+      .about-stats {
+        justify-content: flex-start;
+        gap: 20px;
+      }
+
+      .about-stat {
+        min-width: 110px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .about-story-wrap {
+        gap: 90px;
+      }
+
+      .about-banner {
+        max-width: 520px;
       }
     }
 
@@ -756,7 +944,7 @@
               <div class="service-card">
                 <a href="#" class="has-before hover:shine">
                   <figure class="card-banner img-holder" style="--width: 285; --height: 336;">
-                    <img src="assets/images/service-1.jpg" width="285" height="336" loading="lazy" alt="Food Order"
+                    <img src="assets/images/image3.jpeg" width="285" height="336" loading="lazy" alt="Food Order"
                       class="img-cover">
                   </figure>
                 </a>
@@ -775,7 +963,7 @@
               <div class="service-card">
                 <a href="#" class="has-before hover:shine">
                   <figure class="card-banner img-holder" style="--width: 285; --height: 336;">
-                    <img src="assets/images/service-2.jpg" width="285" height="336" loading="lazy" alt="Parties"
+                    <img src="assets/images/image2.jpeg" width="285" height="336" loading="lazy" alt="Parties"
                       class="img-cover">
                   </figure>
                 </a>
@@ -793,7 +981,7 @@
               <div class="service-card">
                 <a href="#" class="has-before hover:shine">
                   <figure class="card-banner img-holder" style="--width: 285; --height: 336;">
-                    <img src="assets/images/service-3.jpg" width="285" height="336" loading="lazy" alt="Weddings"
+                    <img src="assets/images/image1.jpeg" width="285" height="336" loading="lazy" alt="Weddings"
                       class="img-cover">
                   </figure>
                 </a>
@@ -818,52 +1006,41 @@
       </section>
 
       <!-- #ABOUT -->
-      <section class="section about text-center" aria-labelledby="about-label" id="about">
+      <section class="section about" aria-labelledby="about-label" id="about">
         <div class="container">
+          <div class="about-story-wrap">
 
-          <div class="about-content">
+            <!-- IMAGE -->
+            <figure class="about-banner">
+              <img src="assets/images/image.jpg" width="570" height="570" loading="lazy" alt="Segi's Kitchen Aroma food"
+                class="w-100">
+              <div class="abs-img abs-img-1 has-before" data-parallax-item data-parallax-speed="1.75">
+                <img src="assets/images/about-ab-image.jpg" width="285" height="285" loading="lazy" alt=""
+                  class="w-100">
+              </div>
+            </figure>
 
-            <p class="label-2 section-subtitle" id="about-label">Our Story</p>
+            <!-- TEXT -->
+            <div class="about-content">
+              <p class="label-2 section-subtitle" id="about-label">Our Story</p>
+              <h2 class="headline-1 section-title">Every Flavour<br>Tells a Story</h2>
 
-            <h2 class="headline-1 section-title">Every Flavour Tells a Story</h2>
+              <div class="story-paragraphs">
+                <p>Welcome to Segi's Kitchen Aroma — where tradition meets creativity on every plate, blending the rich
+                  culinary heritage of African, European, and Caribbean cuisines into unforgettable dining experiences.
+                </p>
+                <p>From perfectly seasoned jollof rice to indulgent European classics and bold Caribbean jerk chicken,
+                  every dish is crafted with the freshest ingredients to take you on a journey across cultures.</p>
+                <p>Beyond everyday dining, we specialise in catering for corporate events, weddings, birthdays, and
+                  private celebrations — turning every gathering into a truly memorable experience.</p>
+              </div>
 
-            <p class="section-text">
-              Welcome to Segi’s Kitchen Aroma, where tradition meets creativity on every plate. We bring together the
-              rich culinary heritage of African, European, and Caribbean cuisines, blending authentic flavours with a
-              modern touch to create unforgettable dining experiences.
-
-              From the comforting warmth of perfectly seasoned jollof rice to indulgent European classics and the bold,
-              smoky taste of Caribbean jerk chicken, every dish we serve is crafted to take you on a journey across
-              cultures.
-
-              At the heart of our kitchen is a commitment to quality. Our experienced chefs use only the freshest
-              ingredients, ensuring each meal is not just food, but a moment to savour.
-
-              Beyond everyday dining, we specialise in catering for all occasions—corporate events, weddings, birthdays,
-              and private celebrations. With a diverse menu and exceptional service, we turn every gathering into a
-              memorable experience.
-
-              At Segi’s Kitchen Aroma, every bite tells a story… and we can’t wait to share ours with you.
-            </p>
-
-            <div class="contact-label">Book Through Call</div>
-
-            <a href="tel:+447534644786" class="body-1 contact-number hover-underline">+447534644786</a>
-            <a href="tel:+447508106775" class="body-1 contact-number hover-underline">+447508106775</a>
+              <div class="contact-label">Book Through Call</div>
+              <a href="tel:+447534644786" class="body-1 contact-number hover-underline">+447534644786</a>
+              <a href="tel:+447508106775" class="body-1 contact-number hover-underline">+447508106775</a>
+            </div>
 
           </div>
-
-          <figure class="about-banner">
-            <img src="assets/images/image.jpg" width="570" height="570" loading="lazy" alt="about banner" class="w-100"
-              data-parallax-item data-parallax-speed="1">
-
-            <div class="abs-img abs-img-1 has-before" data-parallax-item data-parallax-speed="1.75">
-              <img src="assets/images/about-ab-image.jpg" width="285" height="285" loading="lazy" alt="" class="w-100">
-            </div>
-          </figure>
-
-          <img src="assets/images/shape-3.png" width="197" height="194" loading="lazy" alt="" class="shape">
-
         </div>
       </section>
 
@@ -926,7 +1103,7 @@
       <section class="aroma-royalty-section" aria-labelledby="royalty-label" id="special">
 
         <div class="royalty-banner">
-          <img src="assets/images/special-dish-banner.jpg" width="940" height="900" loading="lazy"
+          <img src="assets/images/image1.jpeg" width="940" height="900" loading="lazy"
             alt="Aroma Royalty cuisine spread" class="img-cover">
           <div class="royalty-banner-overlay"></div>
           <div class="royalty-banner-text">
@@ -1266,6 +1443,25 @@
 
   <!-- Custom JS -->
   <script src="assets/js/script.js"></script>
+
+  <!-- Navbar scroll background fix -->
+  <script>
+    (function () {
+      const header = document.querySelector('[data-header]');
+      if (!header) return;
+
+      function onScroll() {
+        if (window.scrollY > 50) {
+          header.classList.add('active');
+        } else {
+          header.classList.remove('active');
+        }
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll(); // run once on load
+    })();
+  </script>
 
   <!-- Ionicons -->
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
